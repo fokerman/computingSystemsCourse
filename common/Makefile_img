@@ -1,0 +1,57 @@
+# EL MAKEFILE DE SVG QUE MAKEFILEA A TODOS LOS MAKEFILES DE SVG QUE EXISTAN!
+# Todos los svg seran convertidos a pdf, si el svg contiene capas, estas seran
+# convertidas en archivos pdf distintos, indicadas por el id de la capa.
+# Ademas, cualquer archivo tal que su path contenga la string RECURSOS no
+# sera convertido a pdf.
+
+SOURCES := $(shell find `pwd` -name '*.svg' | grep -v RECURSOS)
+OUTPUT := $(SOURCES:%.svg=%.pdf)
+RMOUTPUT := $(SOURCES:%.svg=%*.pdf)
+
+inkscapeVersion := $(shell inkscape --version | awk '{print $$2}')
+
+all: $(OUTPUT)
+
+%.pdf: %.svg
+ifeq ($(inkscapeVersion),0.92.5)
+	@if [ $$(inkscape --query-all $< | grep layer | wc -l ) = 1 ] ;\
+	then \
+	echo "(1) $@" ;\
+		inkscape $< --without-gui --export-plain-svg=$$(pwd)/$$(basename $< .svg)-plain.svg ;\
+		inkscape $$(pwd)/$$(basename $< .svg)-plain.svg --without-gui --export-pdf=$$(pwd)/$$(basename $< .svg).pdf ;\
+		rm $$(pwd)/$$(basename $< .svg)-plain.svg ;\
+	else \
+	echo "(n) $@" ;\
+		for i in $$(inkscape --query-all $< | grep layer | awk -F, '{print $$1}') ;\
+		do \
+		inkscape $< -jC -i $$i --without-gui --export-plain-svg=$$(pwd)/$$(basename $< .svg)-$$i.svg ;\
+		inkscape $$(pwd)/$$(basename $< .svg)-$$i.svg --without-gui --export-pdf=$$(pwd)/$$(basename $< .svg)-$$i.pdf ;\
+		rm $$(pwd)/$$(basename $< .svg)-$$i.svg ;\
+		done ;\
+		cp $$(pwd)/$$(basename $< .svg)-layer1.pdf $$(pwd)/$$(basename $< .svg).pdf ;\
+	fi
+endif
+ifneq ($(filter $(inkscapeVersion), 1.1 1.0.1 1.0.2 1.1.1 1.1.2),)
+	@if [ $$(inkscape --query-all $< | grep layer | wc -l ) = 1 ] ;\
+	then \
+	echo "(1) $@" ;\
+		inkscape $< --export-plain-svg --export-filename=$$(pwd)/$$(basename $< .svg)-plain.svg ;\
+		inkscape $$(pwd)/$$(basename $< .svg)-plain.svg --export-filename=$$(pwd)/$$(basename $< .svg).pdf ;\
+		rm $$(pwd)/$$(basename $< .svg)-plain.svg ;\
+	else \
+	echo "(n) $@" ;\
+		for i in $$(inkscape --query-all $< | grep layer | awk -F, '{print $$1}') ;\
+		do \
+		inkscape $< -jC -i $$i --export-plain-svg --export-filename=$$(pwd)/$$(basename $< .svg)-$$i.svg ;\
+		inkscape $$(pwd)/$$(basename $< .svg)-$$i.svg --export-filename=$$(pwd)/$$(basename $< .svg)-$$i.pdf ;\
+		rm $$(pwd)/$$(basename $< .svg)-$$i.svg ;\
+		done ;\
+		cp $$(pwd)/$$(basename $< .svg)-layer1.pdf $$(pwd)/$$(basename $< .svg).pdf ;\
+	fi
+else
+		echo "Inkscape version does not supported"
+		echo $(inkscapeVersion)
+endif
+	
+clean:
+	rm -f $(RMOUTPUT)

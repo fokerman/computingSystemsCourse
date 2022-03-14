@@ -1,0 +1,607 @@
+% === T13 - Memoria Dinámica ===
+% David Alejandro Gonzalez Marquez
+% fokerman@gmail.com
+% https://github.com/fokerman/computingSystemsCourse
+
+\documentclass[aspectratio=169]{beamer}
+% \documentclass[aspectratio=169, handout]{beamer}
+
+% % % Packages
+\usepackage[sfdefault]{AlegreyaSans}
+\usepackage{inconsolata}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[absolute,overlay]{textpos}
+  \setlength{\TPHorizModule}{1mm}
+  \setlength{\TPVertModule}{1mm}
+\usepackage{framed}
+\usepackage{mfirstuc} % para poner en mayusculas la primer letra
+\usepackage{xspace} % para crear espacios en comandos 
+\usepackage{pbox}
+\usepackage{tikz}
+\usepackage{mathabx}
+\usepackage{colortbl}
+\usepackage{ulem} % para tener tachado
+
+% % % Beamer config
+\usetheme{Pittsburgh}
+\usecolortheme[rgb={1,0.48,0.0}]{structure}
+\setbeamercolor{block title}{fg=white,bg=verdeuca}
+\xdefinecolor{verdeuca}{rgb}{0.0,0.48,0.54}
+\xdefinecolor{naranjauca}{rgb}{1,0.48,0.0}
+\setbeamercolor{palette quaternary}{fg=white,bg=verdeuca}
+\setbeamertemplate{title page}[default][colsep=-4bp, rounded=true] % remove title shadow
+\setbeamertemplate{frametitle}[default][colsep=-2bp, shadow=false] % remove frame title shadow
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+\beamertemplatenavigationsymbolsempty
+
+% % % Colors
+\definecolor{AzulClaro}{rgb}{.31,.506,.741}
+\definecolor{Gris}{gray}{0.8}
+\definecolor{Celeste}{rgb}{.255,.41,.884}
+\definecolor{Rojo}{rgb}{1, 0, 0}
+\definecolor{a}{rgb}{0.0, 0.53, 0.74}
+\definecolor{r}{rgb}{0.89, 0.0, 0.13}
+\definecolor{v}{rgb}{0.0, 0.5, 0.0}
+\definecolor{y}{rgb}{0.0, 0.5, 0.5}
+\definecolor{rojo}{HTML}{F1521B}
+\definecolor{verde}{HTML}{80CD29}
+\definecolor{amarillo}{HTML}{FABC09}
+\definecolor{azul}{HTML}{00ADF1}
+
+% % % Rename
+\newcommand{\tab}[0]{\hspace{15pt}}
+
+% % % Blocks
+\setbeamercolor{block body}{fg=black, bg=black!10}
+\setbeamercolor{block title}{fg=black, bg=black!20}
+\setbeamercolor{coloredboxstuffNaranja}{fg=naranjauca,bg=black!10} %% PARA LOS BOX
+\setbeamercolor{coloredboxstuffVerde}{fg=verdeuca,bg=black!10} %% PARA LOS BOX
+
+% % % Special Packages
+\usepackage{fontawesome}
+\usepackage{pgf}
+
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+% % % Start
+
+\title{\Huge Memoria Dinámica}
+% \subtitle{}
+
+\author{David Alejandro González Márquez}
+\input{../university}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+    \begin{textblock}{140}(10,70)
+    \textcolor{rojo}{
+    \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Memoria}
+    \begin{textblock}{87}(10,10)
+    \only<2->{
+    \begin{block}{Variable estática}
+    Asignada en un espacio de memoria \textbf{reservado} que solo será utilizado para almacenar la variable en cuestión.
+    \end{block}
+    }
+    \end{textblock}
+    \begin{textblock}{87}(10,30)
+    \only<3->{
+    \begin{block}{Variable en la pila}
+    Esta asignada dentro del espacio de \textbf{pila} del programa, puede existir solo en el contexto de ejecución de una función.
+    \end{block}
+    }
+    \end{textblock}
+    \begin{textblock}{87}(10,55)
+    \only<4->{
+    \begin{block}{Variable dinámica}
+    Esta asignada en un espacio de memoria \textbf{solicitado al sistema} operativo mediante una biblioteca de funciones, estas permiten solicitar y liberar memoria. (\texttt{malloc})
+    \end{block}
+    }
+    \end{textblock}
+    \begin{textblock}{100}(100,7)
+    \small
+    \only<2->{
+    \textcolor{gray}{Ejemplo:}\\
+    \texttt{\#include <stdio.h>}\\
+    \texttt{...}\\
+    \textcolor{red}{\texttt{int numero = 10;}}\\
+    \textcolor{red}{\texttt{const char letra = \textquotesingle{}10\textquotesingle{}}}\\
+    \texttt{...}\\
+    }
+    \only<3->{
+    \texttt{int main() \{}\\
+    \hspace{0.8cm} \texttt{...}\\
+    \hspace{0.8cm} \textcolor{red}{\texttt{int n = 10;}}\\
+    \hspace{0.8cm} \textcolor{red}{\texttt{int* puntero;}}\\
+    \hspace{0.8cm} \texttt{...}\\
+    }
+    \only<4->{
+    \hspace{0.8cm} \texttt{...}\\
+    \hspace{0.8cm} \texttt{...}\\
+    \hspace{0.8cm} \textcolor{red}{\texttt{int* puntero = malloc(10);}}\\
+    \hspace{0.8cm} \texttt{...}\\
+    \hspace{0.8cm} \textcolor{red}{\texttt{free(puntero);}}\\
+    \hspace{0.8cm} \texttt{...}\\
+    \texttt{\}}\\
+    }
+    \end{textblock}
+\end{frame}
+
+\begin{frame}{Memoria}
+    \begin{textblock}{100}(7,14) \only<1->{\includegraphics[scale=0.9]{img/memory-layer1.pdf}} \end{textblock} % direcciones altas bajas
+    \begin{textblock}{100}(7,14) \only<2->{\includegraphics[scale=0.9]{img/memory-layer2.pdf}} \end{textblock} % segmento data text (TEXTO) 
+    \begin{textblock}{100}(7,14) \only<2->{\includegraphics[scale=0.9]{img/memory-layer3.pdf}} \end{textblock} % segmento data text
+    \begin{textblock}{100}(7,14) \only<3->{\includegraphics[scale=0.9]{img/memory-layer4.pdf}} \end{textblock} % segmento bss stack (TEXTO)
+    \begin{textblock}{100}(7,14) \only<3->{\includegraphics[scale=0.9]{img/memory-layer5.pdf}} \end{textblock} % segmento bss stack
+    \begin{textblock}{100}(7,14) \only<4->{\includegraphics[scale=0.9]{img/memory-layer6.pdf}} \end{textblock} % segmento heap (TEXTO) 
+    \begin{textblock}{100}(7,14) \only<4->{\includegraphics[scale=0.9]{img/memory-layer7.pdf}} \end{textblock} % segmento heap
+\end{frame}
+
+\begin{frame}{Memoria}
+    \begin{textblock}{100}(7,14) \only<1->{\includegraphics[scale=0.9]{img/memory-layer1.pdf}} \end{textblock} % direcciones altas bajas
+    \begin{textblock}{100}(7,14) \only<1->{\includegraphics[scale=0.9]{img/memory-layer3.pdf}} \end{textblock} % segmento data text
+    \begin{textblock}{100}(7,14) \only<1->{\includegraphics[scale=0.9]{img/memory-layer5.pdf}} \end{textblock} % segmento bss stack
+    \begin{textblock}{100}(7,14) \only<1->{\includegraphics[scale=0.9]{img/memory-layer7.pdf}} \end{textblock} % segmento heap
+    \begin{textblock}{100}(7,14) \only<2->{\includegraphics[scale=0.9]{img/memory-layer8.pdf}} \end{textblock} % text
+    \begin{textblock}{100}(7,14) \only<3->{\includegraphics[scale=0.9]{img/memory-layer9.pdf}} \end{textblock} % data
+    \begin{textblock}{100}(7,14) \only<4->{\includegraphics[scale=0.9]{img/memory-layer10.pdf}} \end{textblock} % bss
+    \begin{textblock}{100}(7,14) \only<5->{\includegraphics[scale=0.9]{img/memory-layer11.pdf}} \end{textblock} % stack
+    \begin{textblock}{100}(7,14) \only<6->{\includegraphics[scale=0.9]{img/memory-layer12.pdf}} \end{textblock} % heap
+    \begin{textblock}{100}(7,14) \only<1->{\includegraphics[scale=0.9]{img/memory-layer13.pdf}} \end{textblock} % codigo
+\end{frame}
+
+\begin{frame}[t]{Memoria Dinámica}
+    \begin{block}{Solicitar memoria}
+    \begin{center}
+    \textcolor{verdeuca}{\texttt{void *malloc(size\_t size)}}\\
+    \end{center}
+    Asigna \texttt{size} bytes de memoria y nos devuelve su posición.
+    \end{block}
+    \vspace{0.5cm}
+    \pause
+    \begin{block}{Liberar memoria}
+    \begin{center}
+    \textcolor{verdeuca}{\texttt{void free(void *pointer)}}\\
+    \end{center}
+    Libera la memoria en \texttt{pointer}, previamente solicitada por \texttt{malloc}.
+    \end{block}
+    \pause
+    \vspace{0.3cm}
+    \begin{center}
+    \textit{``With a great power comes a great responsibility''} 
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile,t]{Memoria Dinámica  \hspace{0.5cm}\huge - IMPORTANTE -}
+    \normalsize
+    Si se solicita memoria utilizando \texttt{malloc}, se \textbf{DEBE} liberar utilizando \texttt{free}.\\
+    Toda memoria que se solicite \textbf{DEBE} ser liberada durante la ejecución del programa.\\
+    \vspace{0.3cm}
+    \pause
+    Caso contrario se \hspace{0.03cm} \huge \textcolor{red}{PIERDE MEMORIA} \\
+    \vspace{0.3cm}
+    \pause
+    \normalsize Para detectar problemas en el uso de la memoria se puede utilizar: \\
+    \begin{center}
+    \Huge \texttt{Valgrind}\\
+    \end{center}
+    \pause
+    \normalsize \textcolor{verdeuca}{Uso:}\\
+    \normalsize \verb|$ valgrind --leak-check=full --show-leak-kinds=all -v ./holamundo|\\
+    \vspace{0.2cm}
+    \normalsize \textcolor{verdeuca}{Instalación:}\\
+    \begin{itemize}
+    \item[-] Ubuntu/Debian: \texttt{sudo apt-get install valgrind}
+    \item[-] Otros Linux: \url{http://valgrind.org/downloads/current.html}
+    \item[-] Windows/Mac OS: \textcolor{naranjauca}{usen Linux}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Repaso de punteros}
+    \begin{itemize}
+    \setlength\itemsep{1.2em}
+    \item Es una variable que referencia una \textbf{posición de la memoria}.\\ \small (ejemplo: una variable cuyo valor es una dirección de memoria) \normalsize
+    \pause
+    \item Tiene un tipo y un nombre.
+    \pause
+    \item Almacena una dirección de memoria.
+    \pause
+    \item Sirve para referenciar una posición de memoria.
+    \pause
+    \item Operadores:
+    \begin{itemize}
+    \pause
+    \item[\textbf{\&}] $\rightarrow$ Da como resultado la dirección de memoria de una variable.
+    \pause
+    \item[\textbf{*}] $\rightarrow$ Da como resultado el valor apuntado por un puntero.\\ \hskip 0.5cm \footnotesize (Además de ser el indicador del tipo puntero)\normalsize
+    \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Repaso de punteros}
+    \framesubtitle{Ejemplos:}
+    \begin{itemize}
+    \item \verb|int *pepe| \\ \vskip 0.1cm
+    \pause
+    Declara un puntero de tipo entero con nombre \textit{pepe}.
+    \vskip 0.3cm
+    \pause
+    \item \verb|int x = 5|\\
+    \verb|pepe = &x|\\ \vskip 0.1cm
+    \pause
+    Guarda en el puntero \textit{pepe} la dirección de \textit{x}. Se dice que \textit{pepe} apunta a \textit{x}.\\
+    \vskip 0.3cm
+    \pause
+    \item \verb|*pepe = 8|\\ \vskip 0.1cm
+    \pause
+    Guarda 8 en la posición apuntada por el puntero \textit{pepe}.
+    \vskip 0.3cm
+    \pause
+    \item \verb|int y|\\
+    \verb|y = *pepe|\\ \vskip 0.1cm
+    Guarda en \textit{y} el valor apuntado por \textit{pepe}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Repaso de punteros}
+    \framesubtitle{Ejemplos:}
+    \begin{textblock}{50}(10,15)
+    \begin{enumerate}
+    \setlength\itemsep{1.5em}
+    \Large
+    \item \verb|int *pepe|
+    \vskip 0.3cm
+    \item \verb|int x = 5|\\
+    \verb|pepe = &x|
+    \vskip 0.3cm
+    \item \verb|*pepe = 8|
+    \vskip 0.3cm
+    \item \verb|int y|\\
+    \verb|y = *pepe|
+    \vskip 0.3cm
+    \end{enumerate}
+    \end{textblock}
+    \begin{textblock}{50}(90,15)
+    \only<1>{\Large 1.}
+    \only<2>{\Large 2.}
+    \only<3>{\Large 3.}
+    \only<4>{\Large 4.}
+    \end{textblock}
+    \begin{textblock}{50}(90,20) \only<1->{\includegraphics[scale=1]{img/punteros-layer1.pdf}} \end{textblock}
+    \begin{textblock}{50}(90,20) \only<2->{\includegraphics[scale=1]{img/punteros-layer2.pdf}} \end{textblock}
+    \begin{textblock}{50}(90,20) \only<3->{\includegraphics[scale=1]{img/punteros-layer3.pdf}} \end{textblock}
+    \begin{textblock}{50}(90,20) \only<4->{\includegraphics[scale=1]{img/punteros-layer4.pdf}} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]{Arreglos}
+    \begin{beamercolorbox}[wd=1\textwidth,sep=1em]{coloredboxstuffNaranja}
+    \centering \large
+    Un arreglo o vector es una secuencia ordenada de elementos\\ consecutivos en memoria de un tamaño fijo.
+    \end{beamercolorbox}
+    \bigskip
+    \begin{center}
+    \large
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+     \hline
+     $A_0$ & $A_1$ & $A_2$ & $\cdots$ & $A_{n-3}$ & $A_{n-2}$ & $A_{n-1}$ \\
+     \hline
+    \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Arreglos}
+    Declaremos un vector \textit{v} en \texttt{C}:\\
+    \bigskip
+    \pause
+    \begin{beamercolorbox}[wd=0.9\textwidth,sep=0.5em]{coloredboxstuffVerde}
+    \verb|int v[5];|
+    \end{beamercolorbox}
+    \bigskip
+    ¿Cómo está guardado en memoria?\\
+    \bigskip
+    \pause
+    Como 5 enteros (\textit{doublewords} / 4 bytes) \textbf{consecutivos:}\\
+    \bigskip
+    \begin{center}
+    \includegraphics[scale=0.8]{img/vector.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Arreglos}
+    Si rememoramos el ejemplo del hola mundo en ASM:\\
+    \bigskip
+    \begin{beamercolorbox}[wd=0.9\textwidth,sep=0.5em]{coloredboxstuffVerde}
+    \verb|section .rodata:|\\
+    \verb|msg: DB 'Hola mundo', 10, 0|\\
+    \verb|largo: EQU $-msg-1|
+    \end{beamercolorbox}
+    \bigskip
+    \pause
+    \texttt{msg} es una etiqueta que, vista como un puntero,\\ es un vector de caracteres almacenados de la siguiente manera:
+    
+    \begin{center}
+    \includegraphics[scale=0.6,keepaspectratio]{img/holamundo.pdf}
+    \end{center}
+    \pause
+    \small \texttt{msg} es un \texttt{char*}, es como si en \texttt{C} hiciéramos:\\
+    \small
+    \begin{beamercolorbox}[wd=0.9\textwidth,sep=0.5em]{coloredboxstuffVerde}
+    \verb|char msg[11] = "Hola mundo\n";|
+    \end{beamercolorbox}
+\end{frame}
+
+\begin{frame}[fragile,t]{Arreglos}
+    Dado:\\
+    \vskip 5pt
+    \begin{beamercolorbox}[wd=0.9\textwidth,sep=0.5em]{coloredboxstuffVerde}
+    \verb|int v[5];|\\
+    \end{beamercolorbox}
+    \pause
+    Si suponemos que el primer elemento se encuentra almacenado\\  en la dirección 0x200 de memoria\\
+    \vskip 5pt
+    ¿cómo se realiza la siguiente asignación?
+    \pause
+    \vskip 5pt
+    \begin{beamercolorbox}[wd=0.9\textwidth,sep=0.5em]{coloredboxstuffVerde}
+    \verb|v[2] = 8;|
+    \pause
+    \end{beamercolorbox}
+    \begin{textblock}{50}(10,59) \only<4->{\includegraphics[scale=0.8]{img/vectorAnimado-layer1.pdf}} \end{textblock}
+    \begin{textblock}{50}(10,59) \only<5->{\includegraphics[scale=0.8]{img/vectorAnimado-layer2.pdf}} \end{textblock}
+    \begin{textblock}{50}(10,59) \only<6->{\includegraphics[scale=0.8]{img/vectorAnimado-layer3.pdf}} \end{textblock}
+    \begin{textblock}{50}(10,59) \only<7->{\includegraphics[scale=0.8]{img/vectorAnimado-layer4.pdf}} \end{textblock}
+    \begin{textblock}{50}(10,59) \only<8->{\includegraphics[scale=0.8]{img/vectorAnimado-layer5.pdf}} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]{Arreglos y Punteros}
+    Si tenemos:
+    \vskip 5pt
+    \begin{beamercolorbox}[wd=1\textwidth,sep=0.5em]{coloredboxstuffVerde}
+    \verb|int v[5];| 
+    \end{beamercolorbox}
+    \vskip 5pt
+    \textit{v} es un puntero al primer elemento del vector.\\ 
+    \vskip 15pt
+    \pause
+    Luego, vale en \texttt{C}:
+    \vskip 15pt
+    \begin{beamercolorbox}[wd=1\textwidth,sep=0.5em]{coloredboxstuffVerde}
+    \verb| int *p_v = v;| $\leftarrow$ \footnotesize tomo el puntero al vector
+    \end{beamercolorbox}
+    \begin{center}
+    \vskip -7pt
+    ó
+    \end{center}
+    \begin{beamercolorbox}[wd=1\textwidth,sep=0.5em]{coloredboxstuffVerde}
+    \verb| int *p_v = &v[0];| $\leftarrow$ \footnotesize tomo la dirección del primer elemento
+    \end{beamercolorbox}
+\end{frame}
+
+% \begin{frame}[fragile]{Arreglos y Punteros}
+%     \begin{textblock}{60}(10,15)
+%     \textcolor{verdeuca}{:}
+%     \vspace{-0.1cm}
+%     \begin{verbatim}
+%     ...
+%     \end{verbatim}
+%     \end{textblock}
+% \end{frame}
+
+\begin{frame}[t]
+    \frametitle{Listas}
+    \begin{textblock}{60}(10,15)
+    Es una estructura de datos que consiste en nodos \textbf{enlazados} mediante punteros.\\
+    \bigskip
+    Cada nodo contiene datos y un \textbf{puntero al siguiente} nodo.\\
+    \bigskip
+    Los datos pueden ser tipos básicos o punteros a \textbf{cualquier tipo} de datos.\\
+    \bigskip
+    Una lista termina cuando su último nodo apunta a \textbf{null}.\\
+    \end{textblock}
+    \begin{textblock}{60}(80,10) \only<1->{\includegraphics[scale=0.55]{img/lista-layer1.pdf}} \end{textblock}
+    \begin{textblock}{60}(80,30) \only<2->{\includegraphics[scale=0.55]{img/lista-layer2.pdf}} \end{textblock}
+    \begin{textblock}{60}(80,50) \only<3->{\includegraphics[scale=0.55]{img/lista-layer3.pdf}} \end{textblock}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Listas}
+    Estructuras:
+    \begin{multicols}{2}
+    \begin{tabular}{l}
+    \texttt{struct lista \{}      \\
+    \texttt{      nodo *primero;} \\
+    \texttt{\};}                  \\
+    \hspace{4cm}
+    \end{tabular}
+    \columnbreak
+    \begin{tabular}{lll}
+    \texttt{struct nodo \{}     \\
+    \texttt{      int dato;}    \\
+    \texttt{      nodo *prox;}  \\
+    \texttt{\};}                \\
+    \end{tabular}
+    \end{multicols}
+    \begin{textblock}{100}(30,40) \only<2->{\includegraphics[scale=0.7]{img/lista_enteros-layer1.pdf}} \end{textblock}
+    \begin{textblock}{100}(30,40) \only<3->{\includegraphics[scale=0.7]{img/lista_enteros-layer2.pdf}} \end{textblock}
+    \begin{textblock}{100}(30,40) \only<4->{\includegraphics[scale=0.7]{img/lista_enteros-layer3.pdf}} \end{textblock}
+    \begin{textblock}{100}(30,40) \only<5->{\includegraphics[scale=0.7]{img/lista_enteros-layer4.pdf}} \end{textblock}
+    \begin{textblock}{100}(30,40) \only<6->{\includegraphics[scale=0.7]{img/lista_enteros-layer5.pdf}} \end{textblock}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Listas - Agregar}
+    \begin{textblock}{100}(20,5) \only<3->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer9.pdf}} \end{textblock}  % p. nuevo
+    \begin{textblock}{100}(20,5) \only<4->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer7.pdf}} \end{textblock}  % dato
+    \begin{textblock}{100}(20,5) \only<5->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer11.pdf}} \end{textblock} % p. copia
+    \begin{textblock}{100}(20,5) \only<1->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer1.pdf}} \end{textblock}  % list
+    \begin{textblock}{100}(20,5) \only<1-2>{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer2.pdf}} \end{textblock}  % arrow
+    \begin{textblock}{100}(20,5) \only<2,6>{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer3.pdf}} \end{textblock}  % malloc flecha
+    \begin{textblock}{100}(20,5) \only<2->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer4.pdf}} \end{textblock}  % malloc
+    \begin{textblock}{100}(20,5) \only<3->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer5.pdf}} \end{textblock}  % next nuevo
+    \begin{textblock}{100}(20,5) \only<3->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer10.pdf}} \end{textblock} % p. nuevo
+    \begin{textblock}{100}(20,5) \only<4->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer8.pdf}} \end{textblock}  % dato gris
+    \begin{textblock}{100}(20,5) \only<5->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer12.pdf}} \end{textblock} % p. copia
+    \begin{textblock}{100}(20,5) \only<5->{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer6.pdf}} \end{textblock}  % next 
+     \begin{textblock}{100}(20,5) \only<6>{\includegraphics[scale=0.7]{img/lista_enteros_agregar-layer13.pdf}} \end{textblock} % ABC
+     
+    \begin{textblock}{100}(10,68)
+    \begin{enumerate}[A]
+    \item Crear el nuevo nodo usando \texttt{malloc} y asignar su contenido
+    \item Conectar el nuevo nodo a su siguiente en la lista
+    \item Conectar el puntero anterior en la lista al nuevo nodo
+    \end{enumerate}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[t]
+    \frametitle{Listas - Borrar}
+    \begin{textblock}{100}(40,5) \only<2->{\includegraphics[scale=0.7]{img/lista_enteros_borrar-layer5.pdf}} \end{textblock}  % amarillo
+    \begin{textblock}{100}(40,5) \only<1->{\includegraphics[scale=0.7]{img/lista_enteros_borrar-layer1.pdf}} \end{textblock}  % list
+    \begin{textblock}{100}(40,5) \only<1-2>{\includegraphics[scale=0.7]{img/lista_enteros_borrar-layer2.pdf}} \end{textblock}  % arrow original
+    \begin{textblock}{100}(40,5) \only<4->{\includegraphics[scale=0.7]{img/lista_enteros_borrar-layer3.pdf}} \end{textblock}  % free
+    \begin{textblock}{100}(40,5) \only<3->{\includegraphics[scale=0.7]{img/lista_enteros_borrar-layer4.pdf}} \end{textblock}  % blanco
+    \begin{textblock}{100}(40,5) \only<3->{\includegraphics[scale=0.7]{img/lista_enteros_borrar-layer7.pdf}} \end{textblock}  % arrow
+    \begin{textblock}{100}(40,5) \only<2->{\includegraphics[scale=0.7]{img/lista_enteros_borrar-layer6.pdf}} \end{textblock}  % next gris
+    \begin{textblock}{100}(40,5) \only<2-2>{\includegraphics[scale=0.7]{img/lista_enteros_borrar-layer8.pdf}} \end{textblock}  % arrow verde
+    \begin{textblock}{100}(40,5) \only<5->{\includegraphics[scale=0.7]{img/lista_enteros_borrar-layer9.pdf}} \end{textblock}  % ABC
+    \begin{textblock}{100}(10,68)
+    \begin{enumerate}[A]
+    \item Leer el valor del puntero al siguiente nodo
+    \item Conectar el nodo anterior al siguiente del nodo a borrar
+    \item Borrar el nodo usando \texttt{free}
+    \end{enumerate}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]{Ejercicio: Agregar primero en una lista}
+    \begin{textblock}{100}(10,30) \includegraphics[scale=0.5]{img/lista_add_remove-layer3.pdf} \end{textblock}
+    \begin{textblock}{100}(70,65) \includegraphics[scale=0.5]{img/lista_add_remove-layer1.pdf} \end{textblock}
+    \begin{textblock}{60}(5,10)
+    \small
+    \begin{verbatim}
+    struct node {
+        int data;
+        struct node *next;
+    };
+    \end{verbatim}
+    \end{textblock}
+    \begin{textblock}{60}(5,50)
+    \small
+    \begin{verbatim}
+    struct node* addFirst(struct node *p, int data) {
+        struct node *newNode = (struct node*) malloc(sizeof(struct node));
+        newNode->data = data;
+        newNode->next = p;
+        return newNode;
+    }
+    \end{verbatim}
+    \end{textblock}
+    \begin{textblock}{60}(80,10)
+    \small
+    \begin{verbatim}
+    int main() {
+        struct node *n = NULL;
+        n = addFirst(n, 10);
+        n = addFirst(n, 20);
+        n = addFirst(n, 30);
+        return 0;
+    }
+    \end{verbatim}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]{Ejercicio: Borrar último nodo de una lista}
+    \begin{textblock}{100}(80,30) \includegraphics[scale=0.5]{img/lista_add_remove-layer3.pdf} \end{textblock}
+    \begin{textblock}{100}(80,50) \includegraphics[scale=0.5]{img/lista_add_remove-layer2.pdf} \end{textblock}
+    \begin{textblock}{60}(100,5)
+    \small
+    \begin{verbatim}
+    struct node {
+        int data;
+        struct node *next;
+    };
+    \end{verbatim}
+    \end{textblock}
+    \begin{textblock}{90}(5,5)
+    \small
+    \begin{verbatim}
+    struct node* removeLast(struct node *p) {
+        struct node *prev = 0;
+        struct node *current = p;
+        // Un solo nodo
+        if(current->next == 0) {
+            free(current);
+            return 0;
+        }
+        prev = current;
+        current = current->next;
+        // busco el ultimo
+        while(current->next != 0) {
+            prev = current;
+            current = current->next;
+        }
+        free(current);
+        prev->next = 0;
+        return p;
+    }
+    \end{verbatim}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bibliografía}
+    \begin{itemize}
+     \setlength\itemsep{0.5cm}
+      \item[-] \small Brian Kernighan y Dennis Ritchie. “El lenguaje de programación C”, 2da Edición, 1991.\\
+      \item[-] \small Mike Banahan, Declan Brady and Mark Doran, “The C Book”, 2da Edición, 1991.\\
+      Disponible online: \url{https://publications.gbdirect.co.uk/c_book/}
+%     \item[-] \small Tanenbaum, “Organización de Computadoras. Un Enfoque Estructurado”, 4ta Edición, 2000.\\
+%     \begin{itemize}
+%      \item \textbf{Selecccionados}\\
+%      \begin{itemize}
+%       \item 2.2.5 Memoria Caché - Páginas 65 - 67
+%       \item 2.3 Memoria Secundaria - Páginas 68 - 69
+%       \item 3.3.6 Las memorias RAM y las ROM - Páginas 152 - 154
+%       \item 4.5 Mejoramiento del desempeño - Páginas 264 - 270
+%      \end{itemize}
+%     \end{itemize}
+%     \item[-] \small Null, “Essentials of Computer Organization and Architecture”, 5th Edition, 2018.\\
+%     \begin{itemize}
+%     \item \textbf{Chapter 5 - Memory}
+%      \begin{itemize}
+%         \item 6.2 Types of Memory
+%         \item 6.3 The Memory Hierarchy
+%         \item 6.4 Cache Memory
+%      \end{itemize}
+%     \end{itemize}
+% %     \item[-] \small Silberschatz, “Fundamentos de Sistemas Operativos”, 7ma Edición, 2006.\\
+% %     \item[-] \small Tanenbaum, “Modern Operating Systems”, 4th Edition, 2015.\\
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+    \vspace{2cm}
+    \huge ¡Gracias!\\
+    \vspace{2cm}
+    \normalsize Recuerden leer los comentarios adjuntos\\ en cada clase por aclaraciones.
+    \end{center}
+\end{frame}
+
+\end{document}

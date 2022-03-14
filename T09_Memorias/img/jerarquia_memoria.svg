@@ -1,0 +1,468 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="135.88544mm"
+   height="61.826878mm"
+   viewBox="0 0 135.88543 61.826878"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.1 (1.0.1+r75)"
+   sodipodi:docname="jerarquia_memoria.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.8836128"
+     inkscape:cx="231.27967"
+     inkscape:cy="100.99935"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer7"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-22.188043,-5.2799286)"
+     style="display:inline">
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+       x="93.94809"
+       y="-55.128147"
+       id="text835"><tspan
+         sodipodi:role="line"
+         id="tspan833"
+         x="93.94809"
+         y="-55.128147"
+         style="stroke-width:0.264583">Registros</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+       x="96.816154"
+       y="-44.656548"
+       id="text839"><tspan
+         sodipodi:role="line"
+         x="96.816154"
+         y="-44.656548"
+         style="stroke-width:0.264583"
+         id="tspan865">Caché</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+       x="86.15667"
+       y="-34.532085"
+       id="text843"><tspan
+         sodipodi:role="line"
+         id="tspan841"
+         x="86.15667"
+         y="-34.532085"
+         style="stroke-width:0.264583">Memoria Principal</tspan></text>
+    <g
+       id="g928"
+       transform="translate(1.5566235,-91.366501)">
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="113.64091"
+         y="78.827477"
+         id="text851"><tspan
+           sodipodi:role="line"
+           id="tspan849"
+           x="113.64091"
+           y="78.827477"
+           style="stroke-width:0.264583">Disco óptico</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="66.248322"
+         y="78.831711"
+         id="text855"><tspan
+           sodipodi:role="line"
+           id="tspan853"
+           x="66.248322"
+           y="78.831711"
+           style="stroke-width:0.264583">Cintas</tspan></text>
+    </g>
+    <g
+       id="g934"
+       transform="translate(0.31135409,-87.018726)">
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="110.32017"
+         y="63.483173"
+         id="text847"><tspan
+           sodipodi:role="line"
+           id="tspan845"
+           x="110.32017"
+           y="63.483173"
+           style="stroke-width:0.264583">Disco Magnético</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="63.779213"
+         y="63.436607"
+         id="text859"><tspan
+           sodipodi:role="line"
+           id="tspan857"
+           x="63.779213"
+           y="63.436607"
+           style="stroke-width:0.264583">Disco de estado solido</tspan></text>
+    </g>
+    <path
+       id="path871"
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 102.82141,-69.473275 43.493926,-7.9556287 h 59.327484 59.32692 z" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 54.302801,-19.142187 H 151.33945"
+       id="path889" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 65.030292,-30.138718 H 140.61195"
+       id="path889-7" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 75.540039,-41.088683 H 130.10221"
+       id="path889-5" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 85.302435,-51.263947 H 120.33981"
+       id="path889-3" />
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+       x="-82.611252"
+       y="23.770985"
+       id="text835-5"><tspan
+         sodipodi:role="line"
+         id="tspan833-6"
+         x="-82.611252"
+         y="23.770985"
+         style="stroke-width:0.264583">Registros</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+       x="-79.743187"
+       y="34.242584"
+       id="text839-2"><tspan
+         sodipodi:role="line"
+         x="-79.743187"
+         y="34.242584"
+         style="stroke-width:0.264583"
+         id="tspan865-9">Caché</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+       x="-90.402672"
+       y="44.36705"
+       id="text843-1"><tspan
+         sodipodi:role="line"
+         id="tspan841-2"
+         x="-90.402672"
+         y="44.36705"
+         style="stroke-width:0.264583">Memoria Principal</tspan></text>
+    <g
+       id="g928-7"
+       transform="translate(-175.00271,-12.467367)">
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="113.64091"
+         y="78.827477"
+         id="text851-0"><tspan
+           sodipodi:role="line"
+           id="tspan849-9"
+           x="113.64091"
+           y="78.827477"
+           style="stroke-width:0.264583">Disco óptico</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="66.248322"
+         y="78.831711"
+         id="text855-3"><tspan
+           sodipodi:role="line"
+           id="tspan853-6"
+           x="66.248322"
+           y="78.831711"
+           style="stroke-width:0.264583">Cintas</tspan></text>
+    </g>
+    <g
+       id="g934-0"
+       transform="translate(-176.24798,-8.1195906)">
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="110.32017"
+         y="63.483173"
+         id="text847-6"><tspan
+           sodipodi:role="line"
+           id="tspan845-2"
+           x="110.32017"
+           y="63.483173"
+           style="stroke-width:0.264583">Disco Magnético</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="63.779213"
+         y="63.436607"
+         id="text859-6"><tspan
+           sodipodi:role="line"
+           id="tspan857-1"
+           x="63.779213"
+           y="63.436607"
+           style="stroke-width:0.264583">Disco de estado solido</tspan></text>
+    </g>
+    <path
+       id="path871-8"
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -73.737928,9.425859 -59.327482,61.517647 h 59.327482 59.326923 z" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -122.25654,59.756947 h 97.036655"
+       id="path889-79" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -111.52905,48.760416 h 75.581665"
+       id="path889-7-2" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -101.0193,37.81045 h 54.562175"
+       id="path889-5-0" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m -91.256903,27.635187 h 35.037378"
+       id="path889-3-2" />
+    <path
+       id="rect1011"
+       style="fill:#ffa348;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+       d="m -136.19549,27.361461 v 0.849561 h 124.914337 v -0.849561 z m 0,10.775569 v 0.850077 H -11.281153 V 38.13703 Z m 0,10.776087 v 0.849561 h 124.914337 v -0.849561 z m 0,10.776085 v 0.849561 h 124.914337 v -0.849561 z" />
+    <g
+       id="g1196"
+       transform="translate(-0.16062567,-0.50620191)">
+      <path
+         style="fill:#f9f06b;stroke:#f5c211;stroke-width:0.365;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M 90.291128,5.9128172 107.58775,23.848157 H 72.994511 Z"
+         id="path871-8-8" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="81.418091"
+         y="20.257822"
+         id="text835-5-9"><tspan
+           sodipodi:role="line"
+           id="tspan833-6-2"
+           x="81.418091"
+           y="20.257822"
+           style="stroke-width:0.264583">Registros</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline">
+    <g
+       id="g1191"
+       transform="translate(-22.348669,-5.7861306)">
+      <path
+         style="fill:#33d17a;stroke:#26a269;stroke-width:0.365;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 108.40734,24.697717 9.57254,9.926009 H 62.602379 l 9.572543,-9.926009 z"
+         id="path1126" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="84.286156"
+         y="31.180487"
+         id="text839-2-2"><tspan
+           sodipodi:role="line"
+           x="84.286156"
+           y="31.180487"
+           style="stroke-width:0.264583"
+           id="tspan865-9-8">Caché</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     style="display:inline">
+    <g
+       id="g1186"
+       transform="translate(-22.348669,-5.7861306)">
+      <path
+         style="fill:#62a0ea;stroke:#1c71d8;stroke-width:0.365;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 118.79998,35.473804 9.57254,9.926007 H 52.21025 l 9.572543,-9.926007 z"
+         id="path1128" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="73.62693"
+         y="41.518425"
+         id="text843-1-9"><tspan
+           sodipodi:role="line"
+           id="tspan841-2-7"
+           x="73.62693"
+           y="41.518425"
+           style="stroke-width:0.264583">Memoria Principal</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Layer 4"
+     style="display:inline">
+    <g
+       id="g1181"
+       transform="translate(-22.348669,-5.7861306)">
+      <path
+         style="fill:#f66151;stroke:#c64600;stroke-width:0.365;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 129.1916,46.249372 9.57306,9.926527 H 41.817602 l 9.573058,-9.926527 z"
+         id="path1130" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="98.101845"
+         y="52.753567"
+         id="text847-6-1"><tspan
+           sodipodi:role="line"
+           id="tspan845-2-9"
+           x="98.101845"
+           y="52.753567"
+           style="stroke-width:0.264583">Disco Magnético</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="51.560886"
+         y="52.707001"
+         id="text859-6-4"><tspan
+           sodipodi:role="line"
+           id="tspan857-1-7"
+           x="51.560886"
+           y="52.707001"
+           style="stroke-width:0.264583">Disco de estado sólido</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Layer 5"
+     style="display:inline">
+    <g
+       id="g1174"
+       transform="translate(-22.348669,-5.7861306)">
+      <path
+         style="fill:#c061cb;stroke:#9141ac;stroke-width:0.365;stroke-linecap:round;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 139.58424,57.02546 10.03453,10.405049 H 90.291128 30.964002 L 40.998531,57.02546 Z"
+         id="path1132" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="102.66785"
+         y="63.332882"
+         id="text851-0-6"><tspan
+           sodipodi:role="line"
+           id="tspan849-9-1"
+           x="102.66785"
+           y="63.332882"
+           style="stroke-width:0.264583">Disco óptico</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="55.275265"
+         y="63.747749"
+         id="text855-3-2"><tspan
+           sodipodi:role="line"
+           id="tspan853-6-9"
+           x="55.275265"
+           y="63.747749"
+           style="stroke-width:0.264583">Cintas</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Layer 6"
+     style="display:inline">
+    <g
+       id="g1011"
+       transform="translate(-22.188043,-5.2799287)">
+      <path
+         id="rect1011-3"
+         style="fill:#000000;stroke:none;stroke-width:0.465;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         d="m 24.902088,9.0200917 -2.714045,7.4202193 1.760098,-0.529167 0.529167,47.4555 h 0.849561 l 0.529167,-47.4555 1.760098,0.529167 z"
+         sodipodi:nodetypes="cccccccc" />
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="28.563953"
+         y="13.875215"
+         id="text938"><tspan
+           sodipodi:role="line"
+           id="tspan936"
+           x="28.563953"
+           y="13.875215"
+           style="stroke-width:0.264583">Velocidad</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer7"
+     inkscape:label="Layer 7"
+     style="display:inline">
+    <g
+       id="g1006"
+       transform="translate(-22.188043,-5.2799287)">
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="132.13322"
+         y="13.487866"
+         id="text942"><tspan
+           sodipodi:role="line"
+           id="tspan940"
+           x="132.13322"
+           y="13.487866"
+           style="stroke-width:0.264583">Capacidad</tspan></text>
+      <path
+         id="rect1011-3-7"
+         style="fill:#000000;stroke:none;stroke-width:0.465;stroke-linecap:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         d="m 155.35944,63.366644 2.71404,-7.420219 -1.7601,0.529166 -0.52916,-47.4554993 h -0.84957 l -0.52916,47.4554993 -1.7601,-0.529167 z"
+         sodipodi:nodetypes="cccccccc" />
+    </g>
+  </g>
+</svg>

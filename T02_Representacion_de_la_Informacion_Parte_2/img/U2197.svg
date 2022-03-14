@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="2.6881607mm"
+   height="2.6881607mm"
+   viewBox="0 0 2.6881605 2.6881606"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1 (1:1.1+202105261517+ce6663b3b7)"
+   sodipodi:docname="U2197.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="30.357499"
+     inkscape:cx="-6.2752205"
+     inkscape:cy="12.468089"
+     inkscape:window-width="1920"
+     inkscape:window-height="1136"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(-54.135679,-72.508461)">
+    <g
+       aria-label="↗"
+       id="text6282"
+       style="font-size:3.52777px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;stroke-width:0.264583px">
+      <path
+         d="m 54.27679,75.196622 2.300106,-2.307162 v 0.02117 c 0,0.197555 0.04233,0.642054 0.07761,0.910164 h 0.169333 c -0.02117,-0.317499 -0.03528,-0.578554 -0.03528,-0.85372 0,-0.134055 0.0071,-0.275166 0.0071,-0.430388 -0.155222,0 -0.296333,0.0071 -0.430388,0.0071 -0.275166,0 -0.536221,-0.01411 -0.85372,-0.03528 v 0.169333 c 0.26811,0.03528 0.712609,0.07761 0.910164,0.07761 h 0.02117 l -2.307162,2.300106 z"
+         id="path1101" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52777px;line-height:125%;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Normal';text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="50.184563"
+       y="75.281288"
+       id="text1099"><tspan
+         sodipodi:role="line"
+         id="tspan1097"
+         style="stroke-width:0.264583px"
+         x="50.184563"
+         y="75.281288">↗</tspan></text>
+  </g>
+</svg>

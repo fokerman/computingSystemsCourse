@@ -1,0 +1,756 @@
+% === T02 - Representación de la Información (Parte 2) ===
+% David Alejandro Gonzalez Marquez
+% fokerman@gmail.com
+% https://github.com/fokerman/computingSystemsCourse
+
+\documentclass[aspectratio=169]{beamer}
+% \documentclass[aspectratio=169, handout]{beamer}
+
+% % % Packages
+\usepackage[sfdefault]{AlegreyaSans}
+\usepackage{inconsolata}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[absolute,overlay]{textpos}
+  \setlength{\TPHorizModule}{1mm}
+  \setlength{\TPVertModule}{1mm}
+\usepackage{framed}
+\usepackage{mfirstuc} % para poner en mayusculas la primer letra
+\usepackage{xspace} % para crear espacios en comandos 
+\usepackage{pbox}
+\usepackage{tikz}
+\usepackage{mathabx}
+\usepackage{colortbl}
+\usepackage{ulem} % para tener tachado
+
+% % % Beamer config
+\usetheme{Pittsburgh}
+\usecolortheme[rgb={1,0.48,0.0}]{structure}
+\setbeamercolor{block title}{fg=white,bg=verdeuca}
+\xdefinecolor{verdeuca}{rgb}{0.0,0.48,0.54}
+\xdefinecolor{naranjauca}{rgb}{1,0.48,0.0}
+\setbeamercolor{palette quaternary}{fg=white,bg=verdeuca}
+\setbeamertemplate{title page}[default][colsep=-4bp, rounded=true] % remove title shadow
+\setbeamertemplate{frametitle}[default][colsep=-2bp, shadow=false] % remove frame title shadow
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+\beamertemplatenavigationsymbolsempty
+
+% % % Colors
+\definecolor{Gris}{gray}{0.8}
+\definecolor{Celeste}{rgb}{.255,.41,.884}
+\definecolor{Rojo}{rgb}{1, 0, 0}
+\definecolor{a}{rgb}{0.0, 0.53, 0.74}
+\definecolor{r}{rgb}{0.89, 0.0, 0.13}
+\definecolor{v}{rgb}{0.0, 0.5, 0.0}
+\definecolor{y}{rgb}{0.0, 0.5, 0.5}
+\definecolor{rojo}{HTML}{F1521B}
+\definecolor{verde}{HTML}{80CD29}
+\definecolor{amarillo}{HTML}{FABC09}
+\definecolor{azulC}{rgb}{.31,.506,.741}
+\definecolor{azul}{HTML}{00ADF1}
+\definecolor{verdeC}{HTML}{8FF0A4}
+\definecolor{verdeO}{HTML}{2EC27E}
+
+% % % Rename
+\newcommand{\tab}[0]{\hspace{15pt}}
+
+% % % Blocks
+\setbeamercolor{block body}{fg=black, bg=black!10}
+\setbeamercolor{block title}{fg=black, bg=black!20}
+\setbeamercolor{coloredboxstuffNaranja}{fg=naranjauca,bg=black!10} %% PARA LOS BOX
+\setbeamercolor{coloredboxstuffVerde}{fg=verdeuca,bg=black!10} %% PARA LOS BOX
+
+% % % Special Packages
+\usepackage{fontawesome}
+\usepackage{fancyvrb} % Para tener verbatim con colores
+\usepackage{ulem} % Para tener tachado
+\usepackage{soul} % Para tener subrayado feliz
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+% % % Start
+
+\title{\Huge Representación de la Información\\ \Large (Parte 2)}
+% \subtitle{}
+
+\author{David Alejandro González Márquez}
+\input{../university}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+    \begin{textblock}{140}(10,70)
+    \textcolor{rojo}{
+    \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+    \end{textblock}
+\end{frame}
+
+% \begin{frame}[fragile]
+%     \frametitle{Operaciones Básicas en binario}
+%     \begin{itemize}
+%      \item Suma
+%      \item Resta
+%      \item Multiplicación
+%      \item División
+%     \end{itemize}
+% \end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{\textbf{Complemento a 2}: Operaciones Básicas en binario}
+    Si bien las operaciones se pueden realizar sobre cualquier notación de las vistas,\\ vamos a hacer foco en \textbf{Complemento a 2}.\\
+    \bigskip
+    En Complemento a 2 podemos hacer cualquier operación básica de sumas y restas \textbf{directamente} usando la representación del número y sin hacer cuentas adicionales.\\
+    \bigskip
+    \begin{itemize}
+     \item Negado ($NEG$)
+     \item Suma ($+$)
+     \item Resta ($-$)
+     \item Extensión de Signo
+     \item Shifts, multiplicación y división por potencias de 2 (\verb|>>| y \verb|<<|)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,t]
+     \frametitle{\textbf{Complemento a 2}: Negado}
+    Cómo obtener el inverso aditivo de un número en complemento a 2.
+    \bigskip
+    \begin{enumerate}
+     \item Invertir bit a bit el número (\texttt{NOT})
+     \item Sumar uno al número (\texttt{+1})
+    \end{enumerate}
+    \bigskip
+    \uncover<2->{Ejemplo:\\ \hspace{1cm} Inverso aditivo de $21$.\\}
+    \bigskip
+    \uncover<6->{\hspace{1cm} Inverso aditivo de $-21$.}
+    \begin{textblock}{20}(88.0,21.0) \only<2->{\includegraphics[scale=1]{img/convert2negative-layer1.pdf}} \end{textblock}
+    \begin{textblock}{20}(88.0,21.0) \only<3->{\includegraphics[scale=1]{img/convert2negative-layer2.pdf}} \end{textblock}
+    \begin{textblock}{20}(88.0,21.0) \only<4->{\includegraphics[scale=1]{img/convert2negative-layer3.pdf}} \end{textblock}
+    \begin{textblock}{20}(88.0,21.0) \only<5->{\includegraphics[scale=1]{img/convert2negative-layer4.pdf}} \end{textblock}
+    \begin{textblock}{20}(88.0,25.0) \only<6->{\includegraphics[scale=1]{img/convert2negative-layer5.pdf}} \end{textblock}
+    \begin{textblock}{20}(88.0,25.0) \only<7->{\includegraphics[scale=1]{img/convert2negative-layer6.pdf}} \end{textblock}
+    \begin{textblock}{20}(88.0,25.0) \only<8->{\includegraphics[scale=1]{img/convert2negative-layer7.pdf}} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{\textbf{Complemento a 2}: Negado}
+    Ejemplos:
+    \bigskip
+    \begin{textblock}{20}(2.0,21.0) \only<1->{\includegraphics[scale=1]{img/convert2negative-layer8.pdf}} \end{textblock} % 127
+    \begin{textblock}{20}(2.0,21.0) \only<2->{\includegraphics[scale=1]{img/convert2negative-layer9.pdf}} \end{textblock}
+    \begin{textblock}{20}(2.0,21.0) \only<2->{\includegraphics[scale=1]{img/convert2negative-layer10.pdf}} \end{textblock}
+    \begin{textblock}{20}(2.0,21.0) \only<2->{\includegraphics[scale=1]{img/convert2negative-layer11.pdf}} \end{textblock}
+    \begin{textblock}{20}(2.0,21.0) \only<2->{\includegraphics[scale=1]{img/convert2negative-layer12.pdf}} \end{textblock}
+    \begin{textblock}{20}(2.0,21.0) \only<2->{\includegraphics[scale=1]{img/convert2negative-layer13.pdf}} \end{textblock}
+    \begin{textblock}{20}(2.0,21.0) \only<2->{\includegraphics[scale=1]{img/convert2negative-layer14.pdf}} \end{textblock}
+    \begin{textblock}{20}(55.0,21.0) \only<3->{\includegraphics[scale=1]{img/convert2negative-layer15.pdf}} \end{textblock} % 1
+    \begin{textblock}{20}(55.0,21.0) \only<4->{\includegraphics[scale=1]{img/convert2negative-layer16.pdf}} \end{textblock}
+    \begin{textblock}{20}(55.0,21.0) \only<4->{\includegraphics[scale=1]{img/convert2negative-layer17.pdf}} \end{textblock}
+    \begin{textblock}{20}(55.0,21.0) \only<4->{\includegraphics[scale=1]{img/convert2negative-layer18.pdf}} \end{textblock}
+    \begin{textblock}{20}(55.0,21.0) \only<4->{\includegraphics[scale=1]{img/convert2negative-layer19.pdf}} \end{textblock}
+    \begin{textblock}{20}(55.0,21.0) \only<4->{\includegraphics[scale=1]{img/convert2negative-layer20.pdf}} \end{textblock}
+    \begin{textblock}{20}(55.0,21.0) \only<4->{\includegraphics[scale=1]{img/convert2negative-layer21.pdf}} \end{textblock}
+    \begin{textblock}{20}(107.0,21.0) \only<5->{\includegraphics[scale=1]{img/convert2negative-layer22.pdf}} \end{textblock} % -35
+    \begin{textblock}{20}(107.0,21.0) \only<6->{\includegraphics[scale=1]{img/convert2negative-layer23.pdf}} \end{textblock}
+    \begin{textblock}{20}(107.0,21.0) \only<6->{\includegraphics[scale=1]{img/convert2negative-layer24.pdf}} \end{textblock}
+    \begin{textblock}{20}(107.0,21.0) \only<6->{\includegraphics[scale=1]{img/convert2negative-layer25.pdf}} \end{textblock}
+    \begin{textblock}{20}(107.0,21.0) \only<6->{\includegraphics[scale=1]{img/convert2negative-layer26.pdf}} \end{textblock}
+    \begin{textblock}{20}(107.0,21.0) \only<6->{\includegraphics[scale=1]{img/convert2negative-layer27.pdf}} \end{textblock}
+    \begin{textblock}{20}(107.0,21.0) \only<6->{\includegraphics[scale=1]{img/convert2negative-layer28.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,70.0) \only<2->{
+    En 8 bits el máximo número representable en complemento a 2 es $127$ y el más chico es -128.\\
+    El rango es asimétrico y por lo tanto no es posible representar el 128 positivo.
+    } \end{textblock}
+\end{frame}
+
+% \begin{frame}[fragile,t]
+%     \frametitle{\textbf{Complemento a 2}: Suma}
+%     \begin{textblock}{20}(30.8,21.0) \only<1->{\includegraphics[scale=1]{img/operaciones-layer1.pdf}} \end{textblock} % 45 + 21 = 66
+%     \begin{textblock}{20}(30.8,21.0) \only<2->{\includegraphics[scale=1]{img/operaciones-layer2.pdf}} \end{textblock}
+%     \begin{textblock}{20}(30.8,21.0) \only<3->{\includegraphics[scale=1]{img/operaciones-layer3.pdf}} \end{textblock}
+%     \begin{textblock}{20}(30.8,21.0) \only<4->{\includegraphics[scale=1]{img/operaciones-layer4.pdf}} \end{textblock}
+%     \begin{textblock}{20}(30.8,21.0) \only<5->{\includegraphics[scale=1]{img/operaciones-layer5.pdf}} \end{textblock}
+%     \begin{textblock}{20}(30.8,21.0) \only<6->{\includegraphics[scale=1]{img/operaciones-layer6.pdf}} \end{textblock}
+%     \begin{textblock}{20}(30.8,21.0) \only<7->{\includegraphics[scale=1]{img/operaciones-layer7.pdf}} \end{textblock}
+%     \begin{textblock}{20}(30.8,21.0) \only<8->{\includegraphics[scale=1]{img/operaciones-layer8.pdf}} \end{textblock}
+%     \begin{textblock}{20}(30.8,21.0) \only<9->{\includegraphics[scale=1]{img/operaciones-layer9.pdf}} \end{textblock}
+%     \begin{textblock}{20}(30.8,21.0) \only<10->{\includegraphics[scale=1]{img/operaciones-layer10.pdf}} \end{textblock}
+% \end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{\textbf{Complemento a 2}: Suma}
+    Ejemplo de suma de dos números.
+    \begin{textblock}{20}(32.0,21.0) \only<1->{\includegraphics[scale=1.2]{img/operaciones-layer11.pdf}} \end{textblock} % 39 + 21 = 60
+    \begin{textblock}{20}(32.0,21.0) \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer12.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer13.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<4->{\includegraphics[scale=1.2]{img/operaciones-layer14.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<5->{\includegraphics[scale=1.2]{img/operaciones-layer15.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<6->{\includegraphics[scale=1.2]{img/operaciones-layer16.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<7->{\includegraphics[scale=1.2]{img/operaciones-layer17.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<8->{\includegraphics[scale=1.2]{img/operaciones-layer18.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<9->{\includegraphics[scale=1.2]{img/operaciones-layer19.pdf}} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{\textbf{Complemento a 2}: Resta}
+    Ejemplo de resta de dos números.
+    \begin{textblock}{20}(32.0,21.0) \only<1-1>{\includegraphics[scale=1.2]{img/operaciones-layer20.pdf}} \end{textblock} % 39 - 21 = 18
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{\textbf{Complemento a 2}: Resta}
+    Ejemplo de resta de dos números.
+    \begin{textblock}{20}(32.0,21.0)  \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer21.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer22.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<4->{\includegraphics[scale=1.2]{img/operaciones-layer23.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<5->{\includegraphics[scale=1.2]{img/operaciones-layer24.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<6->{\includegraphics[scale=1.2]{img/operaciones-layer25.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<7->{\includegraphics[scale=1.2]{img/operaciones-layer26.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<8->{\includegraphics[scale=1.2]{img/operaciones-layer27.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<9->{\includegraphics[scale=1.2]{img/operaciones-layer28.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<10->{\includegraphics[scale=1.2]{img/operaciones-layer29.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<11->{\includegraphics[scale=1.2]{img/operaciones-layer30.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0) \only<12->{\includegraphics[scale=1.2]{img/operaciones-layer31.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,65.0)
+    \only<11->{El \texttt{carry} de la operación no se considera como parte del número resultado.\\}
+    \only<12->{El resultado es correcto, ya que tienen el mismo bit de signo.}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{\textbf{Complemento a 2}: Suma Overflow}
+    Ejemplo de suma de dos números, donde su resultado no es representable en 8 bits.
+    \begin{textblock}{20}(32.0,21.0)  \only<1->{\includegraphics[scale=1.2]{img/operaciones-layer32.pdf}} \end{textblock} % 78 + 78 = 156
+    \begin{textblock}{20}(32.0,21.0)  \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer33.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer34.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer35.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer36.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer37.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer38.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer39.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer40.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<4->{\includegraphics[scale=1.2]{img/operaciones-layer41.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<5->{\includegraphics[scale=1.2]{img/operaciones-layer42.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<6->{\includegraphics[scale=1.2]{img/operaciones-layer54.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<6->{\includegraphics[scale=1.2]{img/operaciones-layer55.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,65.0)
+    \only<5->{Los últimos dos \texttt{carry} de la operación no coinciden $\rightarrow$ \textbf{Overflow}.\\}
+    \only<6->{El resultado es incorrecto, la suma de dos números positivos no puede ser negativa.}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{\textbf{Complemento a 2}: Suma Overflow}
+    Ejemplo de suma de dos números, donde su resultado no es representable en 8 bits.
+    \begin{textblock}{20}(32.0,21.0)  \only<1->{\includegraphics[scale=1.2]{img/operaciones-layer43.pdf}} \end{textblock} % -78 + -78 = -156
+    \begin{textblock}{20}(32.0,21.0)  \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer44.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer45.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer46.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<2->{\includegraphics[scale=1.2]{img/operaciones-layer47.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer48.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer49.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer50.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<3->{\includegraphics[scale=1.2]{img/operaciones-layer51.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<4->{\includegraphics[scale=1.2]{img/operaciones-layer52.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<5->{\includegraphics[scale=1.2]{img/operaciones-layer53.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<6->{\includegraphics[scale=1.2]{img/operaciones-layer54.pdf}} \end{textblock}
+    \begin{textblock}{20}(32.0,21.0)  \only<6->{\includegraphics[scale=1.2]{img/operaciones-layer55.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,65.0)
+    \only<5->{Los últimos dos \texttt{carry} de la operación no coinciden $\rightarrow$ \textbf{Overflow}.\\}
+    \only<6->{El resultado es incorrecto, la suma de dos números negativos no puede ser positiva.}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{\textbf{Complemento a 2}: Extensión de signo}
+    Para aumentar la cantidad de bits de un número en complemento a 2 es simple.\\
+    \bigskip
+    Se debe \textbf{copiar} el bit más significativo del número tantas veces como sea necesario.\\
+    A esta acción la llamamos extensión de signo.\\
+    \bigskip
+    Ejemplos:\\
+    \bigskip 
+    \hspace{1cm} \verb| 45d| $=$ \verb|00101101b| $=$ 
+    \uncover<3->{\textcolor{verdeuca}{\texttt{00000000}}}\uncover<2->{\textcolor{naranjauca}{\texttt{0}}\texttt{0101101b}}\\
+    \bigskip
+    \hspace{1cm} \verb|-18d| $=$ \verb|11101110b| $=$
+    \uncover<5->{\textcolor{verdeuca}{\texttt{11111111}}}\uncover<4->{\textcolor{naranjauca}{\texttt{1}}\texttt{1101110b}}\\
+    \bigskip
+    \hspace{1cm} \verb| -1d| $=$ \verb|1111b|     $=$
+    \uncover<7->{\textcolor{verdeuca}{\texttt{1111111111111111}}}\uncover<6->{\textcolor{naranjauca}{\texttt{1}}\texttt{111b}}\\
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{\textbf{Complemento a 2}: Shifts}
+    Las operaciones de \textit{shift} corresponden a mover bits desde sus posiciones más significativas a las menos significativas, o a la inversa.
+    \begin{textblock}{200}(10.0,29.0)  \only<1->{\textcolor{naranjauca}{Lógico a derecha}} \end{textblock}
+    \begin{textblock}{200}(10.0,34.0)  \only<2->{\includegraphics[scale=1.2]{img/shift-layer1.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,34.0)  \only<3->{\includegraphics[scale=1.2]{img/shift-layer2.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,34.0)  \only<4->{\includegraphics[scale=1.2]{img/shift-layer3.pdf}} \end{textblock}
+    \begin{textblock}{200}(82.0,29.0)  \only<5->{\textcolor{naranjauca}{Lógico a izquierda} {\small (mul por 2)}} \end{textblock}
+    \begin{textblock}{200}(82.0,34.0)  \only<5->{\includegraphics[scale=1.2]{img/shift-layer4.pdf}} \end{textblock}
+    \begin{textblock}{200}(82.0,34.0)  \only<6->{\includegraphics[scale=1.2]{img/shift-layer5.pdf}} \end{textblock}
+    \begin{textblock}{200}(82.0,34.0)  \only<7->{\includegraphics[scale=1.2]{img/shift-layer6.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,60.0)  \only<8->{\textcolor{naranjauca}{Aritmético a derecha} {\small (div por 2)}} \end{textblock}
+    \begin{textblock}{200}(10.0,65.0)  \only<8->{\includegraphics[scale=1.2]{img/shift-layer7.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,65.0)  \only<9->{\includegraphics[scale=1.2]{img/shift-layer8.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,65.0)  \only<10->{\includegraphics[scale=1.2]{img/shift-layer9.pdf}} \end{textblock}
+\end{frame}
+
+% % Segunda Parte
+
+\begin{frame}[fragile,t]
+    \frametitle{Números Fraccionarios}
+    Existen múltiples formas de codificar números fraccionaros.\\
+    Vamos a analizar solo dos de ellas.\\
+    \vspace{0.5cm}
+    \pause
+    \begin{itemize}
+    \item \textcolor{naranjauca}{\texttt{Punto fijo}}\\
+    La cantidad de bits destinados para la parte entera y fraccionaria del número son fijas.\\
+    { \footnotesize \textcolor{gray}{Ejemplo en decimal:} \\
+    \hspace{1cm} \ul{2}\hspace{0.05cm}\ul{3}\hspace{0.05cm}\ul{8}\hspace{0.05cm},\hspace{0.05cm}\ul{3}\hspace{0.05cm}\ul{5}
+    \hspace{0.2cm} \textcolor{verdeuca}{(3 dígitos para la parte entera y 2 dígitos para la parte fraccionaria) } }
+    \vspace{0.5cm}
+    \pause
+    \item \textcolor{naranjauca}{\texttt{Flotante}}\\
+    Se representa un número acotado por una cantidad de bits fija y se usa un factor de escala para calcular su magnitud.\\
+    { \footnotesize \textcolor{gray}{Ejemplo en decimal:} \\
+    \vspace{0.3cm} \hspace{5cm} \textcolor{verdeuca}{(3 dígitos para la \textit{fracción} y 2 dígitos para el \textit{exponente}) } }
+    \end{itemize}
+    % Horrible HACK - No digan como vivo!
+    \begin{textblock}{200}(20.0,75.0) { \only<3->{ \footnotesize 0\hspace{0.05cm},\hspace{0.05cm}\ul{3}\hspace{0.05cm}\ul{8}\hspace{0.05cm}\ul{9}\hspace{0.05cm} $\cdot$ $10$ } } \end{textblock}
+    \begin{textblock}{200}(40.0,75.0) { \only<3->{ \footnotesize $=$ $0.389 \cdot 100$ $=$ $38.9$ } } \end{textblock}
+    \begin{textblock}{200}(34.0,73.0) { \only<3->{ \footnotesize \hspace{0.05cm}\ul{0}\hspace{0.05cm}\ul{2} } } \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Convertir desde binario a decimal}
+    Para convertir la parte fraccionaria tenemos que operar con las inversas de las potencias de 2.\\
+    Por ejemplo,
+    \begin{textblock}{200}(13.0,28.0)  \only<1->{\includegraphics[scale=1.0]{img/bin2decFixedPoint-layer1.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,28.0)  \only<2->{\includegraphics[scale=1.0]{img/bin2decFixedPoint-layer2.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,28.0)  \only<3->{\includegraphics[scale=1.0]{img/bin2decFixedPoint-layer3.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,28.0)  \only<4->{\includegraphics[scale=1.0]{img/bin2decFixedPoint-layer4.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,28.0)  \only<5->{\includegraphics[scale=1.0]{img/bin2decFixedPoint-layer5.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,28.0)  \only<6->{\includegraphics[scale=1.0]{img/bin2decFixedPoint-layer6.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,28.0)  \only<7->{\includegraphics[scale=1.0]{img/bin2decFixedPoint-layer7.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,28.0)  \only<8->{\includegraphics[scale=1.0]{img/bin2decFixedPoint-layer8.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,28.0)  \only<9->{\includegraphics[scale=1.0]{img/bin2decFixedPoint-layer9.pdf}} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    Para convertir la parte fraccionaria a binario tenemos que multiplicar por dos y tomar la parte entera de la operación.\\
+    Por ejemplo,
+    \frametitle{Convertir desde decimal a binario}
+    \begin{textblock}{200}(13.0,30.0)  \only<8->{\includegraphics[scale=1.0]{img/dec2binFrac-layer1.pdf}} \end{textblock} %% 0.65625
+    \begin{textblock}{200}(13.0,30.0)  \only<1->{\includegraphics[scale=1.0]{img/dec2binFrac-layer2.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,30.0)  \only<2->{\includegraphics[scale=1.0]{img/dec2binFrac-layer3.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,30.0)  \only<3->{\includegraphics[scale=1.0]{img/dec2binFrac-layer4.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,30.0)  \only<4->{\includegraphics[scale=1.0]{img/dec2binFrac-layer5.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,30.0)  \only<5->{\includegraphics[scale=1.0]{img/dec2binFrac-layer6.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,30.0)  \only<6->{\includegraphics[scale=1.0]{img/dec2binFrac-layer7.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,30.0)  \only<7->{\includegraphics[scale=1.0]{img/dec2binFrac-layer8.pdf}} \end{textblock}
+    \begin{textblock}{200}(13.0,30.0)  \only<8->{\includegraphics[scale=1.0]{img/dec2binFrac-layer9.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer10.pdf}} \end{textblock} %% 0.1
+    \begin{textblock}{200}(63.0,30.0)  \only<9->{\includegraphics[scale=1.0]{img/dec2binFrac-layer11.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<10->{\includegraphics[scale=1.0]{img/dec2binFrac-layer12.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<11->{\includegraphics[scale=1.0]{img/dec2binFrac-layer13.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<12->{\includegraphics[scale=1.0]{img/dec2binFrac-layer14.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer15.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer16.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer17.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer18.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer19.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer20.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer21.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer22.pdf}} \end{textblock}
+    \begin{textblock}{200}(63.0,30.0)  \only<13->{\includegraphics[scale=1.0]{img/dec2binFrac-layer23.pdf}} \end{textblock}
+    \begin{textblock}{55}(83.0,50.0)  \only<13->{\textcolor{verdeuca}{\textbf{¡Moraleja!} No todas las magnitudes pueden ser representadas de forma exacta entre cambios de base.}} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Punto Fijo}
+    Utilizamos $n$ bits en total para representar el número.
+    \begin{itemize}
+    \item Un bit de signo, $k$ para la parte entera y $f$ para la parte fraccionaria.
+    \end{itemize}
+    \begin{center}
+    \includegraphics[scale=1.2]{img/fixedPoint-layer2.pdf}
+    \end{center}
+    \begin{itemize}
+     \item Incluso, el signo puede ser codificado en la parte entera.\\
+     Por ejemplo, codificado como complemento a 2.
+    \end{itemize}
+    \begin{center}
+    \includegraphics[scale=1.2]{img/fixedPoint-layer1.pdf}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Punto Fijo - Ejemplo}
+    Suponer una codificación de la forma:\\
+    \begin{center}
+    \fbox{\vphantom{fg} signo (1 bit)} + \fbox{\vphantom{fg} \textcolor{verde}{parte entera (9 bits)}} + \fbox{\vphantom{fg} \textcolor{verdeO}{parte fraccionaria (6 bits)}}\\
+    \end{center}
+    \small
+    \textcolor{gray}{Ejemplo:}\\
+    \hspace{1cm} El número: \texttt{0011001010001001}\\ \pause
+    \hspace{1cm} Lo interpretamos como: \texttt{(0)}\textcolor{verde}{\texttt{011001010}}\texttt{.}\textcolor{verdeO}{\texttt{001001}}\\ \pause
+    \hspace{1cm} \texttt{(0)} $\rightarrow$ Positivo\\ \pause
+    \hspace{1cm} \textcolor{verde}{\texttt{011001010}} $\rightarrow$ \texttt{202}\\ \pause
+    \hspace{1cm} \textcolor{verdeO}{\texttt{001001}} $\rightarrow$ \texttt{0.140625}\\ \pause
+    \hspace{1cm} Luego, \texttt{0011001010001001} $\rightarrow$ \texttt{+202.140625}\\ \pause
+    \hspace{1cm} \\ 
+    \hspace{1cm} El número: \texttt{1000000110000111}\\ \pause
+    \hspace{1cm} Lo interpretamos como: \texttt{(1)}\textcolor{verde}{\texttt{000000110}}\texttt{.}\textcolor{verdeO}{\texttt{000111}} $\rightarrow$ \texttt{-6.109375}\\
+    \hspace{1cm} \texttt{(1)} $\rightarrow$ Negativo\\
+    \hspace{1cm} \textcolor{verde}{\texttt{000000110}} $\rightarrow$ \texttt{6}\\
+    \hspace{1cm} \textcolor{verdeO}{\texttt{000111}} $\rightarrow$ \texttt{0.109375}\\
+    \hspace{1cm} Luego, \texttt{1000000110000111} $\rightarrow$ \texttt{-6.109375}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Punto Flotante}
+    Se representan mediante tres campos,\\
+    \vspace{0.3cm}
+    \begin{itemize}
+    \setlength\itemsep{0.2cm}
+     \item[] \textbf{\textcolor{azulC}{fracción}}: {\small Dígitos representados. Comúnmente interpretado como \texttt{0.x}$\cdots$\texttt{x} o \texttt{1.x}$\cdots$\texttt{x}.\\
+     Al formato \texttt{1.x}$\cdots$\texttt{x}, también se lo conoce como \textit{significando}.}
+     \item[] \textbf{\textcolor{rojo}{exponente}}: {\small Indica la escala del número, es decir, dónde se ubica el punto fraccionario.\\
+     Los exponentes pueden ser negativos y representar números aún más chicos.}
+     \item[] \textbf{signo}: {\small Signo de la magnitud representada. }
+    \end{itemize}
+    \vspace{0.3cm}
+    \pause
+    \textcolor{verdeuca}{\small Ejemplos:}\\
+    \vspace{0.2cm}
+    \begin{itemize}
+    \setlength\itemsep{0.4cm}
+     \item[-] \scriptsize \fbox{\vphantom{fg} bit de signo} + \fbox{\vphantom{fg} \textcolor{azulC}{fracción como \texttt{0.x$\cdots$x}}} + \fbox{\vphantom{fg} \textcolor{rojo}{exponente en signo más magnitud}}
+     $\rightarrow$ \scriptsize \texttt{(sig)} \texttt{0.}\textcolor{azulC}{\texttt{fracción}} $\cdot$ \texttt{2}$^{\textcolor{rojo}{\texttt{(s)exp}}}$\\
+     \vspace{0.1cm} \footnotesize \textcolor{gray}{Múltiples representaciones del mismo número.}
+     \item[-] \scriptsize \fbox{\vphantom{fg} bit de signo} + \fbox{\vphantom{fg} \textcolor{azulC}{fracción como \texttt{1.x$\cdots$x}}} + \fbox{\vphantom{fg} \textcolor{rojo}{exponente en notación exceso}}
+     $\rightarrow$ \scriptsize \texttt{(sig)} \texttt{1.}\textcolor{azulC}{\texttt{fracción}} $\cdot$ \texttt{2}$^{\textcolor{rojo}{\texttt{exp}}-e}$\\
+     \vspace{0.1cm} \footnotesize \textcolor{gray}{Representación única de los números. El cero se representa por convención.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Punto Flotante - Rango de representación}
+    \begin{block}{\small La reprentación en punto flotante no es uniforme sobre la recta númerica.}
+    \vspace{3.2cm}
+    \end{block}
+    \begin{textblock}{200}(20.0,20.0)  \only<4->{\includegraphics[scale=1.0]{img/rangeFloat-layer1.pdf}} \end{textblock} % Overflow
+    \begin{textblock}{200}(20.0,20.0)  \only<5->{\includegraphics[scale=1.0]{img/rangeFloat-layer2.pdf}} \end{textblock} % Underflow
+    \begin{textblock}{200}(20.0,20.0)  \only<6->{\includegraphics[scale=1.0]{img/rangeFloat-layer3.pdf}} \end{textblock} % denormalizado
+    \begin{textblock}{200}(20.0,20.0)  \only<3->{\includegraphics[scale=1.0]{img/rangeFloat-layer4.pdf}} \end{textblock} % rango
+    \begin{textblock}{200}(20.0,20.0)  \only<2->{\includegraphics[scale=1.0]{img/rangeFloat-layer5.pdf}} \end{textblock} % lineas
+    \begin{textblock}{200}(20.0,20.0)  \only<1->{\includegraphics[scale=1.0]{img/rangeFloat-layer6.pdf}} \end{textblock} % recta
+    \small
+    \begin{itemize}
+    \item<4-> \textbf{overflow}: Magnitudes que superan el límite máximo absoluto representable.
+    \item<5-> \textbf{underflow}: Magnitudes más chicas que el mínimo absoluto representable distinto de cero.
+    \item<6-> \textbf{denormalizado}: La \textit{fracción} se interpreta comenzando por 0, permite representar números de magnitud muy pequeña.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Punto Flotante - Ejemplo}
+    Suponer una codificación de la forma:\\
+    \vspace{0.2cm}
+    \fbox{\vphantom{fg} signo (1bit)} + \fbox{\vphantom{fg} \textcolor{azulC}{fracción (9 bits)}} + \fbox{\vphantom{fg} \textcolor{rojo}{exponente (6 bits)}}\\
+    \vspace{0.2cm}
+    \small
+    \textcolor{gray}{Ejemplo:}\\
+    \hspace{1cm} El número: \texttt{0001100101001001}\\ \pause
+    \hspace{1cm} Lo interpretamos como: \texttt{(0)}\texttt{0.}\textcolor{azulC}{\texttt{001100101}} $\cdot$ \texttt{2}$^{\textcolor{rojo}{\texttt{001001}}}$\\ \pause
+    \hspace{1cm} \texttt{(0)} $\rightarrow$ Positivo\\ \pause
+    \hspace{1cm} \texttt{0.}\textcolor{azulC}{\texttt{001100101}} $\rightarrow$ \texttt{0.197265625}\\ \pause
+    \hspace{1cm} \textcolor{rojo}{\texttt{001001}} $\rightarrow$ \texttt{9}\\ \pause
+    \hspace{1cm} Luego, \texttt{0001100101001001} $\rightarrow$ $\texttt{0.197265625} \cdot 2^{\texttt{9}}$ $\rightarrow$ \texttt{101}\\ \pause
+    \hspace{1cm} \\ 
+    \hspace{1cm} El número: \texttt{1000000011000111}\\ \pause
+    \hspace{1cm} Lo interpretamos como: \texttt{(1)}\texttt{0.}\textcolor{azulC}{\texttt{000000011}} $\cdot$ \texttt{2}$^{\textcolor{rojo}{\texttt{000111}}}$\\
+    \hspace{1cm} \texttt{(1)} $\rightarrow$ Negativo\\
+    \hspace{1cm} \texttt{0.}\textcolor{azulC}{\texttt{000000011}} $\rightarrow$ \texttt{0.005859375}\\
+    \hspace{1cm} \textcolor{rojo}{\texttt{000111}} $\rightarrow$ \texttt{7}\\
+    \hspace{1cm} Luego, \texttt{1000000011000111} $\rightarrow$ $\texttt{-0.005859375} \cdot 2^{\texttt{7}}$ $\rightarrow$ \texttt{-0.75}\\
+    
+    \begin{textblock}{60}(97.0,17.0)
+    \only<1->{ \footnotesize
+    \textcolor{azulC}{fracción}: Se interpreta como $0.$\textcolor{azulC}{fracción}\\
+    \textcolor{rojo}{exponente}: Se interpreta en complemento a 2 }
+    \end{textblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Punto Flotante - IEEE 754}
+    Una de las codificaciones en punto flotante más utilizada es el estándar \texttt{IEEE 754}.\\
+    Permite definir números \textcolor{verdeuca}{\texttt{float}} (32 Bits) y números \textcolor{verdeuca}{\texttt{double}} (64 Bits).\\
+    \bigskip
+%     \begin{center}
+%     \begin{tabular}{cccc cccc cccc cccc cccc cccc cccc cccc}
+%     \multicolumn{1}{|c|}{ {\hspace{-0.2cm} S \hspace{-0.2cm}} } & \multicolumn{8}{c|}{exponente (8)}  & \multicolumn{23}{c|}{fracción (23)}  \\ \hline
+%     \multicolumn{1}{|l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & 
+%     \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &
+%     \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &
+%     \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &
+%     \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &
+%     \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &
+%     \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} &
+%     \multicolumn{1}{l|}{}  & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} & \multicolumn{1}{l|}{} \\ \hline
+%     \multicolumn{1}{|c|}{ {\hspace{-0.2cm} 0 \hspace{-0.2cm}} } & \multicolumn{4}{l}{1} & \multicolumn{4}{r|}{9} & \multicolumn{11}{l}{10} & \multicolumn{12}{r|}{31}  \\ 
+%     \end{tabular}
+%     \end{center}
+    \textcolor{naranjauca}{32 Bits}
+    \begin{center}
+    \includegraphics[scale=0.9]{img/ieee754-layer1.pdf}
+    \end{center}
+    \textcolor{naranjauca}{64 Bits}
+    \begin{center}
+    \includegraphics[scale=0.9]{img/ieee754-layer2.pdf}
+    \end{center}
+    \begin{textblock}{60}(92.0,40.0)    
+    \noindent\fbox{\begin{minipage}[t][\height][c]{\dimexpr\textwidth-2\fboxsep-2\fboxrule\relax}
+    \centering (\textcolor{gray}{\texttt{signo}}) 1.\textcolor{azulC}{fracción} $\cdot$ $2^{\textcolor{rojo}{\text{exponente}}-\textit{exceso}}$\\
+    \vspace{0.2cm}
+    \scriptsize para 32 bits \textit{exceso}=$127$\\
+    para 64 bits \textit{exceso}=$1023$
+    \end{minipage}}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Punto Flotante - Ejemplo IEEE 754}
+    \begin{center}
+    \fbox{\vphantom{fg} signo} + \fbox{\vphantom{fg} \textcolor{azulC}{fracción}} + \fbox{\vphantom{fg} \textcolor{rojo}{exponente}}\\
+    \end{center}
+
+    \textcolor{gray}{\small Ejemplo: {\scriptsize (IEEE 754)}}\\
+    \begin{center}
+    \begin{tabular}{c|c|c}
+    \small signo & \small exponente & \small fracción \\ \hline
+    \small \texttt{0} & \small \textcolor{rojo}{\texttt{10000100}} & \small \textcolor{azulC}{\texttt{01101110111101011100001}} \\
+    \end{tabular}
+    \end{center}
+    \bigskip
+    (\texttt{\scriptsize signo}) 1.\textcolor{azulC}{fracción} $\cdot$ $2^{\textcolor{rojo}{\text{exponente}}-127}$ $=$\\
+    \bigskip
+    $=$ (\texttt{+})1.\textcolor{azulC}{\texttt{01101110111101011100001}} $\cdot$ $2^{\textcolor{rojo}{\texttt{10000100}}-127}$ $=$\\
+    \bigskip
+    $=$ \texttt{+45.869999}
+\end{frame}
+
+\begin{frame}[fragile,t] 
+    \frametitle{Representación de caracteres}
+    Existen muchas formas de \sout{representar} \textbf{codificar} caracteres.\\
+    \bigskip
+    Las codificaciones se basan en \textbf{tablas}, que indican qué bits corresponden a cada carácter.\\
+    \bigskip
+    Dependiendo de la cantidad de bits/bytes usados para codificar cada carácter, pueden ser:\\
+    \begin{itemize}
+     \item de tamaño fijo
+     \item de tamaño variable
+    \end{itemize}
+    Algunos ejemplos
+    \begin{itemize}
+     \item \small \textcolor{naranjauca}{\texttt{ASCII}}: {\small Fija, 1 byte. Aunque solo se usan 7 bits para codificar caracteres.}
+     \item \small \textcolor{naranjauca}{\texttt{UTF-8}}: {\small Variable, 1 a 4 bytes. Codificación Unicode de longitud variable.}
+     \item \small \textcolor{naranjauca}{\texttt{UTF-16}}: {\small Variable, 2 o 4 bytes. Codificación Unicode optimizado para caracteres multilingües.}
+     \item \small \textcolor{naranjauca}{\texttt{UTF-32}}: {\small Fija, 4 bytes. Codificación Unicode simple.}
+     \item \small \textcolor{naranjauca}{\texttt{Latin-1 (ISO-8859-1)}}: {\small Fija, 1 byte. Caracteres latinos, tildes, diéresis, cedilla, eñe, etc.}
+     \item \small \textcolor{naranjauca}{\texttt{GB 18030}}: {\small Variable, 1 a 4 bytes. Estándar utilizado en China.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Representación de caracteres - \texttt{ASCII}}
+% david@belgrano:~$ ascii
+% Usage: ascii [-adxohv] [-t] [char-alias...]
+%    -t = one-line output  -a = vertical format
+%    -d = Decimal table  -o = octal table  -x = hex table  -b binary table
+%    -h = This help screen -v = version information
+% Prints all aliases of an ASCII character. Args may be chars, C \-escapes,
+% English names, ^-escapes, ASCII mnemonics, or numerics in decimal/octal/hex.
+\small
+\begin{Verbatim}[commandchars=\\\{\}]
+Dec Hex    Dec Hex    Dec Hex  Dec Hex  Dec Hex  Dec Hex   Dec Hex   Dec Hex  
+  0 \textcolor{naranjauca}{00} NUL  \textcolor{naranjauca}{16} 10 DLE  32 \textcolor{naranjauca}{20}    48 \textcolor{naranjauca}{30} 0  64 \textcolor{naranjauca}{40} @  \textcolor{naranjauca}{80} 50 P   96 \textcolor{naranjauca}{60} `  112 \textcolor{naranjauca}{70} p
+  1 \textcolor{naranjauca}{01} SOH  \textcolor{naranjauca}{17} 11 DC1  33 \textcolor{naranjauca}{21} !  49 \textcolor{naranjauca}{31} 1  65 \textcolor{naranjauca}{41} A  \textcolor{naranjauca}{81} 51 Q   97 \textcolor{naranjauca}{61} a  113 \textcolor{naranjauca}{71} q
+  2 \textcolor{naranjauca}{02} STX  \textcolor{naranjauca}{18} 12 DC2  34 \textcolor{naranjauca}{22} "  50 \textcolor{naranjauca}{32} 2  66 \textcolor{naranjauca}{42} B  \textcolor{naranjauca}{82} 52 R   98 \textcolor{naranjauca}{62} b  114 \textcolor{naranjauca}{72} r
+  3 \textcolor{naranjauca}{03} ETX  \textcolor{naranjauca}{19} 13 DC3  35 \textcolor{naranjauca}{23} #  51 \textcolor{naranjauca}{33} 3  67 \textcolor{naranjauca}{43} C  \textcolor{naranjauca}{83} 53 S   99 \textcolor{naranjauca}{63} c  115 \textcolor{naranjauca}{73} s
+  4 \textcolor{naranjauca}{04} EOT  \textcolor{naranjauca}{20} 14 DC4  36 \textcolor{naranjauca}{24} \$  52 \textcolor{naranjauca}{34} 4  68 \textcolor{naranjauca}{44} D  \textcolor{naranjauca}{84} 54 T  100 \textcolor{naranjauca}{64} d  116 \textcolor{naranjauca}{74} t
+  5 \textcolor{naranjauca}{05} ENQ  \textcolor{naranjauca}{21} 15 NAK  37 \textcolor{naranjauca}{25}\  \%  53 \textcolor{naranjauca}{35} 5  69 \textcolor{naranjauca}{45} E  \textcolor{naranjauca}{85} 55 U  101 \textcolor{naranjauca}{65} e  117 \textcolor{naranjauca}{75} u
+  6 \textcolor{naranjauca}{06} ACK  \textcolor{naranjauca}{22} 16 SYN  38 \textcolor{naranjauca}{26} &  54 \textcolor{naranjauca}{36} 6  70 \textcolor{naranjauca}{46} F  \textcolor{naranjauca}{86} 56 V  102 \textcolor{naranjauca}{66} f  118 \textcolor{naranjauca}{76} v
+  7 \textcolor{naranjauca}{07} BEL  \textcolor{naranjauca}{23} 17 ETB  39 \textcolor{naranjauca}{27} '  55 \textcolor{naranjauca}{37} 7  71 \textcolor{naranjauca}{47} G  \textcolor{naranjauca}{87} 57 W  103 \textcolor{naranjauca}{67} g  119 \textcolor{naranjauca}{77} w
+  8 \textcolor{naranjauca}{08} BS   \textcolor{naranjauca}{24} 18 CAN  40 \textcolor{naranjauca}{28} (  56 \textcolor{naranjauca}{38} 8  72 \textcolor{naranjauca}{48} H  \textcolor{naranjauca}{88} 58 X  104 \textcolor{naranjauca}{68} h  120 \textcolor{naranjauca}{78} x
+  9 \textcolor{naranjauca}{09} HT   \textcolor{naranjauca}{25} 19 EM   41 \textcolor{naranjauca}{29} )  57 \textcolor{naranjauca}{39} 9  73 \textcolor{naranjauca}{49} I  \textcolor{naranjauca}{89} 59 Y  105 \textcolor{naranjauca}{69} i  121 \textcolor{naranjauca}{79} y
+ 10 \textcolor{naranjauca}{0A} LF   \textcolor{naranjauca}{26} 1A SUB  42 \textcolor{naranjauca}{2A} *  58 \textcolor{naranjauca}{3A} :  74 \textcolor{naranjauca}{4A} J  \textcolor{naranjauca}{90} 5A Z  106 \textcolor{naranjauca}{6A} j  122 \textcolor{naranjauca}{7A} z
+ 11 \textcolor{naranjauca}{0B} VT   \textcolor{naranjauca}{27} 1B ESC  43 \textcolor{naranjauca}{2B} +  59 \textcolor{naranjauca}{3B} ;  75 \textcolor{naranjauca}{4B} K  \textcolor{naranjauca}{91} 5B [  107 \textcolor{naranjauca}{6B} k  123 \textcolor{naranjauca}{7B} \texttt{\{}
+ 12 \textcolor{naranjauca}{0C} FF   \textcolor{naranjauca}{28} 1C FS   44 \textcolor{naranjauca}{2C} ,  60 \textcolor{naranjauca}{3C} <  76 \textcolor{naranjauca}{4C} L  \textcolor{naranjauca}{92} 5C \textbackslash  108 \textcolor{naranjauca}{6C} l  124 \textcolor{naranjauca}{7C} |
+ 13 \textcolor{naranjauca}{0D} CR   \textcolor{naranjauca}{29} 1D GS   45 \textcolor{naranjauca}{2D} -  61 \textcolor{naranjauca}{3D} =  77 \textcolor{naranjauca}{4D} M  \textcolor{naranjauca}{93} 5D ]  109 \textcolor{naranjauca}{6D} m  125 \textcolor{naranjauca}{7D} \texttt{\}}
+ 14 \textcolor{naranjauca}{0E} SO   \textcolor{naranjauca}{30} 1E RS   46 \textcolor{naranjauca}{2E} .  62 \textcolor{naranjauca}{3E} >  78 \textcolor{naranjauca}{4E} N  \textcolor{naranjauca}{94} 5E ^  110 \textcolor{naranjauca}{6E} n  126 \textcolor{naranjauca}{7E} ~
+ 15 \textcolor{naranjauca}{0F} SI   \textcolor{naranjauca}{31} 1F US   47 \textcolor{naranjauca}{2F} /  63 \textcolor{naranjauca}{3F} ?  79 \textcolor{naranjauca}{4F} O  \textcolor{naranjauca}{95} 5F _  111 \textcolor{naranjauca}{6F} o  127 \textcolor{naranjauca}{7F} DEL
+\end{Verbatim}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Representación de caracteres - \texttt{UTF-8}}
+    Los caracteres se codifican según el rango al que pertenezcan.\\
+    Los primeros 127 corresponden a la codificación ASCII.\\
+    \begin{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|} \hline
+    \rowcolor{blue!50}
+    \#bytes & desde & hasta & byte 1 & byte 2 & byte 3 & byte 4 \\ \hline
+    1 & \cellcolor{gray!25}0 & \cellcolor{gray!25}127 &  \texttt{0xxxxxxx} & \cellcolor{blue!25} & \cellcolor{blue!25} & \cellcolor{blue!25} \\ \hline
+    2 & \cellcolor{gray!25}128 & \cellcolor{gray!25}2047 & \texttt{110xxxxx} & \texttt{10xxxxxx} & \cellcolor{blue!25} & \cellcolor{blue!25} \\ \hline
+    3 & \cellcolor{gray!25}2048 & \cellcolor{gray!25}65535 & \texttt{1110xxxx} & \texttt{10xxxxxx} & \texttt{10xxxxxx} & \cellcolor{blue!25} \\ \hline
+    4 & \cellcolor{gray!25}65536 & \cellcolor{gray!25}1114111 & \texttt{11110xxx} & \texttt{10xxxxxx} & \texttt{10xxxxxx} & \texttt{10xxxxxx} \\ \hline
+    \end{tabular}
+    \end{center}
+    El primer byte indica cuántos bytes a continuación se deben leer (mismo prefijo).\\
+    No importa el byte que se lea, siempre se puede interpretar parcialmente el carácter.\\
+    \textcolor{gray}{Ejemplos:}\\
+    \hspace{1cm} \texttt{U+03A3} $\rightarrow$ \texttt{ce a3} $\rightarrow$ {\scriptsize GREEK CAPITAL LETTER SIGMA} $\rightarrow$
+    \includegraphics[scale=1]{img/U03A3.pdf}\\
+    \hspace{1cm} \texttt{U+2197} $\rightarrow$ \texttt{e2 86 97} $\rightarrow$ {\scriptsize NORTH EAST ARROW} $\rightarrow$
+    \includegraphics[scale=1]{img/U2197.pdf}\\
+    \hspace{1cm} \texttt{U+10890} $\rightarrow$ \texttt{f0 90 a2 90} $\rightarrow$ {\scriptsize NABATAEAN LETTER FINAL LAMEDH} $\rightarrow$
+    \includegraphics[scale=1]{img/U10890.pdf}
+\end{frame}
+
+% https://www.utf8-chartable.de/unicode-utf8-table.pl
+
+\begin{frame}[fragile]
+    \frametitle{Representación de datos}
+    \begin{textblock}{200}(10.0,17.0)
+    \only<1->{\textcolor{naranjauca}{Sonido}}
+    \end{textblock}
+    \begin{textblock}{200}(10.0,43.0)
+    \only<2->{\textcolor{naranjauca}{Imagen}}
+    \end{textblock}
+    \begin{textblock}{200}(10.0,69.0)
+    \only<3->{\textcolor{naranjauca}{Diseño 3D}}
+    \end{textblock}
+    \begin{textblock}{200}(30.0,10.0)
+    \only<1->{\includegraphics[scale=1.1]{img/otrosDatos-layer1.pdf}}
+    \end{textblock}
+    \begin{textblock}{200}(30.0,36.0)
+    \only<2->{\includegraphics[scale=1.1]{img/otrosDatos-layer2.pdf}}
+    \end{textblock}
+    \begin{textblock}{200}(30.0,62.0)
+    \only<3->{\includegraphics[scale=1.1]{img/otrosDatos-layer3.pdf}}
+    \end{textblock}
+    \begin{textblock}{45}(110.0,10.0)
+    \only<1->{\small \textcolor{gray}{Ejemplo:} \texttt{Formato WAV}\\
+    Almacena muestras de señales de audio sin comprimir, permite frecuencias de muestro de 44kHz a 16 bits.}
+    \end{textblock}
+    \begin{textblock}{45}(110.0,36.0)
+    \only<2->{\small \textcolor{gray}{Ejemplo:} \texttt{Formato BMP}\\
+    Guarda mapas de bits sin compresión. Permite guardar imágenes en escala de grises y en colores de 24 o 32 bits.}
+    \end{textblock}
+    \begin{textblock}{45}(110.0,62.0)
+    \only<3->{\small \textcolor{gray}{Ejemplo:} \texttt{Formato STL}\\
+    Permite representar superficies 3D por medio de la descripción de triángulos en coordenadas cartesianas.}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bibliografía}
+    \begin{itemize}
+     \setlength\itemsep{0.5cm}
+    \item[-] \small Tanenbaum, “Organización de Computadoras. Un Enfoque Estructurado”, 4ta Edición, 2000.\\
+    \begin{itemize}
+     \item \textbf{Apéndice - Números Binarios} - Páginas 631-640
+     \item \textbf{Apéndice - Números de Punto Flotante} - Páginas 643-650
+    \end{itemize}
+    \item[-] \small Null, “Essentials of Computer Organization and Architecture”, 5th Edition, 2018.\\
+    \begin{itemize}
+     \item \textbf{Chapter 2 - Data Representation in Computer Systems}
+     \begin{itemize}
+%      \item 2.3 - Decimal to Binary conversions
+      \item 2.4 - Signed Integer Representation
+      \item 2.5 - Floating-Point representation
+      \item 2.6 - Character Codes
+     \end{itemize}
+    \end{itemize}
+%     \item[-] \small Silberschatz, “Fundamentos de Sistemas Operativos”, 7ma Edición, 2006.\\
+%     \item[-] \small Tanenbaum, “Modern Operating Systems”, 4th Edition, 2015.\\
+    \end{itemize}
+\end{frame}
+
+ \begin{frame}[fragile]
+    \frametitle{Ejercicios}
+    Con lo visto, ya pueden resolver todos los ejercicios de la Práctica 1.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+    \vspace{2cm}
+    \huge ¡Gracias!\\
+    \vspace{2cm}
+    \normalsize Recuerden leer los comentarios adjuntos\\ en cada clase por aclaraciones.
+    \end{center}
+\end{frame}
+
+\end{document}
+
+% % % % % % % % % % % % % % % % % % 
+% EJEMPLOS:
+
+\begin{frame}[fragile]
+    \frametitle{Bla}
+    \begin{itemize}
+    \item[-] Bla bla \textbf{ble} bla bla
+    \item[-] Bla bla \textbf{ble} bla bla
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bla}
+    \begin{block}{\texttt{BLA}}
+    Bla Bla
+    \end{block}
+    \begin{multicols}{2}
+    \begin{tabular}{ll}
+    la & la \\
+    \end{tabular}
+    \columnbreak
+    \begin{tabular}{ll}
+    la & la \\
+    \end{tabular}
+    \end{multicols}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bla}
+    \begin{itemize}
+    \item Bla bla
+    \begin{center}
+    \includegraphics[scale=0.7]{img/struct_aling.pdf}
+    \end{center}
+    Bla bla
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bla}
+    \begin{textblock}{100}(10,10)
+    Bla
+    \end{textblock}
+\end{frame}
+
+\end{document}
+

@@ -1,0 +1,785 @@
+% === T12 - Programación en C ===
+% David Alejandro Gonzalez Marquez
+% fokerman@gmail.com
+% https://github.com/fokerman/computingSystemsCourse
+
+\documentclass[aspectratio=169]{beamer}
+% \documentclass[aspectratio=169, handout]{beamer}
+
+% % % Packages
+\usepackage[sfdefault]{AlegreyaSans}
+\usepackage{inconsolata}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[absolute,overlay]{textpos}
+  \setlength{\TPHorizModule}{1mm}
+  \setlength{\TPVertModule}{1mm}
+\usepackage{framed}
+\usepackage{mfirstuc} % para poner en mayusculas la primer letra
+\usepackage{xspace} % para crear espacios en comandos 
+\usepackage{pbox}
+\usepackage{tikz}
+\usepackage{mathabx}
+\usepackage{colortbl}
+\usepackage{ulem} % para tener tachado
+
+% % % Beamer config
+\usetheme{Pittsburgh}
+\usecolortheme[rgb={1,0.48,0.0}]{structure}
+\setbeamercolor{block title}{fg=white,bg=verdeuca}
+\xdefinecolor{verdeuca}{rgb}{0.0,0.48,0.54}
+\xdefinecolor{naranjauca}{rgb}{1,0.48,0.0}
+\setbeamercolor{palette quaternary}{fg=white,bg=verdeuca}
+\setbeamertemplate{title page}[default][colsep=-4bp, rounded=true] % remove title shadow
+\setbeamertemplate{frametitle}[default][colsep=-2bp, shadow=false] % remove frame title shadow
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+\beamertemplatenavigationsymbolsempty
+
+% % % Colors
+\definecolor{AzulClaro}{rgb}{.31,.506,.741}
+\definecolor{Gris}{gray}{0.8}
+\definecolor{Celeste}{rgb}{.255,.41,.884}
+\definecolor{Rojo}{rgb}{1, 0, 0}
+\definecolor{a}{rgb}{0.0, 0.53, 0.74}
+\definecolor{r}{rgb}{0.89, 0.0, 0.13}
+\definecolor{v}{rgb}{0.0, 0.5, 0.0}
+\definecolor{y}{rgb}{0.0, 0.5, 0.5}
+\definecolor{rojo}{HTML}{F1521B}
+\definecolor{verde}{HTML}{80CD29}
+\definecolor{amarillo}{HTML}{FABC09}
+\definecolor{azul}{HTML}{00ADF1}
+
+% % % Rename
+\newcommand{\tab}[0]{\hspace{15pt}}
+
+% % % Blocks
+\setbeamercolor{block body}{fg=black, bg=black!10}
+\setbeamercolor{block title}{fg=black, bg=black!20}
+\setbeamercolor{coloredboxstuffNaranja}{fg=naranjauca,bg=black!10} %% PARA LOS BOX
+\setbeamercolor{coloredboxstuffVerde}{fg=verdeuca,bg=black!10} %% PARA LOS BOX
+
+% % % Special Packages
+\usepackage{fontawesome}
+\usepackage{pgf}
+
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+% % % Start
+
+\title{\Huge Programación en C}
+% \subtitle{}
+
+\author{David Alejandro González Márquez}
+\input{../university}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+    \begin{textblock}{140}(10,70)
+    \textcolor{rojo}{
+    \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+    \end{textblock}
+\end{frame}
+
+% \begin{frame}[fragile,t]{}
+% - Diferencias entre C y Pythonn
+% \end{frame}
+
+\begin{frame}[fragile]{El lenguaje C}
+    Desarrollado por \textbf{Dennis Ritchie} en los Laboratorios Bell (1973).\\
+    \bigskip
+    Tiene tipos de datos \textbf{estáticos}, débilmente tipado.\\
+    \bigskip
+    Diseñado para la programación estructurada de \textbf{alto nivel}\\
+    pero con soporte para operar a \textbf{bajo nivel}.\\
+    \pause
+    \bigskip
+    Estandarización del lenguaje \texttt{ANSI} \texttt{C}, posteriormente\\
+    adoptado por \texttt{ISO} (\texttt{C89}, \texttt{C90}, \texttt{C99}, \texttt{C11}).\\
+    \bigskip
+    La adopción del estándar lo hace \textbf{portable} entre plataformas y arquitecturas.\\
+\end{frame}
+
+\begin{frame}[fragile,t]{Hola Mundo}
+
+    \begin{verbatim}
+    #include <stdio.h>
+
+    int main() {
+        printf("Hola mundo\n");
+        return 0;
+    }
+    \end{verbatim}
+    \small
+    \pause
+    \textcolor{naranjauca}{\texttt{\#include <stdio.h>}}: Incluye una biblioteca de funciones para escribir en entrada/salida.\\
+    \bigskip
+    \pause
+    \textcolor{naranjauca}{\texttt{int main()}}: Declara una función principal que va a ser nuestro programa.\\
+    \bigskip
+    \pause
+    \textcolor{naranjauca}{\texttt{printf}}: Función para imprimir en pantalla con un formato específico.\\
+    \bigskip
+    \pause
+    \textcolor{naranjauca}{\texttt{return 0;}}: Termina la función principal y sale del programa con un cero.\\
+\end{frame}
+
+\begin{frame}[fragile,t]{Declaración de Variables}
+    \begin{textblock}{73}(80,4)
+    \begin{block}{\small Sintaxis}
+    \small
+    \fbox{\vphantom{fg} \texttt{tipo-de-variable}} \hspace{0.2cm} \fbox{\vphantom{fg} \texttt{nombre-de-variable}} {\large \texttt{;}}
+    \end{block}
+    \end{textblock}
+    \begin{textblock}{80}(90,20)
+    \begin{tabular}{l|c}
+    \small
+    \textcolor{naranjauca}{Tipo} & \textcolor{naranjauca}{Descripción}\\
+    \hline
+    \texttt{int}    & \textcolor{verdeuca}{entero de 4 bytes}      \\
+    \texttt{char}   & \textcolor{verdeuca}{entero de 1 byte}       \\ 
+    \texttt{float}  & \textcolor{verdeuca}{punto flotante 32 bits} \\
+    \texttt{double} & \textcolor{verdeuca}{punto flotante 64 bits} \\
+    \end{tabular}
+    \end{textblock}
+    \begin{textblock}{60}(8,18)
+    \small
+    Las \textbf{variables} se declaran y se asignan mediante el operador igual (\texttt{=}).\\
+    \bigskip
+    Toda variable ocupa una determinada cantidad de bytes dada por su tipo.\\
+    \end{textblock}
+    \begin{textblock}{100}(5,50)
+    \textcolor{gray}{Ejemplos:}\\
+    \bigskip
+    \begin{tabular}{ll}
+    \normalsize \verb|int i;|               & \uncover<2->{\textcolor{verdeuca}{$\leftarrow$ \small Variable entera de 4 bytes de nombre \texttt{i}}\\}
+    \normalsize \verb|int pepe = 35;|       & \uncover<3->{\textcolor{verdeuca}{$\leftarrow$ \small Variable y asignación de un valor}\\}
+    \normalsize \verb|char unaLetra = 'a';| & \uncover<4->{\textcolor{verdeuca}{$\leftarrow$ \small Variable de un byte y asignación de un carácter}\\}
+    \normalsize \verb|char contador = 9;|   & \uncover<5->{\textcolor{verdeuca}{$\leftarrow$ \small Variable de un byte y asignación de un número}\\}
+    \normalsize \verb|float numero = 5.3;|  & \uncover<6->{\textcolor{verdeuca}{$\leftarrow$ \small Variable en punto flotante de 32 bits}\\}
+    \end{tabular}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Operadores}
+    \begin{textblock}{50}(10,15) \small
+     Las \textbf{expresiones} del lenguaje se construyen mediante \textbf{operadores} matemáticos y lógicos.\\ \bigskip
+     En C las expresiones resultan en valores numéricos.\\ \bigskip
+     El valor cero es interpretado como el valor lógico \textbf{\texttt{falso}}, mientras que un valor distinto de cero se interpreta como \textbf{\texttt{verdadero}}.
+    \end{textblock}
+    \begin{textblock}{80}(61,4)
+    \begin{tabular}{c|p{2.3cm}}
+    \small \textcolor{naranjauca}{Operador} & \small \textcolor{naranjauca}{Descripción}\\
+    \hline
+    \verb|+|  & \small \textcolor{verdeuca}{suma}           \\
+    \verb|-|  & \small \textcolor{verdeuca}{resta}          \\
+    \verb|*|  & \small \textcolor{verdeuca}{multiplicación} \\
+    \verb|/|  & \small \textcolor{verdeuca}{división}       \\
+    \verb|%|  & \small \textcolor{verdeuca}{resto de división}\\ 
+    \hline
+    \verb|==| & \small \textcolor{verdeuca}{igual}          \\
+    \verb|!=| & \small \textcolor{verdeuca}{distinto}       \\
+    \verb|>|  & \small \textcolor{verdeuca}{mayor}          \\
+    \verb|>=| & \small \textcolor{verdeuca}{mayor o igual}    \\
+    \verb|<|  & \small \textcolor{verdeuca}{menor}          \\
+    \verb|<=| & \small \textcolor{verdeuca}{menor o igual}    \\
+    \end{tabular}
+    \end{textblock}
+    \begin{textblock}{80}(109,4)
+    \begin{tabular}{c|p{2.15cm}}
+    \small \textcolor{naranjauca}{Operador} & \small \textcolor{naranjauca}{Descripción}\\
+    \hline
+    \verb|<<| & \small \textcolor{verdeuca}{shift a izquierda} \\
+    \verb|>>| & \small \textcolor{verdeuca}{shift a derecha}   \\
+    \hline
+    \verb|!|  & \small \textcolor{verdeuca}{not lógico}     \\
+    \verb|&&| & \small \textcolor{verdeuca}{and lógico}     \\
+    \verb.||. & \small \textcolor{verdeuca}{or lógico}      \\
+    \hline
+    \textasciitilde  & \small \textcolor{verdeuca}{not bit a bit}  \\
+    \verb|&|  & \small \textcolor{verdeuca}{and bit a bit}  \\
+    \verb.|.  & \small \textcolor{verdeuca}{or bit a bit}   \\
+    \verb|^|  & \small \textcolor{verdeuca}{xor bit a bit}  \\
+    \end{tabular}
+    \end{textblock}
+    \begin{textblock}{100}(10,68)
+    \only<2->{
+    \small
+    \textcolor{gray}{Ejemplos:}\\
+    \hspace{1cm} \texttt{int valor = (2 << 10) - (n + m) / 5;}\\
+    \hspace{1cm} \texttt{int cond  = (b <= 6 || c > 3) \&\& !(a == 5);}\\
+    \hspace{1cm} \texttt{int stat  = (} \textasciitilde \texttt{0x111 | v) \& 0x5555;}\\ %$~$
+    }
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Declaración de Funciones}
+    \begin{textblock}{100}(57,4)
+    \begin{block}{\small Sintaxis}
+    \vspace{0.2cm}
+    \scriptsize
+    \fbox{\vphantom{fg} \texttt{tipo-de-retorno}} \hspace{0.2cm} \fbox{\vphantom{fg} \texttt{nombre-de-función}} {\large \texttt{(}} \fbox{\vphantom{fg} \texttt{parametros-de-la-función} } {\large \texttt{)}}
+    {\large \texttt{\{}}\\ \vspace{0.2cm}
+    \hspace{3.19cm} \fbox{$\cdots$ \texttt{cuerpo-de-la-función} $\cdots$ } {\large \texttt{;}}\\ \vspace{0.2cm}
+    \hspace{2cm} {\large \texttt{\}}}
+    \end{block}
+    \end{textblock}
+    \begin{textblock}{45}(5,15)
+    Las funciones pueden tener cualquier nombre, toman una lista de \textbf{parámetros} y solo pueden \textbf{retornar} un valor resultado.\\
+    \bigskip
+    Existe una función distingida de nombre \textbf{\texttt{main}} que es la principal en un programa C.\\
+    \bigskip
+    Para llamar a una función se usa su nombre y se pasan los parámetros entre paréntesis.\\
+    El resultado se puede asignar o no a una variable.\\
+    \end{textblock}
+    \begin{textblock}{100}(57,40)
+    \textcolor{gray}{Ejemplos:}\\
+    \bigskip
+    \normalsize \verb|int suma(int a, int b) {|\\
+    \normalsize \verb|    int s = a + b;|\\
+    \normalsize \verb|    return s;|\\
+    \normalsize \verb|}|\\
+    \bigskip
+    \normalsize \verb|int esPar(int numero) {|\\
+    \normalsize \verb|    return !(numero & 1);|\\
+    \normalsize \verb|}|\\
+    \end{textblock}
+    \begin{textblock}{100}(116,50)
+    \normalsize \verb|int main() {|\\
+    \normalsize \verb|    int t;|\\
+    \normalsize \verb|    t = suma(2,4);|\\
+    \normalsize \verb|    return esPar(t);|\\
+    \normalsize \verb|}|\\
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Estructuras de control\\ (\texttt{for})}
+    \begin{textblock}{90}(64,4)
+    \begin{block}{\small Sintaxis}
+    \vspace{0.2cm}
+    \scriptsize
+    {\large \texttt{for}} {\large \texttt{(}}
+    \fbox{\vphantom{fg} \texttt{condición-comienzo}} {\large \texttt{;}}
+    \fbox{\vphantom{fg} \texttt{condición-final}} {\large \texttt{;}}
+    \fbox{\vphantom{fg} \texttt{incremento}} {\large \texttt{)}} {\large \texttt{\{}}\\ \vspace{0.2cm}
+    \hspace{2cm} \fbox{$\cdots$ \texttt{cuerpo-del-ciclo} $\cdots$ } {\large \texttt{;}}\\ \vspace{0.2cm}
+    \hspace{1cm} {\large \texttt{\}}}
+    \end{block}
+    \end{textblock}
+    \begin{textblock}{50}(5,20)
+    \small
+    La sentencia \texttt{condición-comienzo} se ejecuta una vez al comienzo del ciclo,\\
+    \bigskip
+    la \texttt{condición-final} se ejecuta en cada iteración hasta hacerse falsa,\\
+    \bigskip
+    y la sentencia de \texttt{incremento} se ejecuta al final de cada iteración.
+    \end{textblock}
+    \begin{textblock}{100}(64,40)
+    \textcolor{gray}{Ejemplo:}\\
+    \bigskip
+    \normalsize \verb|int potenciaDe2(int n) {|\\
+    \normalsize \verb|    int t = 1;|\\
+    \normalsize \verb|    for(int i=0; i<n; i++) {|\\
+    \normalsize \verb|          t = t * 2;|\\
+    \normalsize \verb|    }|\\
+    \normalsize \verb|    return t;|\\
+    \normalsize \verb|}|\\
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Estructuras de control\\ (\texttt{while})}
+    \begin{textblock}{90}(64,4)
+    \begin{block}{\small Sintaxis}
+    \vspace{0.2cm}
+    \scriptsize
+    {\large \texttt{while}} {\large \texttt{(}}
+    \fbox{\vphantom{fg} \texttt{condición}} {\large \texttt{)}} {\large \texttt{\{}}\\ \vspace{0.2cm}
+    \hspace{2cm} \fbox{$\cdots$ \texttt{cuerpo-del-while} $\cdots$ } {\large \texttt{;}}\\ \vspace{0.2cm}
+    \hspace{1cm} {\large \texttt{\}}}
+    \end{block}
+    \end{textblock}
+    \begin{textblock}{50}(5,20)
+    \small
+    Mientras la sentencia \texttt{condición}\\ se cumpla, es decir, sea vedadera,\\
+    se ejecutará el \texttt{cuerpo-del-while}.\\
+    \bigskip
+    Dentro de \texttt{cuerpo-del-while} se\\ deben alterar el contexto para que\\ la \texttt{condición} sea falsa y se pueda terminar el ciclo.
+%     \bigskip
+%     y la sentencia de \texttt{incremento} se ejecuta al final de cada iteración.
+    \end{textblock}
+    \begin{textblock}{100}(64,40)
+    \textcolor{gray}{Ejemplo:}\\
+%     \bigskip
+    \normalsize \verb|int potenciaDe2(int n) {|\\
+    \normalsize \verb|    int t = 1;|\\
+    \normalsize \verb|    int i = 0;|\\
+    \normalsize \verb|    while( i != n ) {|\\
+    \normalsize \verb|          t = t * 2;|\\
+    \normalsize \verb|          i++;|\\
+    \normalsize \verb|    }|\\
+    \normalsize \verb|    return t;|\\
+    \normalsize \verb|}|\\
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Estructuras de control\\ (\texttt{if})}
+    \begin{textblock}{60}(80,4)
+    \begin{block}{\small Sintaxis}
+    \vspace{0.2cm}
+    \scriptsize
+    {\large \texttt{if}} {\large \texttt{(}} \fbox{\vphantom{fg} \texttt{condición}} {\large \texttt{)}} {\large \texttt{\{}}\\ \vspace{0.2cm}
+    \hspace{2cm} \fbox{$\cdots$ \texttt{bloque-verdadero} $\cdots$ } {\large \texttt{;}}\\ \vspace{0.2cm}
+    \hspace{1cm} {\large \texttt{\} else \{}}\\ \vspace{0.2cm}
+    \hspace{2cm} \fbox{$\cdots$ \texttt{bloque-falso} $\cdots$ } {\large \texttt{;}}\\ \vspace{0.2cm}
+    \hspace{1cm} {\large \texttt{\}}}
+    \end{block}
+    \end{textblock}
+    \begin{textblock}{50}(5,20)
+    \small
+    La sentencia \texttt{condición} determina qué bloque de código debe ser ejecutado.\\
+    \bigskip
+    \texttt{bloque-verdadero} se ejecuta si la condición es verdadera,\\
+    \bigskip
+    y \texttt{bloque-falso} se ejecuta si la condición es falsa.
+    \end{textblock}
+    \begin{textblock}{100}(80,48)
+    \textcolor{gray}{Ejemplo:}
+    \end{textblock}
+    \begin{textblock}{100}(98,50)
+    \small
+    \verb|int collatz(int x) {|\\
+    \verb|    int res; |\\
+    \verb|    if( esPar(x) ) {|\\
+    \verb|      res = x / 2;|\\
+    \verb|    } else {|\\
+    \verb|      res = 3 * x + 1;|\\
+    \verb|    }|\\
+    \verb|    return res;|\\
+    \verb|}|\\
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Ejemplo}
+\begin{textblock}{60}(10,14)
+\small
+\textcolor{verdeuca}{De los primeros \texttt{n} números enteros,\\ sumar los que no sean múltiplo de 5:}
+\vspace{-0.1cm}
+\begin{verbatim}
+int sumNoMul5(int n) {
+    int acum = 0;
+    for(int i = 1; i <= n; i++) {
+        if(i % 5) {
+            acum = acum + i;
+        }
+    }
+    return acum;
+}
+\end{verbatim}
+\end{textblock}
+\begin{textblock}{60}(80,14)
+\textcolor{verdeuca}{Sumar tres números de 4 bytes y saturar el resultado a 1 byte con signo:}
+\vspace{-0.1cm}
+\begin{verbatim}
+char sumaSaturada(int a, int b, int c) {
+    int suma =  a + b + c;
+    if(suma > 127) { // 127d = 0x7F
+        suma = 127;
+    }
+    if(suma < -128) { // -128d = 0x80
+        suma = -128;
+    }
+    return suma;
+}
+\end{verbatim}
+\end{textblock}
+\end{frame}
+
+% \begin{frame}[fragile,t]{Ejemplo}
+% \small
+% \textcolor{verdeuca}{Calular el valor de un polinomio de gardo 2:}
+% \begin{verbatim}
+% float poli2(float x, float a, float b, float c) {
+%     return a * x * x + b * x + c;
+% }
+% \end{verbatim}
+% \textcolor{verdeuca}{Aproximar el área de bajo de la curva para el valor absoluto de un polinomio de grado dos:}
+% \begin{verbatim}
+% float area(float init, float end, float a, float b, float c) {
+%     float acum = 0;
+%     float interval = 0.1;
+%     for(float x = init; x <= end; x = x + interval) {
+%         float valor = poli2(x,a,b,c) * interval;
+%         if(valor >= 0) {
+%             acum = acum + valor;
+%         } else {
+%             acum = acum - valor;
+%         }
+%     }
+% }
+% \end{verbatim}
+% \end{frame}
+
+% \begin{frame}[fragile,t]{Ejemplo}
+% Calular un polinomio de gardo 2.
+% \begin{verbatim}
+% float poli2(float x, float a, float b, float c) {
+%     float term0 = c;
+%     float term1 = b * x;
+%     float term2 = a * x * x;
+%     float suma = a + b + c;
+%     return suma;
+% \end{verbatim}
+% \end{frame}
+
+\begin{frame}[fragile,t]{Declaración de estructuras de datos}
+    \begin{textblock}{87}(68,8)
+    \begin{block}{\small Sintaxis}
+    \vspace{0.2cm}
+    \scriptsize
+    {\large \texttt{struct}} \fbox{\vphantom{fg} \texttt{nombre-de-la-estructura}} {\large \texttt{\{}}\\ \vspace{0.2cm}
+    \hspace{2cm} \fbox{\vphantom{fg} \texttt{tipo-de-variable-0}} \hspace{0.2cm} \fbox{\vphantom{fg} \texttt{nombre-de-variable-0}} {\large \texttt{;}}\\ \vspace{0.2cm}
+    \hspace{2cm} $\cdots$\\ \vspace{0.2cm}
+    \hspace{2cm} \fbox{\vphantom{fg} \texttt{tipo-de-variable-n}} \hspace{0.2cm} \fbox{\vphantom{fg} \texttt{nombre-de-variable-n}} {\large \texttt{;}}\\ \vspace{0.2cm}
+    \hspace{1cm} {\large \texttt{\};}}
+    \end{block}
+    \end{textblock}
+    \begin{textblock}{55}(5,15)
+    \small
+    Un \texttt{struct} funciona como un grupo de \textbf{datos ordenados}, o como un tipo de datos compuesto.\\
+    \bigskip
+    Cada dato dentro del \texttt{struct} tiene un \textbf{tipo} y un \textbf{orden}.\\
+    \bigskip
+    Los podemos declarar y usar como parámetros de funciones o como variables dentro de una función.\\
+    \end{textblock}
+    \begin{textblock}{87}(68,50)
+    \textcolor{gray}{Ejemplo:}
+    \end{textblock}    
+    \begin{textblock}{87}(68,52)
+    \scriptsize
+    \begin{verbatim}
+    struct persona {
+        char*  nombre;
+        int    dni;
+        float  altura;
+    };
+    
+    struct persona p;
+    p.nombre = "Pepe Lujan";
+    p.dni = 32038084;
+    p.altura = 1.68;
+    \end{verbatim}
+    \end{textblock}
+    \begin{textblock}{87}(110,52)
+    \scriptsize
+    \begin{verbatim}
+    struct vector {
+        double x;
+        double y;
+        double z;
+    };
+    
+    struct vector v;
+    v.x = 8.99;
+    v.y = 2.5;
+    v.z = 12.31;
+    \end{verbatim}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Arreglos}
+    \begin{textblock}{95}(60,4)
+    \begin{block}{\small Sintaxis}
+    \vspace{0.2cm}
+    \scriptsize
+    \fbox{\vphantom{fg} \texttt{tipo-del-arreglo}} \hspace{0.2cm} \fbox{\vphantom{fg} \texttt{nombre-del-arreglo}}
+    {\large \texttt{[}} \fbox{\vphantom{fg} \texttt{tamaño-del-arreglo}} {\large \texttt{]}} {\large \texttt{;}}\\
+    \end{block}
+    \end{textblock}
+    \begin{textblock}{87}(55,25)
+    \textcolor{gray}{Ejemplo:}
+    \end{textblock}
+    \begin{textblock}{87}(72,30)
+    \uncover<2->{ \texttt{int a[5];} }\\
+    \uncover<4->{ \texttt{a[0] = 42;} }\\
+    \uncover<5->{ \texttt{a[1] = a[0] + 3;} }\\
+    \uncover<6->{ \texttt{a[3] = a[0] - a[1];} }\\
+    \end{textblock}
+    \begin{textblock}{100}(115,24) \only<2->{\includegraphics[scale=0.9]{img/array-layer1.pdf}} \end{textblock}
+    \begin{textblock}{100}(115,24) \only<3-3>{\includegraphics[scale=0.9]{img/array-layer2.pdf}} \end{textblock}
+    \begin{textblock}{100}(115,24) \only<3-4>{\includegraphics[scale=0.9]{img/array-layer3.pdf}} \end{textblock}
+    \begin{textblock}{100}(115,24) \only<3->{\includegraphics[scale=0.9]{img/array-layer4.pdf}} \end{textblock}
+    \begin{textblock}{100}(115,24) \only<3-5>{\includegraphics[scale=0.9]{img/array-layer5.pdf}} \end{textblock}
+    \begin{textblock}{100}(115,24) \only<3->{\includegraphics[scale=0.9]{img/array-layer6.pdf}} \end{textblock}
+    \begin{textblock}{100}(115,24) \only<4->{\includegraphics[scale=0.9]{img/array-layer7.pdf}} \end{textblock}
+    \begin{textblock}{100}(115,24) \only<5->{\includegraphics[scale=0.9]{img/array-layer8.pdf}} \end{textblock}
+    \begin{textblock}{100}(115,24) \only<6->{\includegraphics[scale=0.9]{img/array-layer9.pdf}} \end{textblock}
+    \begin{textblock}{45}(5,15)
+    \small
+    Los arreglos consisten en una serie de datos del mismo tipo ubicados en memoria de forma \textbf{contigua}.\\
+    \bigskip
+    Tienen un tamaño dado por la \textbf{cantidad} de datos del arreglo.\\
+    \end{textblock}
+\end{frame}
+
+% \begin{frame}[fragile,t]{Ejemplo}
+% \begin{frame}[fragile,t]{Ejemplo}
+% \small
+% \textcolor{verdeuca}{Recorrer un arreglo de numeros calcular el promedio.}
+% \begin{verbatim}
+% void main() {
+%     a[5] = {5,5,3,1,2};
+%     
+%     
+% 
+% }
+% \end{verbatim}
+% \end{frame}
+
+\begin{frame}[fragile,t]{Ejemplo}
+\begin{textblock}{87}(110,10)
+\footnotesize
+\textcolor{verdeuca}{Estructura \texttt{vector}}
+\begin{verbatim}
+struct vector {
+    float x;
+    float y;
+};
+\end{verbatim}
+\end{textblock}
+\small
+\textcolor{verdeuca}{Calcular el módulo de un vector:}
+\begin{verbatim}
+float modulo2(float x, float y) {
+    return sqrt( x * x + y * y);
+}
+\end{verbatim}
+\textcolor{verdeuca}{Calcular el promedio de los módulos de un arreglo de vectores:}
+\begin{verbatim}
+float promedio(struct vector v[], int size) {
+    float acumulador = 0;
+    for(int i = 0; i < size; i++) {
+        float x = v[i].x;
+        float y = v[i].y;
+        acumulador = acumulador + modulo2(x,y);
+    }
+    return acumulador / (float)(size);
+}
+\end{verbatim}
+\end{frame}
+% observaciones:
+% notacion del vector de estructuras como parametro
+% i++
+% cast a float
+
+\begin{frame}[fragile,t]{Punteros}
+    Los punteros son variables especiales que contienen la dirección de memoria\\ donde se encuentra un dato específico.\\
+    \begin{textblock}{70}(10,25)
+    \uncover<2->{Se \textbf{declaran} usando un \texttt{*} sobre el nombre de la variable:\\
+    \hspace{4cm} \large \texttt{char *p;}\\}
+    \bigskip
+    \uncover<3->{Se puede \textbf{obtener la dirección de memoria} de un dato usando un \texttt{\&}:\\
+    \hspace{4cm} \large \texttt{\&dato}\\}
+    \bigskip
+    \uncover<5->{Se \textbf{accede} al dato usando un \texttt{*} sobre el nombre de la variable:\\
+    \hspace{4cm} \large \texttt{*p} }
+    \end{textblock}
+    \begin{textblock}{100}(90,40) \only<2->{\includegraphics[scale=0.9]{img/punteroEjemplo-layer1.pdf}} \end{textblock}
+    \begin{textblock}{100}(90,40) \only<3->{\includegraphics[scale=0.9]{img/punteroEjemplo-layer2.pdf}} \end{textblock}
+    \begin{textblock}{100}(90,40) \only<4->{\includegraphics[scale=0.9]{img/punteroEjemplo-layer3.pdf}} \end{textblock}
+    \begin{textblock}{100}(90,40) \only<5->{\includegraphics[scale=0.9]{img/punteroEjemplo-layer4.pdf}} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Punteros}
+    El tamaño en memoria de un puntero depende del direccionamiento a memoria. \\ En una arquitectura de 64 bits con direcciones de 64 bits, los punteros tienen 8 bytes.
+    \begin{textblock}{87}(10,25)
+    \textcolor{gray}{Ejemplos:}
+    \end{textblock}
+    \begin{textblock}{100}(10,35)
+    \uncover<2->{\texttt{char a;}\\}
+    \uncover<2->{\texttt{char *b;}\\}
+    \uncover<6->{\texttt{a = 35;}\\}
+    \uncover<7->{\texttt{b = \&a;}\\}
+    \uncover<8->{\texttt{*b = 66;}\\}
+    \end{textblock}
+    \begin{textblock}{100}(35,37) \only<2->{\includegraphics[scale=0.8]{img/punteros-layer1.pdf}} \end{textblock} % 1 byte
+    \begin{textblock}{100}(35,37) \only<3-5>{\includegraphics[scale=0.8]{img/punteros-layer2.pdf}} \end{textblock} % dato ?
+    \begin{textblock}{100}(35,37) \only<3-6>{\includegraphics[scale=0.8]{img/punteros-layer3.pdf}} \end{textblock} % puntero ?
+    \begin{textblock}{100}(35,37) \only<6-7>{\includegraphics[scale=0.8]{img/punteros-layer4.pdf}} \end{textblock} % dato valor
+    \begin{textblock}{100}(35,37) \only<7->{\includegraphics[scale=0.8]{img/punteros-layer5.pdf}} \end{textblock} % puntero valor
+    \begin{textblock}{100}(35,37) \only<4->{\includegraphics[scale=0.8]{img/punteros-layer6.pdf}} \end{textblock} % dato dir
+    \begin{textblock}{100}(35,37) \only<5->{\includegraphics[scale=0.8]{img/punteros-layer7.pdf}} \end{textblock} % puntero dir
+    \begin{textblock}{100}(35,37) \only<8->{\includegraphics[scale=0.8]{img/punteros-layer15.pdf}} \end{textblock} % flecha
+    \begin{textblock}{100}(35,37) \only<8->{\includegraphics[scale=0.8]{img/punteros-layer16.pdf}} \end{textblock} % nuevo
+    \begin{textblock}{100}(10,65)
+    \uncover<9->{\texttt{int a;}\\}
+    \uncover<9->{\texttt{int *b;}\\}
+    \uncover<13->{\texttt{a = 35;}\\}
+    \uncover<14->{\texttt{b = \&a;}\\}
+    \uncover<15->{\texttt{*b = 66;}\\}
+    \end{textblock}
+    \begin{textblock}{100}(35,67) \only<9->{\includegraphics[scale=0.8]{img/punteros-layer8.pdf}} \end{textblock} %  4 byte
+    \begin{textblock}{100}(35,67) \only<10-12>{\includegraphics[scale=0.8]{img/punteros-layer9.pdf}} \end{textblock} %  dato ?
+    \begin{textblock}{100}(35,67) \only<10-13>{\includegraphics[scale=0.8]{img/punteros-layer10.pdf}} \end{textblock} % puntero ?
+    \begin{textblock}{100}(35,67) \only<13-14>{\includegraphics[scale=0.8]{img/punteros-layer11.pdf}} \end{textblock} % dato valor
+    \begin{textblock}{100}(35,67) \only<14->{\includegraphics[scale=0.8]{img/punteros-layer12.pdf}} \end{textblock} % puntero valor
+    \begin{textblock}{100}(35,67) \only<11->{\includegraphics[scale=0.8]{img/punteros-layer13.pdf}} \end{textblock} % dato dir
+    \begin{textblock}{100}(35,67) \only<12->{\includegraphics[scale=0.8]{img/punteros-layer14.pdf}} \end{textblock} % puntero dir
+    \begin{textblock}{100}(35,67) \only<15->{\includegraphics[scale=0.8]{img/punteros-layer15.pdf}} \end{textblock} % flecha
+    \begin{textblock}{100}(35,67) \only<15->{\includegraphics[scale=0.8]{img/punteros-layer17.pdf}} \end{textblock} % nuevo
+\end{frame}
+
+\begin{frame}[fragile,t]{Ejemplo}
+\small
+\textcolor{verdeuca}{Función que suma usando solo punteros:}
+\begin{verbatim}
+void suma(int* a, int* b, int* c) {
+    *c = *a + *b;
+}
+\end{verbatim}
+\textcolor{verdeuca}{Sumar los primeros \texttt{n} números enteros usando la función anterior:}
+\begin{verbatim}
+int sumaEnteros(int n) {
+    int sumatoria = 0;
+    for(int i = 0; i < n; i++) {
+        suma(&sumatoria, &i, &sumatoria);
+    }
+    return sumatoria;
+}
+\end{verbatim}
+\end{frame}
+% observaciones:
+% void
+% pasamos el puntero donde escribir el resultado
+
+\begin{frame}[fragile,t]{Ejemplo}
+\small
+\textcolor{verdeuca}{Calcular el módulo de un vector:}
+\begin{verbatim}
+float modulo2(struct vector* v) {
+    return sqrt( v->x * v->x + v->y * v->y);
+}
+\end{verbatim}
+\textcolor{verdeuca}{Calcular el promedio de los módulos de un arreglo de vectores:}
+\begin{verbatim}
+float promedio(struct vector* v, int size) {
+    float acumulador = 0;
+    for(int i = 0; i < size; i++) {
+        acumulador = acumulador + modulo2(&v[i]);
+    }
+    return acumulador / (float)(size);
+}
+\end{verbatim}
+\begin{textblock}{87}(110,10)
+\footnotesize
+\textcolor{verdeuca}{Estructura \texttt{vector}}
+\begin{verbatim}
+struct vector {
+    float x;
+    float y;
+};
+\end{verbatim}
+\end{textblock}
+\end{frame}
+% observaciones:
+% notacion fechita para punteros
+
+\begin{frame}[fragile]
+    \frametitle{Bibliografía}
+    \begin{itemize}
+     \setlength\itemsep{0.5cm}
+      \item[-] \small Brian Kernighan y Dennis Ritchie. “El lenguaje de programación C”, 2da Edición, 1991.\\
+      \item[-] \small Mike Banahan, Declan Brady and Mark Doran, “The C Book”, 2da Edición, 1991.\\
+      Disponible online: \url{https://publications.gbdirect.co.uk/c_book/}
+%     \item[-] \small Tanenbaum, “Organización de Computadoras. Un Enfoque Estructurado”, 4ta Edición, 2000.\\
+%     \begin{itemize}
+%      \item \textbf{Selecccionados}\\
+%      \begin{itemize}
+%       \item 2.2.5 Memoria Caché - Páginas 65 - 67
+%       \item 2.3 Memoria Secundaria - Páginas 68 - 69
+%       \item 3.3.6 Las memorias RAM y las ROM - Páginas 152 - 154
+%       \item 4.5 Mejoramiento del desempeño - Páginas 264 - 270
+%      \end{itemize}
+%     \end{itemize}
+%     \item[-] \small Null, “Essentials of Computer Organization and Architecture”, 5th Edition, 2018.\\
+%     \begin{itemize}
+%     \item \textbf{Chapter 5 - Memory}
+%      \begin{itemize}
+%         \item 6.2 Types of Memory
+%         \item 6.3 The Memory Hierarchy
+%         \item 6.4 Cache Memory
+%      \end{itemize}
+%     \end{itemize}
+% %     \item[-] \small Silberschatz, “Fundamentos de Sistemas Operativos”, 7ma Edición, 2006.\\
+% %     \item[-] \small Tanenbaum, “Modern Operating Systems”, 4th Edition, 2015.\\
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+    \vspace{2cm}
+    \huge ¡Gracias!\\
+    \vspace{2cm}
+    \normalsize Recuerden leer los comentarios adjuntos\\ en cada clase por aclaraciones.
+    \end{center}
+\end{frame}
+
+\end{document}
+
+% % % % % % % % % % % % % % % % % % 
+% EJEMPLOS:
+
+\begin{frame}[fragile]
+    \frametitle{Bla}
+    \begin{itemize}
+    \item[-] Bla bla \textbf{ble} bla bla
+    \item[-] Bla bla \textbf{ble} bla bla
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bla}
+    \begin{block}{\texttt{BLA}}
+    Bla Bla
+    \end{block}
+    \begin{multicols}{2}
+    \begin{tabular}{ll}
+    la & la \\
+    \end{tabular}
+    \columnbreak
+    \begin{tabular}{ll}
+    la & la \\
+    \end{tabular}
+    \end{multicols}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bla}
+    \begin{itemize}
+    \item Bla bla
+    \begin{center}
+    \includegraphics[scale=0.7]{img/struct_aling.pdf}
+    \end{center}
+    Bla bla
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bla}
+    \begin{textblock}{100}(10,10)
+    Bla
+    \end{textblock}
+\end{frame}
+
+\end{document}
+

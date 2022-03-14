@@ -1,0 +1,7 @@
+a) Dado un arreglo de 8 números de 32 bits en complemento a dos, imprimir por pantalla en hexadecimal la cantidad de números mayores o iguales a cero contenidos en el arreglo.
+
+b) Ídem al anterior pero imprimir el texto "El arreglo contiene X numeros positivos", con X el número que corresponda.
+
+c) Ídem al anterior pero con números de 16 bits en complemento a dos.
+
+d) Ídem al (b) pero imprimir el texto "El arreglo contiene X numeros positivos" si la cantidad de números positivos es mayor o igual a la de negativos. En caso contrario, imprimir el texto "El arreglo contiene X numeros negativos".

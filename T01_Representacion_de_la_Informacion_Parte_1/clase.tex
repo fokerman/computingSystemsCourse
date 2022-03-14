@@ -1,0 +1,845 @@
+% === T01 - Representación de la Información (Parte 1) ===
+% David Alejandro Gonzalez Marquez
+% fokerman@gmail.com
+% https://github.com/fokerman/computingSystemsCourse
+
+\documentclass[aspectratio=169]{beamer}
+% \documentclass[aspectratio=169, handout]{beamer}
+
+% % % Packages
+\usepackage[sfdefault]{AlegreyaSans}
+\usepackage{inconsolata}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[absolute,overlay]{textpos}
+  \setlength{\TPHorizModule}{1mm}
+  \setlength{\TPVertModule}{1mm}
+\usepackage{framed}
+\usepackage{mfirstuc} % para poner en mayusculas la primer letra
+\usepackage{xspace} % para crear espacios en comandos 
+\usepackage{pbox}
+\usepackage{tikz}
+\usepackage{mathabx}
+\usepackage{colortbl}
+\usepackage{ulem} % para tener tachado
+
+% % % Beamer config
+\usetheme{Pittsburgh}
+\usecolortheme[rgb={1,0.48,0.0}]{structure}
+\setbeamercolor{block title}{fg=white,bg=verdeuca}
+\xdefinecolor{verdeuca}{rgb}{0.0,0.48,0.54}
+\xdefinecolor{naranjauca}{rgb}{1,0.48,0.0}
+\setbeamercolor{palette quaternary}{fg=white,bg=verdeuca}
+\setbeamertemplate{title page}[default][colsep=-4bp, rounded=true] % remove title shadow
+\setbeamertemplate{frametitle}[default][colsep=-2bp, shadow=false] % remove frame title shadow
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+\beamertemplatenavigationsymbolsempty
+
+% % % Colors
+\definecolor{Gris}{gray}{0.8}
+\definecolor{Celeste}{rgb}{.255,.41,.884}
+\definecolor{Rojo}{rgb}{1, 0, 0}
+\definecolor{a}{rgb}{0.0, 0.53, 0.74}
+\definecolor{r}{rgb}{0.89, 0.0, 0.13}
+\definecolor{v}{rgb}{0.0, 0.5, 0.0}
+\definecolor{y}{rgb}{0.0, 0.5, 0.5}
+\definecolor{rojo}{HTML}{F1521B}
+\definecolor{verde}{HTML}{80CD29}
+\definecolor{amarillo}{HTML}{FABC09}
+\definecolor{azulC}{rgb}{.31,.506,.741}
+\definecolor{azul}{HTML}{00ADF1}
+\definecolor{verdeC}{HTML}{8FF0A4}
+\definecolor{verdeO}{HTML}{2EC27E}
+
+% % % Rename
+\newcommand{\tab}[0]{\hspace{15pt}}
+
+% % % Blocks
+\setbeamercolor{block body}{fg=black, bg=black!10}
+\setbeamercolor{block title}{fg=black, bg=black!20}
+\setbeamercolor{coloredboxstuffNaranja}{fg=naranjauca,bg=black!10} %% PARA LOS BOX
+\setbeamercolor{coloredboxstuffVerde}{fg=verdeuca,bg=black!10} %% PARA LOS BOX
+
+% % % Special Packages
+\usepackage{fontawesome}
+
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+% % % Start
+
+\title{\Huge Representación de la Información\\ \Large (Parte 1)}
+% \subtitle{}
+
+\author{David Alejandro González Márquez}
+\input{../university}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+    \begin{textblock}{140}(10,70)
+    \textcolor{rojo}{
+    \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[plain]
+    \texttt{Hay 10 tipos de personas:}\\
+    \vspace{10px}
+    \hspace{1cm}\texttt{Las que conocen el código binario y las que no.}
+\end{frame}
+
+\begin{frame}[plain]
+    \texttt{Hay 10b tipos de personas:}\\
+    \vspace{10px}
+    \hspace{1cm}\texttt{Las que conocen el código binario y las que no.}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Introducción}
+    Representación de la información hace referencia a la \textbf{forma}\\ en que traducimos símbolos a entidades.\\
+    \vspace{5px}
+    Por ejemplo: % \faHandScissorsO 
+    \begin{itemize}
+     \item Una mano como \faHandPeaceO \xspace es el símbolo usado para representar la cantidad de dos.
+     \item Pero también puede significar \emph{Paz}.
+     \item Incluso, si rotamos la mano como \faHandScissorsO \xspace su significado puede cambiar a ser el símbolo de \emph{tijeras}.
+    \end{itemize}
+    \vspace{12px}
+    Es decir,
+    \vspace{-12px}
+    \begin{block}{\vspace*{-3ex}}
+    Estamos dando un \textbf{significado} a un \textbf{símbolo}.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Símbolos}
+    Un número es una expresión de una cantidad, que representa una magnitud.\\
+    \vspace{5px}
+    Por ejemplo,
+    \begin{itemize}
+     \item[-] ``9'' es el símbolo usado para representar \textbf{nueve} unidades en el sistema decimal.
+     \item[-] ``6'' es el símbolo usado para representar \textbf{seis} unidades en el sistema decimal.
+     \item[-] \dots
+    \end{itemize}
+    \vspace{15px}
+    El sistema decimal es un \textbf{sistema de numeración posicional} en base 10,\\
+    donde el valor de cada símbolo depende de su posición.\\
+    \vspace{10px}
+    Ahora vamos conocer otros sistemas posicionales utilizando diferentes bases.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Sistemas de numeración}
+    Existen distintos sistemas de numeración \textbf{posicionales}, cada uno depende de su \textbf{base},\\
+    es decir, la cantidad de símbolos distintos que tiene el sistema.
+    \vspace{0.2cm}
+    \begin{itemize}
+    \setlength\itemsep{10px}
+    \item Sistema \textcolor{naranjauca}{decimal} (base 10)\\ \hspace{5cm} { \large {0, 1, 2, 3, 4, 5, 6, 7, 8, 9} }
+    \item Sistema \textcolor{naranjauca}{binario} (base 2)\\ \hspace{5cm} { \large {0, 1} }
+    \item Sistema \textcolor{naranjauca}{octal} (base 8)\\ \hspace{5cm} { \large {0, 1, 2, 3, 4, 5, 6, 7} }
+    \item Sistema \textcolor{naranjauca}{hexadecimal} (base 16)\\ \hspace{5cm} { \large {0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F} }
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Sistemas de numeración}
+    \begin{center}
+    \scriptsize
+    \begin{tabular}{c|R{2cm}|R{2cm}|R{2cm}|R{2cm}|}
+    \cline{2-5}
+    Magnitud   & Decimal (10) & Binario (2)  & Octal (8)  & Hexadecimal (16)  \\ \cline{2-5}
+    0          & \texttt{0}            & \texttt{0    }        & \texttt{0}          & \texttt{0}                 \\ 
+    1          & \texttt{1}            & \texttt{1    }        & \texttt{1}          & \texttt{1}                 \\ \cline{2-5}
+    2          & \texttt{2}            & \textcolor{naranjauca}{\texttt{10   }}        & \texttt{2}          & \texttt{2}                 \\ 
+    3          & \texttt{3}            & \texttt{11   }        & \texttt{3}          & \texttt{3}                 \\ \cline{2-5}
+    4          & \texttt{4}            & \texttt{100  }        & \texttt{4}          & \texttt{4}                 \\ 
+    5          & \texttt{5}            & \texttt{101  }        & \texttt{5}          & \texttt{5}                 \\ 
+    6          & \texttt{6}            & \texttt{110  }        & \texttt{6}          & \texttt{6}                 \\ 
+    7          & \texttt{7}            & \texttt{111  }        & \texttt{7}          & \texttt{7}                 \\ \cline{2-5}
+    8          & \texttt{8}            & \texttt{1000 }        & \textcolor{naranjauca}{\texttt{10}}         & \texttt{8}                 \\ 
+    9          & \texttt{9}            & \texttt{1001 }        & \texttt{11}         & \texttt{9}                 \\ 
+    10         & \textcolor{naranjauca}{\texttt{10}}           & \texttt{1010 }        & \texttt{12}         & \texttt{A}                 \\ 
+    11         & \texttt{11}           & \texttt{1011 }        & \texttt{13}         & \texttt{B}                 \\ 
+    12         & \texttt{12}           & \texttt{1100 }        & \texttt{14}         & \texttt{C}                 \\ 
+    13         & \texttt{13}           & \texttt{1101 }        & \texttt{15}         & \texttt{D}                 \\ 
+    14         & \texttt{14}           & \texttt{1110 }        & \texttt{16}         & \texttt{E}                 \\ 
+    15         & \texttt{15}           & \texttt{1111 }        & \texttt{17}         & \texttt{F}                 \\ \cline{2-5}
+    16         & \texttt{16}           & \texttt{10000}        & \texttt{20}         & \textcolor{naranjauca}{\texttt{10}}                \\ 
+    17         & \texttt{17}           & \texttt{10001}        & \texttt{21}         & \texttt{11}                \\ 
+    18         & \texttt{18}           & \texttt{10010}        & \texttt{22}         & \texttt{12}                \\ 
+    19         & \texttt{19}           & \texttt{10011}        & \texttt{23}         & \texttt{13}                \\ 
+    20         & \texttt{20}           & \texttt{10100}        & \texttt{24}         & \texttt{14}                \\ 
+    21         & \texttt{21}           & \texttt{10101}        & \texttt{25}         & \texttt{15}                \\ 
+    \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Notación}
+    \large \textbf{Indicación de bases}\\
+    \bigskip
+    \normalsize
+    \hspace{0.5cm}
+    Sistema \textcolor{naranjauca}{decimal} (base 10)\\
+    \hspace{5.5cm}{ \textcolor{Gris}{Ejemplo:} \texttt{|}\hspace{0.2cm} \texttt{248}$_{10}$  \hspace{0.2cm}\texttt{|}\hspace{0.2cm} \texttt{248} \hspace{0.2cm}\texttt{|} }\\
+    \hspace{0.5cm}
+    Sistema \textcolor{naranjauca}{binario} (base 2)\\
+    \hspace{5.5cm}{ \textcolor{Gris}{Ejemplo:} \texttt{|}\hspace{0.2cm} \texttt{10100}1$_{2}$ \hspace{0.2cm}\texttt{|}\hspace{0.2cm} \texttt{101001b} \hspace{0.2cm}\texttt{|} }\\
+    \hspace{0.5cm}
+    Sistema \textcolor{naranjauca}{octal} (base 8)\\
+    \hspace{5.5cm}{ \textcolor{Gris}{Ejemplo:} \texttt{|}\hspace{0.2cm} \texttt{755}$_{8}$ \hspace{0.2cm}\texttt{|}\hspace{0.2cm} \texttt{755o} \hspace{0.2cm}\texttt{|} }\\
+    \hspace{0.5cm}
+    Sistema \textcolor{naranjauca}{hexadecimal} (base 16)\\
+    \hspace{5.5cm}{ \textcolor{Gris}{Ejemplo:} \texttt{|}\hspace{0.2cm} \texttt{F8AA}$_{16}$ \hspace{0.2cm}\texttt{|}\hspace{0.2cm} \texttt{F8AAh} \hspace{0.2cm}\texttt{|}\hspace{0.2cm} \texttt{0xF8AA} \hspace{0.2cm}\texttt{|} }
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Operaciones}
+    \large \textbf{Cambio de base}\\
+    \bigskip
+    \normalsize
+    Para realizar operaciones entre distintas magnitudes,\\ estas deben estar representadas en la misma base.\\
+    Dependiendo entre qué bases se busque convertir,\\ se pueden usar distintos métodos.
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Convertir desde decimal a binario}
+    Método de las divisiones sucesivas
+    \begin{textblock}{20}(40.8,21.0) \only<10->{\includegraphics[scale=1]{img/dec2bin-layer10.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<1->{\includegraphics[scale=1]{img/dec2bin-layer1.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<2->{\includegraphics[scale=1]{img/dec2bin-layer2.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<3->{\includegraphics[scale=1]{img/dec2bin-layer3.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<4->{\includegraphics[scale=1]{img/dec2bin-layer4.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<5->{\includegraphics[scale=1]{img/dec2bin-layer5.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<6->{\includegraphics[scale=1]{img/dec2bin-layer6.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<7->{\includegraphics[scale=1]{img/dec2bin-layer7.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<8->{\includegraphics[scale=1]{img/dec2bin-layer8.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<9->{\includegraphics[scale=1]{img/dec2bin-layer9.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,75.0) \only<11->{Si bien utilizamos este método para convertir a binario, podemos usarlo para cualquier base.} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Convertir de binario a decimal}
+    Usando las potencias de la base representada.
+    \begin{textblock}{20}(30.8,21.0) \only<1->{\includegraphics[scale=1]{img/bin2dec-layer1.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<2->{\includegraphics[scale=1]{img/bin2dec-layer2.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<3->{\includegraphics[scale=1]{img/bin2dec-layer3.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<4->{\includegraphics[scale=1]{img/bin2dec-layer4.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<5->{\includegraphics[scale=1]{img/bin2dec-layer5.pdf}} \end{textblock}
+    \begin{textblock}{110}(10.0,75.0) \only<6->{Si bien utilizamos este método para convertir desde binario a decimal, podemos usarlo para convertir desde cualquier otra base.} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Convertir binario a octal}
+    Tomar de a 3 dígitos binarios y convertirlos a base octal
+    \begin{textblock}{20}(30.8,21.0) \only<8->{\includegraphics[scale=1]{img/bin2oct-layer8.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<1->{\includegraphics[scale=1]{img/bin2oct-layer1.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<2->{\includegraphics[scale=1]{img/bin2oct-layer2.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<3->{\includegraphics[scale=1]{img/bin2oct-layer3.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<4->{\includegraphics[scale=1]{img/bin2oct-layer4.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<5->{\includegraphics[scale=1]{img/bin2oct-layer5.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<6->{\includegraphics[scale=1]{img/bin2oct-layer6.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<7->{\includegraphics[scale=1]{img/bin2oct-layer7.pdf}} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Convertir binario a hexadecimal}
+    Tomar de a 4 dígitos binarios y convertirlos a base hexadecimal.
+    \begin{textblock}{20}(30.8,21.0) \only<7->{\includegraphics[scale=1]{img/bin2hex-layer7.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<1->{\includegraphics[scale=1]{img/bin2hex-layer1.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<2->{\includegraphics[scale=1]{img/bin2hex-layer2.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<3->{\includegraphics[scale=1]{img/bin2hex-layer3.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<4->{\includegraphics[scale=1]{img/bin2hex-layer4.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<5->{\includegraphics[scale=1]{img/bin2hex-layer5.pdf}} \end{textblock}
+    \begin{textblock}{20}(30.8,21.0) \only<6->{\includegraphics[scale=1]{img/bin2hex-layer6.pdf}} \end{textblock}
+    \begin{textblock}{110}(10.0,75.0) \only<8->{Desde binario a cualquier base que sea potencia de dos se puede convertir directamente tomando secuencias de bits y convirtiéndolas una a una.}\end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Convertir hexadecimal a binario}
+    Tomar independientemente cada dígito hexadecimal y convertirlo a binario.
+    \begin{textblock}{20}(40.8,21.0) \only<1->{\includegraphics[scale=1]{img/hex2bin-layer1.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<2->{\includegraphics[scale=1]{img/hex2bin-layer2.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<3->{\includegraphics[scale=1]{img/hex2bin-layer3.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<4->{\includegraphics[scale=1]{img/hex2bin-layer4.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<5->{\includegraphics[scale=1]{img/hex2bin-layer5.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<6->{\includegraphics[scale=1]{img/hex2bin-layer6.pdf}} \end{textblock}
+    \begin{textblock}{20}(40.8,21.0) \only<7->{\includegraphics[scale=1]{img/hex2bin-layer7.pdf}} \end{textblock}
+    \begin{textblock}{200}(10.0,75.0) \only<8->{Este método se puede utilizar también de Octal a binario.} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Resumen}
+    La siguiente tabla presenta todos los métodos vistos para convertir entre\\ cualquiera de las bases estudiadas.\\
+    \bigskip
+    \begin{center}
+    \begin{table}[]
+    \begin{tabular}{llC{2cm}C{2cm}C{2cm}C{2cm}}
+        &    & \multicolumn{4}{c}{\color{naranjauca} Desde} \\ \cline{3-6}
+        &    & Decimal & Binario & Octal & Hexadecimal      \\
+        &    & (10)    & (2)     & (8)   & (16)             \\ \cline{3-6}
+      \multicolumn{1}{r|}{ \multirow{4}{*}{\color{naranjauca}Hasta} } 
+    & \multicolumn{1}{r|}{Decimal (10)}     & \multicolumn{1}{c|}{}         & \multicolumn{1}{c|}{potencias}     & \multicolumn{1}{c|}{potencias}  & \multicolumn{1}{c|}{potencias}    \\ \cline{3-6}
+      \multicolumn{1}{r|}{}
+    & \multicolumn{1}{r|}{Binario (2)}      & \multicolumn{1}{c|}{división} & \multicolumn{1}{c|}{}              & \multicolumn{1}{c|}{por dígito} & \multicolumn{1}{c|}{por dígito}   \\ \cline{3-6}
+      \multicolumn{1}{r|}{}
+    & \multicolumn{1}{r|}{Octal (8)}        & \multicolumn{1}{c|}{división} & \multicolumn{1}{c|}{tomar de a 3}  & \multicolumn{1}{c|}{}           & \multicolumn{1}{c|}{desde binario}\\ \cline{3-6}
+      \multicolumn{1}{r|}{}
+    & \multicolumn{1}{r|}{Hexadecimal (16)} & \multicolumn{1}{c|}{división} & \multicolumn{1}{c|}{tomar de a 4}  & \multicolumn{1}{c|}{desde binario}  & \multicolumn{1}{c|}{}         \\ \cline{3-6}
+    \end{tabular}
+    \end{table}
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Información binaria}
+    \begin{textblock}{78}(6,14)
+        La computadora puede almacenar y operar con \textbf{información binaria o digital}.\\
+        \bigskip
+        Intepretamos ceros (0) y unos (1) como ausencia o presencia de una diferencia de tensión (bits).\\
+        \bigskip
+        Tenemos que entender cómo \textbf{interpretar} una lista de bits e identificar a qué \textbf{número} o entidad corresponde.\\
+        \bigskip
+        Las representaciones están limitadas a operar con una \textbf{cantidad fija de bits}.\\
+        \bigskip
+        Para $n$ dígitos en base $b$ existen $b^n$ posibles combinaciones.
+        
+    \end{textblock}
+    \begin{textblock}{80}(92,10)
+        Ejemplo:\\
+        \scriptsize Con 4 bits $\rightarrow$ $2^4 = 16$ combinaciones\\
+        \bigskip
+        \scriptsize
+        \begin{tabular}{|p{1cm}|p{1cm}|p{1cm}|p{1cm}|}
+        \hline
+        Binario (2)    & Decimal (10) & Animales     & Algunos números \\ \hline
+        \texttt{0000}  & \texttt{0}   & Perro        & 1\\ 
+        \texttt{0001}  & \texttt{1}   & Gato         & 2\\
+        \texttt{0010}  & \texttt{2}   & Tortuga      & 3\\ 
+        \texttt{0011}  & \texttt{3}   & Jirafa       & 4\\
+        \texttt{0100}  & \texttt{4}   & Búho         & 5\\ 
+        \texttt{0101}  & \texttt{5}   & Tigre        & 10\\ 
+        \texttt{0110}  & \texttt{6}   & Rata         & 11\\ 
+        \texttt{0111}  & \texttt{7}   & León         & 12\\
+        \texttt{1000}  & \texttt{8}   & Elefante    & 13\\ 
+        \texttt{1001}  & \texttt{9}   & Mono         & 14\\ 
+        \texttt{1010}  & \texttt{10}  & Cebra        & 15\\ 
+        \texttt{1011}  & \texttt{11}  & Gorila       & -1\\ 
+        \texttt{1100}  & \texttt{12}  & Oso          & -2\\ 
+        \texttt{1101}  & \texttt{13}  & Vaca         & -3\\ 
+        \texttt{1110}  & \texttt{14}  & Panda        & -4\\ 
+        \texttt{1111}  & \texttt{15}  & Conejo       & -5\\ \hline
+        \end{tabular}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]
+    \frametitle{Orden de los bits}
+    \begin{itemize}
+    \setlength\itemsep{13px}
+     \item El número $15732$ en binario es \texttt{11110101110100}.
+     \item Necesitamos exactamente 14 bits para poder representarlo.
+     \item Contamos los bits de derecha a izquierda en su representación.
+     \begin{tabular}{cccccccccccccc}
+     \texttt{1} & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{1} & \texttt{1} & \texttt{0} & \texttt{1} & \texttt{0} & \texttt{0} \\
+     \hline
+     \textcolor{verdeuca}{\scriptsize 13} & \textcolor{verdeuca}{\scriptsize 12} & \textcolor{verdeuca}{\scriptsize 11} & \textcolor{verdeuca}{\scriptsize 10} & \textcolor{verdeuca}{\scriptsize 9} & \textcolor{verdeuca}{\scriptsize 8} & \textcolor{verdeuca}{\scriptsize 7} & \textcolor{verdeuca}{\scriptsize 6} & \textcolor{verdeuca}{\scriptsize 5} & \textcolor{verdeuca}{\scriptsize 4} & \textcolor{verdeuca}{\scriptsize 3} & \textcolor{verdeuca}{\scriptsize 2} & \textcolor{verdeuca}{\scriptsize 1} & \textcolor{verdeuca}{\scriptsize 0} \\
+     \end{tabular}
+     \item Llamamos ``\textbf{bit más significativo}'', al bit más grande en el orden. %a la izquierda en su representación.
+     \begin{tabular}{cccccccccccccc}
+     \textcolor{naranjauca}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{0}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{0}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{0}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{0}} & \textcolor{Gris}{\texttt{0}} \\
+     \hline
+     \textcolor{naranjauca}{\normalsize 13} & {\scriptsize 12} & {\scriptsize 11} & {\scriptsize 10} & {\scriptsize 9} & {\scriptsize 8} & {\scriptsize 7} & {\scriptsize 6} & {\scriptsize 5} & {\scriptsize 4} & {\scriptsize 3} & {\scriptsize 2} & {\scriptsize 1} & {\scriptsize 0} \\
+     \end{tabular}
+     \item Llamamos ``\textbf{bit menos significativo}'', al bit más chico en el orden. % a la derecha en su representación.
+     \begin{tabular}{cccccccccccccc}
+     \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{0}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{0}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{0}} & \textcolor{Gris}{\texttt{1}} & \textcolor{Gris}{\texttt{0}} & \textcolor{naranjauca}{\texttt{0}} \\
+     \hline
+     {\scriptsize 13} & {\scriptsize 12} & {\scriptsize 11} & {\scriptsize 10} & {\scriptsize 9} & {\scriptsize 8} & {\scriptsize 7} & {\scriptsize 6} & {\scriptsize 5} & {\scriptsize 4} & {\scriptsize 3} & {\scriptsize 2} & {\scriptsize 1} & \textcolor{naranjauca}{\normalsize 0} \\
+     \end{tabular}     
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Números enteros}
+    \begin{itemize}
+    \setlength\itemsep{10px}
+    \item \textbf{Sin signo}\\
+    \item \textbf{Signo y Magnitud}\\
+    \item \textbf{Complemento a 2}\\
+    \item \textbf{Notación exceso-e}\\
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Números enteros}
+    \begin{textblock}{90}(6,14)
+    \textbf{Notación Sin Signo (n bits)}
+    \begin{itemize}
+    \item Usa $n$ bits para el valor.
+    \item Rango representable $0$ a $2^n-1$.
+    \item No hay números negativos.
+    \end{itemize}
+    \vspace{0.5cm}
+    \uncover<2->{
+    \textbf{Convertir} X$_{10}$ $\Leftrightarrow$ Y$_{SinSigno}$\\
+    \textit{Decimal a Sin Signo:} {\small Y = \texttt{base2(}X\texttt{)} } \\
+    \textit{Sin Signo a Decimal:} {\small X = \texttt{base10(}Y\texttt{)} }
+    }
+    \end{textblock}
+
+    \begin{textblock}{90}(105,6)
+        Ejemplo:\\
+        \footnotesize Con 4 bits $\rightarrow$ $2^4 = 16$ combinaciones\\
+        \bigskip
+        \footnotesize
+        \begin{tabular}{|p{1cm}|p{2.5cm}|}
+        \hline
+        Binario        & Sin Signo    \\ \hline
+        \texttt{0000}  & \texttt{0}   \\ 
+        \texttt{0001}  & \texttt{1}   \\
+        \texttt{0010}  & \texttt{2}   \\ 
+        \texttt{0011}  & \texttt{3}   \\
+        \texttt{0100}  & \texttt{4}   \\ 
+        \texttt{0101}  & \texttt{5}   \\ 
+        \texttt{0110}  & \texttt{6}   \\ 
+        \texttt{0111}  & \texttt{7}   \\
+        \texttt{1000}  & \texttt{8}   \\ 
+        \texttt{1001}  & \texttt{9}   \\ 
+        \texttt{1010}  & \texttt{10}  \\ 
+        \texttt{1011}  & \texttt{11}  \\ 
+        \texttt{1100}  & \texttt{12}  \\ 
+        \texttt{1101}  & \texttt{13}  \\ 
+        \texttt{1110}  & \texttt{14}  \\ 
+        \texttt{1111}  & \texttt{15}  \\ \hline
+        \end{tabular}
+    \end{textblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Números enteros}
+    \begin{textblock}{90}(6,14)
+    \textbf{Notación Signo y Magnitud (n bits)}
+    \begin{itemize} \small
+    \item Usa $1$ bit para signo y $n-1$ bits para el valor.
+    \item Rango representable $-(2^{n-1}-1)$ a $2^{n-1}-1$.
+    \item No se puede utilizar para hacer operaciones directamente, debe ser interpretado.
+    \item Permite obtener la magnitud sin hacer ninguna operación.
+    \end{itemize}
+    \end{textblock}
+    
+    \begin{textblock}{90}(105,6)
+    \uncover<1>{
+        Ejemplo:\\
+        \footnotesize Con 4 bits $\rightarrow$ $2^4 = 16$ combinaciones\\
+        \bigskip
+        \footnotesize
+        \begin{tabular}{|p{1cm}|p{2.5cm}|}
+        \hline
+        Binario        & Con Signo    \\ \hline
+        \texttt{0000}  & \texttt{0}   \\ 
+        \texttt{0001}  & \texttt{1}   \\
+        \texttt{0010}  & \texttt{2}   \\ 
+        \texttt{0011}  & \texttt{3}   \\
+        \texttt{0100}  & \texttt{4}   \\ 
+        \texttt{0101}  & \texttt{5}   \\ 
+        \texttt{0110}  & \texttt{6}   \\ 
+        \texttt{0111}  & \texttt{7}   \\
+        \texttt{1000}  & \texttt{-0}  \\ 
+        \texttt{1001}  & \texttt{-1}  \\ 
+        \texttt{1010}  & \texttt{-2}  \\ 
+        \texttt{1011}  & \texttt{-3}  \\ 
+        \texttt{1100}  & \texttt{-4}  \\ 
+        \texttt{1101}  & \texttt{-5}  \\ 
+        \texttt{1110}  & \texttt{-6}  \\ 
+        \texttt{1111}  & \texttt{-7}  \\ \hline
+        \end{tabular}
+        }
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Números enteros}
+    \begin{textblock}{90}(6,14)
+    \textbf{Notación Signo y Magnitud (n bits)}
+    \begin{itemize} \small
+    \item Usa $1$ bit para signo y $n-1$ bits para el valor.
+    \item Rango representable $-(2^{n-1}-1)$ a $2^{n-1}-1$.
+    \item No se puede utilizar para hacer operaciones directamente, debe ser interpretado.
+    \item Permite obtener la magnitud sin hacer ninguna operación.
+    \item<1-> Bit de signo: \texttt{\textcolor{naranjauca}{0}} = positivo, \texttt{\textcolor{naranjauca}{1}} = negativo.
+    \item<1-> La magnitud está determinada por el resto de los bits.
+    \end{itemize}
+    \vspace{0.2cm}
+    \uncover<2->{
+    \textbf{Convertir} X$_{10}$ $\Leftrightarrow$ Y$_{SignoMagnitud}$\\
+    \vspace{0.2cm}
+    \small
+    \textit{Decimal a Signo-Magnitud:} \\
+    \scriptsize
+    \begin{tabular}{ll}
+    Si X $\ge 0$ entonces & Y = \texttt{concatenar(}$0$\texttt{,} \texttt{base2(}X\texttt{))} \\
+    Si X $\le 0$    entonces & Y = \texttt{concatenar(}$1$\texttt{,} \texttt{base2(abs(}X\texttt{)))} \\
+    \end{tabular}\\
+    }
+    \uncover<3->{
+    \small
+    \vspace{0.2cm}
+    \textit{Signo-Magnitud a Decimal:}
+    \scriptsize
+    \begin{tabular}{ll}
+    Si Y$_{\texttt{n-1}}$ == 0 entonces & X =    \texttt{base10(}Y$_{\texttt{n-2}}$ $\dots$ Y$_{\texttt{0}}$\texttt{)} \\
+    Si Y$_{\texttt{n-1}}$ == 1 entonces & X = $-$\texttt{base10(}Y$_{\texttt{n-2}}$ $\dots$ Y$_{\texttt{0}}$\texttt{)} \\
+    \end{tabular}
+    }
+    \end{textblock}
+    
+    \begin{textblock}{90}(105,6)
+    \uncover<1->{
+        Ejemplo:\\
+        \footnotesize Con 4 bits $\rightarrow$ $2^4 = 16$ combinaciones\\
+        \bigskip
+        \footnotesize
+        \begin{tabular}{|p{1cm}|p{2.5cm}|}
+        \hline
+        Binario         & Con Signo    \\ \hline
+        \texttt{\color{naranjauca}1 \color{verdeuca}111}  & \texttt{-7}  \\ 
+        \texttt{\color{naranjauca}1 \color{verdeuca}110}  & \texttt{-6}  \\ 
+        \texttt{\color{naranjauca}1 \color{verdeuca}101}  & \texttt{-5}  \\ 
+        \texttt{\color{naranjauca}1 \color{verdeuca}100}  & \texttt{-4}  \\ 
+        \texttt{\color{naranjauca}1 \color{verdeuca}011}  & \texttt{-3}  \\ 
+        \texttt{\color{naranjauca}1 \color{verdeuca}010}  & \texttt{-2}  \\ 
+        \texttt{\color{naranjauca}1 \color{verdeuca}001}  & \texttt{-1}  \\ 
+        \texttt{\color{naranjauca}1 \color{verdeuca}000}  & \texttt{-0}  \\ \hline
+        \texttt{\color{naranjauca}0 \color{verdeuca}000}  & \texttt{0}   \\ 
+        \texttt{\color{naranjauca}0 \color{verdeuca}001}  & \texttt{1}   \\
+        \texttt{\color{naranjauca}0 \color{verdeuca}010}  & \texttt{2}   \\ 
+        \texttt{\color{naranjauca}0 \color{verdeuca}011}  & \texttt{3}   \\
+        \texttt{\color{naranjauca}0 \color{verdeuca}100}  & \texttt{4}   \\ 
+        \texttt{\color{naranjauca}0 \color{verdeuca}101}  & \texttt{5}   \\ 
+        \texttt{\color{naranjauca}0 \color{verdeuca}110}  & \texttt{6}   \\ 
+        \texttt{\color{naranjauca}0 \color{verdeuca}111}  & \texttt{7}   \\ \hline
+        \end{tabular}
+        }
+    \end{textblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Números enteros}
+    \begin{textblock}{90}(6,14)
+    \textbf{Notación Complemento a 2 (n bits)}
+    \begin{itemize}
+    \item Usa $n$ bits para el valor y signo.
+    \item Rango representable $-(2^{n-1})$ a $2^{n-1}-1$.
+    \item Permite hacer operaciones directamente, sin interpretar el número.
+    \item No es posible obtener la magnitud de los números negativos fácilmente.
+    \end{itemize}
+    \end{textblock}
+    
+    \begin{textblock}{90}(105,6)
+    \uncover<1>{
+        Ejemplo:\\
+        \footnotesize Con 4 bits $\rightarrow$ $2^4 = 16$ combinaciones\\
+        \bigskip
+        \footnotesize
+        \begin{tabular}{|p{1cm}|p{2.5cm}|}
+        \hline
+        Binario         & Complemento a 2 \\ \hline
+        \texttt{0000}  & \texttt{0}   \\ 
+        \texttt{0001}  & \texttt{1}   \\
+        \texttt{0010}  & \texttt{2}   \\ 
+        \texttt{0011}  & \texttt{3}   \\
+        \texttt{0100}  & \texttt{4}   \\ 
+        \texttt{0101}  & \texttt{5}   \\ 
+        \texttt{0110}  & \texttt{6}   \\ 
+        \texttt{0111}  & \texttt{7}   \\
+        \texttt{1000}  & \texttt{-8}  \\ 
+        \texttt{1001}  & \texttt{-7}  \\ 
+        \texttt{1010}  & \texttt{-6}  \\ 
+        \texttt{1011}  & \texttt{-5}  \\ 
+        \texttt{1100}  & \texttt{-4}  \\ 
+        \texttt{1101}  & \texttt{-3}  \\ 
+        \texttt{1110}  & \texttt{-2}  \\ 
+        \texttt{1111}  & \texttt{-1}  \\ \hline
+        \end{tabular}
+        }
+    \end{textblock}
+
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Números enteros}
+    \begin{textblock}{90}(6,14)
+    \textbf{Notación Complemento a 2 (n bits)}
+    \begin{itemize}
+    \item Usa $n$ bits para el valor y signo.
+    \item Rango representable $-(2^{n-1})$ a $2^{n-1}-1$.
+    \item Permite hacer operaciones directamente, sin interpretar el número.
+    \item No es posible obtener la magnitud de los números negativos fácilmente.
+    \end{itemize}
+    \vspace{0.2cm}
+    \uncover<2->{
+    \textbf{Convertir} X$_{10}$ $\Leftrightarrow$ Y$_{Complemento2}$\\
+    \vspace{0.2cm}
+    \small
+    \textit{Decimal a Complemento2:} \\
+    \scriptsize
+    \begin{tabular}{ll}
+    Si X $\ge 0$ entonces & Y = \texttt{base2(}X\texttt{)} \\
+    Si X $<0$    entonces & Y = \texttt{BitwiseNot(base2(abs(}X\texttt{)))$+1$} \\
+    \end{tabular}\\
+    }
+    \uncover<3->{
+    \small
+    \vspace{0.2cm}
+    \textit{Complemento2 a Decimal:}
+    \scriptsize
+    \begin{tabular}{ll}
+    Si Y$_{\texttt{n-1}}$ == 0 entonces & X = \texttt{base10(}Y\texttt{)} \\
+    Si Y$_{\texttt{n-1}}$ == 1 entonces & X = $-($\texttt{base10(BitwiseNot(}Y\texttt{)$+1$}\texttt{)}$)$ \\
+    \end{tabular}
+    }
+    \end{textblock}
+    
+    \begin{textblock}{13}(80,62)
+    \only<2->{
+    \begin{block}{\tiny \textbf{Def.} BitwiseNot}
+    \tiny Invertir bit a bit
+    \end{block}
+    }
+    \end{textblock}
+
+    \begin{textblock}{90}(105,6)
+    \uncover<1->{
+        Ejemplo:\\
+        \footnotesize Con 4 bits $\rightarrow$ $2^4 = 16$ combinaciones\\
+        \bigskip
+        \footnotesize
+        \begin{tabular}{|p{1cm}|p{2.5cm}|}
+        \hline
+        Binario         & Complemento a 2    \\ \hline
+        \texttt{\color{naranjauca}1\color{verdeuca}000}  & \texttt{-8}  \\
+        \texttt{\color{naranjauca}1\color{verdeuca}001}  & \texttt{-7}  \\ 
+        \texttt{\color{naranjauca}1\color{verdeuca}010}  & \texttt{-6}  \\ 
+        \texttt{\color{naranjauca}1\color{verdeuca}011}  & \texttt{-5}  \\ 
+        \texttt{\color{naranjauca}1\color{verdeuca}100}  & \texttt{-4}  \\ 
+        \texttt{\color{naranjauca}1\color{verdeuca}101}  & \texttt{-3}  \\ 
+        \texttt{\color{naranjauca}1\color{verdeuca}110}  & \texttt{-2}  \\ 
+        \texttt{\color{naranjauca}1\color{verdeuca}111}  & \texttt{-1}  \\ \hline 
+        \texttt{\color{naranjauca}0\color{verdeuca}000}  & \texttt{0}   \\
+        \texttt{\color{naranjauca}0\color{verdeuca}001}  & \texttt{1}   \\
+        \texttt{\color{naranjauca}0\color{verdeuca}010}  & \texttt{2}   \\ 
+        \texttt{\color{naranjauca}0\color{verdeuca}011}  & \texttt{3}   \\
+        \texttt{\color{naranjauca}0\color{verdeuca}100}  & \texttt{4}   \\ 
+        \texttt{\color{naranjauca}0\color{verdeuca}101}  & \texttt{5}   \\ 
+        \texttt{\color{naranjauca}0\color{verdeuca}110}  & \texttt{6}   \\ 
+        \texttt{\color{naranjauca}0\color{verdeuca}111}  & \texttt{7}   \\ \hline
+        \end{tabular}
+        }
+    \end{textblock}
+    
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Números enteros}
+    \begin{textblock}{90}(6,14)
+    \textbf{Notación exceso-e (n bits)}
+    \begin{itemize}
+    \item Usa $n$ bits, no considera bit para el signo.
+    \item Rango representable $-e$ a $2^{n}-e-1$.
+    \item Permite representar un rango arbitrario.
+    \item No se puede identificar el signo o magnitud sin hacer operaciones.
+    \end{itemize}
+    \uncover<2->{
+    \textbf{Convertir} X$_{10}$ $\Leftrightarrow$ Y$_{exceso-e}$\\
+    \vspace{0.2cm}
+    \small
+    \textit{Decimal a exceso-e:} \\
+    \scriptsize
+    \begin{tabular}{ll}
+    Y = \texttt{base2(}X$+$e\texttt{)} \\
+    \end{tabular}\\
+    }
+    \uncover<3->{
+    \small
+    \vspace{0.2cm}
+    \textit{exceso-e a Decimal:}\\
+    \scriptsize
+    \begin{tabular}{ll}
+    X = \texttt{base10(}Y\texttt{)}$-$e \\
+    \end{tabular}
+    }
+    
+    \end{textblock}
+    
+    \begin{textblock}{90}(105,6)
+    \uncover<1->{
+        Ejemplo:\\
+        \footnotesize Con 4 bits $\rightarrow$ $2^4 = 16$ combinaciones\\
+        \bigskip
+        \footnotesize
+        \begin{tabular}{|p{1cm}|p{2.5cm}|}
+        \hline
+        Binario        & exceso-5 \\ \hline
+        \texttt{0000}  & \texttt{-5} \\ 
+        \texttt{0001}  & \texttt{-4} \\
+        \texttt{0010}  & \texttt{-3} \\ 
+        \texttt{0011}  & \texttt{-2} \\
+        \texttt{0100}  & \texttt{-1} \\ 
+        \texttt{0101}  & \texttt{0}  \\ 
+        \texttt{0110}  & \texttt{1}  \\ 
+        \texttt{0111}  & \texttt{2}  \\
+        \texttt{1000}  & \texttt{3}  \\ 
+        \texttt{1001}  & \texttt{4}  \\ 
+        \texttt{1010}  & \texttt{5}  \\ 
+        \texttt{1011}  & \texttt{6}  \\ 
+        \texttt{1100}  & \texttt{7}  \\ 
+        \texttt{1101}  & \texttt{8}  \\ 
+        \texttt{1110}  & \texttt{9}  \\ 
+        \texttt{1111}  & \texttt{10} \\ \hline
+        \end{tabular}
+        }
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Resumen de números enteros}
+    \begin{itemize}
+    \item \textbf{Sin signo}\\ Representa solamente números sin signo. Se utiliza cuando los datos sobre los que se van a operar siempre son positivos. Se debe tener cuidado con las restas.
+    \pause
+    \item \textbf{Signo y Magnitud}\\ Representa independientemente la magnitud y la codificación del signo. Es complejo para realizar operaciones, porque debe tener en cuenta el signo para operar. Es muy simple para visualizar porque no hay que hacer operaciones para conocer la magnitud del número.
+    \pause
+    \item \textbf{Complemento a 2}\\
+    Permite realizar operaciones de sumas y restas sin tener en cuenta si el número es positivo o negativo. Además, es posible identificar el signo del número mirando un solo bit.
+    \pause¸
+    \item \textbf{Notación exceso-e}\\
+    Permite representar un rango variable de números, asimétrico para positivos y negativos. La dificultad para su operación es moderada, ya que se debe tener en cuenta el exceso a la hora de operar.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Tamaño de un número}
+    En la computadora todos los valores almacenados tienen un tamaño.\\
+    Decimos que un número está \textbf{representado} con/en una determinada \textbf{cantidad de bits}.\\
+    \bigskip
+    \pause
+    \textcolor{gray}{Ejemplo:}\\
+    \hspace{1cm} El número \texttt{21d} en binario es \texttt{10101b}.\\
+    \hspace{1cm} Si representamos este número como:\\
+    \begin{center}
+    \begin{tabular}{lcr}
+    Notación sin signo de 10 bits & $\rightarrow$ \uncover<3->{& \texttt{0000010101b}}\\
+    Notación sin signo de 5 bits  & $\rightarrow$ \uncover<3->{& \texttt{10101b}}\\
+    Notación con signo de 8 bits  & $\rightarrow$ \uncover<3->{& \texttt{00010101b}}\\
+    Notación con signo de 5 bits  & $\rightarrow$ \uncover<3->{& No es posible.}\\
+    \end{tabular}
+    \end{center}
+    \pause
+    \begin{block}{\vspace*{-3ex}}
+     \textit{Importante}\\
+     Cuando hablamos de \textbf{tamaño de un número}, nos referimos a la \textbf{cantidad de bits} de su representación binaria.
+    \end{block}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bibliografía}
+    \begin{itemize}
+     \setlength\itemsep{0.5cm}
+    \item[-] \small Tanenbaum, “Organización de Computadoras. Un Enfoque Estructurado”, 4ta Edición, 2000.\\
+    \begin{itemize}
+     \item \textbf{Apéndice - Números Binarios} - Páginas 631-640.
+%      \item \textbf{Apendice - Números de Punto Flotante} - Pagina 643-650
+    \end{itemize}
+    \item[-] \small Null, “Essentials of Computer Organization and Architecture”, 5th Edition, 2018.\\
+    \begin{itemize}
+     \item \textbf{Chapter 2 - Data Representation in Computer Systems:}
+     \begin{itemize}
+      \item 2.3 - Converting Between Bases.
+      \item 2.4 - Signed Integer Representation.
+%       \item 2.5 - Floating-Point representation
+%       \item 2.6 - Character Codes
+     \end{itemize}
+    \end{itemize}
+%     \item[-] \small Silberschatz, “Fundamentos de Sistemas Operativos”, 7ma Edición, 2006.\\
+%     \item[-] \small Tanenbaum, “Modern Operating Systems”, 4th Edition, 2015.\\
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Ejercicios}
+    Con lo visto, ya pueden resolver hasta el ejercicio 5 inclusive de la Práctica 1.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+    \vspace{2cm}
+    \huge ¡Gracias!\\
+    \vspace{2cm}
+    \normalsize Recuerden leer los comentarios adjuntos\\ en cada clase por aclaraciones.
+    \end{center}
+\end{frame}
+
+\end{document}
+
+% % % % % % % % % % % % % % % % % % 
+% EJEMPLOS:
+
+\begin{frame}[fragile]
+    \frametitle{Bla}
+    \begin{itemize}
+    \item[-] Bla bla \textbf{ble} bla bla
+    \item[-] Bla bla \textbf{ble} bla bla
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bla}
+    \begin{block}{\texttt{BLA}}
+    Bla Bla
+    \end{block}
+    \begin{multicols}{2}
+    \begin{tabular}{ll}
+    la & la \\
+    \end{tabular}
+    \columnbreak
+    \begin{tabular}{ll}
+    la & la \\
+    \end{tabular}
+    \end{multicols}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Bla}
+    \begin{itemize}
+    \item Bla bla
+    \begin{center}
+    \includegraphics[scale=0.7]{img/struct_aling.pdf}
+    \end{center}
+    Bla bla
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bla}
+    \begin{textblock}{100}(10,10)
+    Bla
+    \end{textblock}
+\end{frame}
+
+\end{document}
+
