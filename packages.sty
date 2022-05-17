@@ -1,0 +1,158 @@
+
+% % % Packages
+\usepackage[sfdefault]{AlegreyaSans}
+\usepackage{inconsolata}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage[absolute,overlay]{textpos}
+  \setlength{\TPHorizModule}{1mm}
+  \setlength{\TPVertModule}{1mm}
+\usepackage{framed}
+\usepackage{mfirstuc} % para poner en mayusculas la primer letra
+\usepackage{xspace} % para crear espacios en comandos 
+\usepackage{pbox}
+\usepackage{tikz}
+\usepackage{mathabx}
+\usepackage{colortbl}
+\usepackage{ulem} % para tener tachado
+\usepackage{tcolorbox} % para tener recuadros lindos
+\usepackage{mathabx}
+
+% % % Beamer config
+\usetheme{Pittsburgh}
+\usecolortheme[rgb={1,0.48,0.0}]{structure}
+\setbeamercolor{block title}{fg=white,bg=verdeuca}
+\xdefinecolor{verdeuca}{rgb}{0.0,0.48,0.54}
+\xdefinecolor{naranjauca}{rgb}{1,0.48,0.0}
+\setbeamercolor{palette quaternary}{fg=white,bg=verdeuca}
+\setbeamertemplate{title page}[default][colsep=-4bp, rounded=true] % remove title shadow
+\setbeamertemplate{frametitle}[default][colsep=-2bp, shadow=false] % remove frame title shadow
+\setbeamertemplate{navigation symbols}{} % remove navigation symbols
+\beamertemplatenavigationsymbolsempty
+
+% % % Colors
+\definecolor{AzulClaro}{rgb}{.31,.506,.741}
+\definecolor{Gris}{gray}{0.8}
+\definecolor{Celeste}{rgb}{.255,.41,.884}
+\definecolor{Rojo}{rgb}{1, 0, 0}
+\definecolor{a}{rgb}{0.0, 0.53, 0.74}
+\definecolor{r}{rgb}{0.89, 0.0, 0.13}
+\definecolor{v}{rgb}{0.0, 0.5, 0.0}
+\definecolor{y}{rgb}{0.0, 0.5, 0.5}
+\definecolor{rojo}{HTML}{F1521B}
+\definecolor{verde}{HTML}{80CD29}
+\definecolor{amarillo}{HTML}{FABC09}
+\definecolor{azulC}{rgb}{.31,.506,.741}
+\definecolor{azul}{HTML}{00ADF1}
+\definecolor{verdeC}{HTML}{8FF0A4}
+\definecolor{verdeO}{HTML}{2EC27E}
+
+% % % Rename
+\newcommand{\tab}[0]{\hspace{15pt}}
+
+% % % Blocks
+\setbeamercolor{block body}{fg=black, bg=black!10}
+\setbeamercolor{block title}{fg=black, bg=black!20}
+\setbeamercolor{coloredboxstuffNaranja}{fg=naranjauca,bg=black!10} %% PARA LOS BOX
+\setbeamercolor{coloredboxstuffVerde}{fg=verdeuca,bg=black!10} %% PARA LOS BOX
+
+% % % Special Packages
+\usepackage{fontawesome}
+\usepackage{pgf}
+\usepackage[alpine,clock,electronic,geometry,misc]{ifsym}
+\usepackage{fancyvrb} % Para tener verbatim con colores
+\usepackage{soul} % Para tener subrayado feliz
+\usepackage{array}
+\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+
+
+
+% 
+% % % % Packages
+% \usepackage[sfdefault]{AlegreyaSans}
+% \usepackage{inconsolata}
+% \usepackage{multicol}
+% \usepackage{multirow}
+% \usepackage[spanish]{babel}
+% \usepackage[utf8]{inputenc}
+% \usepackage{enumerate}
+% \usepackage{color}
+% \usepackage{xcolor}
+% \usepackage[absolute,overlay]{textpos}
+%   \setlength{\TPHorizModule}{1mm}
+%   \setlength{\TPVertModule}{1mm}
+% \usepackage{framed}
+% \usepackage{mfirstuc} % para poner en mayusculas la primer letra
+% \usepackage{xspace} % para crear espacios en comandos 
+% \usepackage{pbox}
+% \usepackage{tikz}
+% \usepackage{mathabx}
+% \usepackage{colortbl}
+% \usepackage{ulem} % para tener tachado
+% 
+% % % % Beamer config
+% \usetheme{Pittsburgh}
+% \usecolortheme[rgb={1,0.48,0.0}]{structure}
+% \setbeamercolor{block title}{fg=white,bg=verdeuca}
+% \xdefinecolor{verdeuca}{rgb}{0.0,0.48,0.54}
+% \xdefinecolor{naranjauca}{rgb}{1,0.48,0.0}
+% \setbeamercolor{palette quaternary}{fg=white,bg=verdeuca}
+% \setbeamertemplate{title page}[default][colsep=-4bp, rounded=true] % remove title shadow
+% \setbeamertemplate{frametitle}[default][colsep=-2bp, shadow=false] % remove frame title shadow
+% \setbeamertemplate{navigation symbols}{} % remove navigation symbols
+% \beamertemplatenavigationsymbolsempty
+% 
+% % % % Colors
+% \definecolor{AzulClaro}{rgb}{.31,.506,.741}
+% \definecolor{Gris}{gray}{0.8}
+% \definecolor{Celeste}{rgb}{.255,.41,.884}
+% \definecolor{Rojo}{rgb}{1, 0, 0}
+% \definecolor{a}{rgb}{0.0, 0.53, 0.74}
+% \definecolor{r}{rgb}{0.89, 0.0, 0.13}
+% \definecolor{v}{rgb}{0.0, 0.5, 0.0}
+% \definecolor{y}{rgb}{0.0, 0.5, 0.5}
+% \definecolor{rojo}{HTML}{F1521B}
+% \definecolor{verde}{HTML}{80CD29}
+% \definecolor{amarillo}{HTML}{FABC09}
+% \definecolor{azul}{HTML}{00ADF1}
+% 
+% % % % Rename
+% \newcommand{\tab}[0]{\hspace{15pt}}
+% 
+% % % % Blocks
+% \setbeamercolor{block body}{fg=black, bg=black!10}
+% \setbeamercolor{block title}{fg=black, bg=black!20}
+% \setbeamercolor{coloredboxstuffNaranja}{fg=naranjauca,bg=black!10} %% PARA LOS BOX
+% \setbeamercolor{coloredboxstuffVerde}{fg=verdeuca,bg=black!10} %% PARA LOS BOX
+% 
+% % % % Special Packages
+% \usepackage{fontawesome}
+% \usepackage{pgf}
+% \usepackage{listings}
+% \usepackage{bold-extra} % para tener negrita en ttt
+% 
+% % \lstdefinestyle{customasm}{
+% %   belowcaptionskip=1\baselineskip,
+% %   frame=L,
+% %   xleftmargin=\parindent,
+% %   language=[x86masm]Assembler,
+% %   basicstyle=\footnotesize\ttfamily,
+% %   commentstyle=\itshape\color{purple!40!black},
+% % }
+% % 
+% % \lstset{escapechar=@,style=customc}
+% 
+% \usepackage{array}
+% \newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
+% \newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
+% \newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
+% \newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
+

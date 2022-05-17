@@ -4,81 +4,9 @@
 % https://github.com/fokerman/computingSystemsCourse
 
 \documentclass[aspectratio=169]{beamer}
-% \documentclass[aspectratio=169, handout]{beamer}
+\usepackage{../packages}
 
-% % % Packages
-\usepackage[sfdefault]{AlegreyaSans}
-\usepackage{inconsolata}
-\usepackage{multicol}
-\usepackage{multirow}
-\usepackage[spanish]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{enumerate}
-\usepackage{color}
-\usepackage{xcolor}
-\usepackage[absolute,overlay]{textpos}
-  \setlength{\TPHorizModule}{1mm}
-  \setlength{\TPVertModule}{1mm}
-\usepackage{framed}
-\usepackage{mfirstuc} % para poner en mayusculas la primer letra
-\usepackage{xspace} % para crear espacios en comandos 
-\usepackage{pbox}
-\usepackage{tikz}
-\usepackage{mathabx}
-\usepackage{colortbl}
-\usepackage{ulem} % para tener tachado
-
-% % % Beamer config
-\usetheme{Pittsburgh}
-\usecolortheme[rgb={1,0.48,0.0}]{structure}
-\setbeamercolor{block title}{fg=white,bg=verdeuca}
-\xdefinecolor{verdeuca}{rgb}{0.0,0.48,0.54}
-\xdefinecolor{naranjauca}{rgb}{1,0.48,0.0}
-\setbeamercolor{palette quaternary}{fg=white,bg=verdeuca}
-\setbeamertemplate{title page}[default][colsep=-4bp, rounded=true] % remove title shadow
-\setbeamertemplate{frametitle}[default][colsep=-2bp, shadow=false] % remove frame title shadow
-\setbeamertemplate{navigation symbols}{} % remove navigation symbols
-\beamertemplatenavigationsymbolsempty
-
-% % % Colors
-\definecolor{Gris}{gray}{0.8}
-\definecolor{Celeste}{rgb}{.255,.41,.884}
-\definecolor{Rojo}{rgb}{1, 0, 0}
-\definecolor{a}{rgb}{0.0, 0.53, 0.74}
-\definecolor{r}{rgb}{0.89, 0.0, 0.13}
-\definecolor{v}{rgb}{0.0, 0.5, 0.0}
-\definecolor{y}{rgb}{0.0, 0.5, 0.5}
-\definecolor{rojo}{HTML}{F1521B}
-\definecolor{verde}{HTML}{80CD29}
-\definecolor{amarillo}{HTML}{FABC09}
-\definecolor{azulC}{rgb}{.31,.506,.741}
-\definecolor{azul}{HTML}{00ADF1}
-\definecolor{verdeC}{HTML}{8FF0A4}
-\definecolor{verdeO}{HTML}{2EC27E}
-
-% % % Rename
-\newcommand{\tab}[0]{\hspace{15pt}}
-
-% % % Blocks
-\setbeamercolor{block body}{fg=black, bg=black!10}
-\setbeamercolor{block title}{fg=black, bg=black!20}
-\setbeamercolor{coloredboxstuffNaranja}{fg=naranjauca,bg=black!10} %% PARA LOS BOX
-\setbeamercolor{coloredboxstuffVerde}{fg=verdeuca,bg=black!10} %% PARA LOS BOX
-
-% % % Special Packages
-\usepackage{fontawesome}
-\usepackage{pgf}
-
-\usepackage{array}
-\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
-\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
-\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
-\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
-
-% % % Start
 \title{\Huge Arquitectura de procesadores}
-% \subtitle{}
-
 \author{David Alejandro González Márquez}
 \input{../university}
 \date{}
@@ -87,10 +15,17 @@
 
 \begin{frame}[plain]
     \titlepage
-    \begin{textblock}{140}(10,70)
-    \textcolor{rojo}{
-    \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+    \begin{textblock}{100}(30,80)
+    \begin{tcolorbox}[size=small,width=\textwidth,colback={gray!30},title={}]
+    \begin{center}
+     \scriptsize Clase disponible en: \url{https://github.com/fokerman/computingSystemsCourse}
+    \end{center}
+    \end{tcolorbox}
     \end{textblock}
+%     \begin{textblock}{140}(10,70)
+%     \textcolor{rojo}{
+%     \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+%     \end{textblock}
 \end{frame}
 
 \begin{frame}[fragile,t]{Arquitectura OrgaSmall}
@@ -133,23 +68,33 @@
     \uncover<2->{ Instrucción             & Codificación \\ \hline }
     \uncover<2->{ \texttt{ADD R3, R6}     & }\uncover<3->{\texttt{\textcolor{r}{00001}\textcolor{v}{011}\textcolor{verde}{110}\textcolor{gray}{00000}} } \\  %01
     \uncover<2->{ \texttt{STR [0x21], R5} & }\uncover<4->{\texttt{\textcolor{r}{10000}\textcolor{v}{101}\textcolor{a}{00100001}} } \\  %16
-    \uncover<2->{ \texttt{SET R1, 0xFF}   & }\uncover<5->{\texttt{\textcolor{r}{11111}\textcolor{v}{001}\textcolor{a}{11111111}} } \\  %31
+    \uncover<2->{ \texttt{SET R1, 0xFF}   & }\uncover<5->{\texttt{\textcolor{r}{11110}\textcolor{v}{001}\textcolor{a}{11111111}} } \\  %31
     \uncover<2->{ \texttt{SHL R7, 3}      & }\uncover<6->{\texttt{\textcolor{r}{11011}\textcolor{v}{111}\textcolor{verde}{011}\textcolor{gray}{00000}} } \\  %27
     \end{tabular}
     \end{textblock}
-    \begin{textblock}{100}(65,8)
-    \scriptsize
+    \begin{textblock}{100}(72,2)
+    \tiny
     \begin{tabular}{l|l|l}
     Instrucción            & Acción                                                             & Codificación               \\
     \hline
+    \texttt{Reservada}     & Codifica el \emph{Fetch} de instrucciones                          & \texttt{\textcolor{r}{00000}\textcolor{gray}{-----------}} \\  %00
     \texttt{ADD  Rx, Ry}   & \texttt{Rx} $\leftarrow$ \texttt{Rx + Ry}                          & \texttt{\textcolor{r}{00001}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %01
-    \texttt{ADC  Rx, Ry}   & \texttt{Rx} $\leftarrow$ \texttt{Rx + Ry + flag\_C}                & \texttt{\textcolor{r}{00010}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %02
+    \texttt{ADC  Rx, Ry}   & \texttt{Rx} $\leftarrow$ \texttt{Rx + Ry + Flag\_C}                & \texttt{\textcolor{r}{00010}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %02
     \texttt{SUB  Rx, Ry}   & \texttt{Rx} $\leftarrow$ \texttt{Rx - Ry}                          & \texttt{\textcolor{r}{00011}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %03
     \texttt{AND  Rx, Ry}   & \texttt{Rx} $\leftarrow$ \texttt{Rx and Ry}                        & \texttt{\textcolor{r}{00100}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %04
     \texttt{OR   Rx, Ry}   & \texttt{Rx} $\leftarrow$ \texttt{Rx or Ry}                         & \texttt{\textcolor{r}{00101}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %05
     \texttt{XOR  Rx, Ry}   & \texttt{Rx} $\leftarrow$ \texttt{Rx xor Ry}                        & \texttt{\textcolor{r}{00110}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %06
-    \texttt{CMP  Rx, Ry}   & Modifica \emph{flags} de \texttt{Rx - Ry}                          & \texttt{\textcolor{r}{00111}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %07
+    \texttt{CMP  Rx, Ry}   & Modifica \texttt{flags} de \texttt{Rx - Ry}                        & \texttt{\textcolor{r}{00111}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %07
     \texttt{MOV  Rx, Ry}   & \texttt{Rx} $\leftarrow$ \texttt{Ry}                               & \texttt{\textcolor{r}{01000}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %08
+    \hline
+    \texttt{PUSH |Rx|, Ry} & \texttt{Mem[Rx]} $\leftarrow$ \texttt{Ry} ; \texttt{Rx} $\leftarrow$ \texttt{Rx-1}  & \texttt{\textcolor{r}{01001}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %09
+    \texttt{POP  |Rx|, Ry} & \texttt{Rx} $\leftarrow$ \texttt{Rx+1} ; \texttt{Ry} $\leftarrow$ \texttt{Mem[Rx]}  & \texttt{\textcolor{r}{01010}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %10
+    \texttt{CALL |Rx|, Ry} & \texttt{Mem[Rx]} $\leftarrow$ \texttt{PC} ; \texttt{Rx} $\leftarrow$ \texttt{Rx-1} ; \texttt{PC} $\leftarrow$ \texttt{Ry}  & \texttt{\textcolor{r}{01011}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %11
+    \texttt{CALL |Rx|, M}  & \texttt{Mem[Rx]} $\leftarrow$ \texttt{PC} ; \texttt{Rx} $\leftarrow$ \texttt{Rx-1} ; \texttt{PC} $\leftarrow$ \texttt{M}   & \texttt{\textcolor{r}{01100}\textcolor{v}{XXX}\textcolor{a}{MMMMMMMM}} \\  %12
+    \texttt{RET  |Rx|}     & \texttt{Rx} $\leftarrow$ \texttt{Rx+1} ; \texttt{PC} $\leftarrow$ \texttt{Mem[Rx]}  & \texttt{\textcolor{r}{01101}\textcolor{v}{XXX}\textcolor{gray}{--------}} \\  %13
+    \hline
+    \texttt{Libre}         &                                                                    & \texttt{\textcolor{r}{01110}\textcolor{gray}{-----------}} \\  %14
+    \texttt{Libre}         &                                                                    & \texttt{\textcolor{r}{01111}\textcolor{gray}{-----------}} \\  %15
     \hline
     \texttt{STR  [M], Rx}  & \texttt{Mem[M]} $\leftarrow$ \texttt{Rx}                           & \texttt{\textcolor{r}{10000}\textcolor{v}{XXX}\textcolor{a}{MMMMMMMM}} \\  %16
     \texttt{LOAD Rx, [M]}  & \texttt{Rx} $\leftarrow$ \texttt{Mem[M]}                           & \texttt{\textcolor{r}{10001}\textcolor{v}{XXX}\textcolor{a}{MMMMMMMM}} \\  %17
@@ -160,13 +105,18 @@
     \texttt{JC M}          & Si \texttt{flag\_C=1} entonces \texttt{PC} $\leftarrow$ \texttt{M} & \texttt{\textcolor{r}{10101}\textcolor{gray}{---}\textcolor{a}{MMMMMMMM}} \\  %21
     \texttt{JZ M}          & Si \texttt{flag\_Z=1} entonces \texttt{PC} $\leftarrow$ \texttt{M} & \texttt{\textcolor{r}{10110}\textcolor{gray}{---}\textcolor{a}{MMMMMMMM}} \\  %22
     \texttt{JN M}          & Si \texttt{flag\_N=1} entonces \texttt{PC} $\leftarrow$ \texttt{M} & \texttt{\textcolor{r}{10111}\textcolor{gray}{---}\textcolor{a}{MMMMMMMM}} \\  %23
+    \texttt{JO M}          & Si \texttt{flag\_O=1} entonces \texttt{PC} $\leftarrow$ \texttt{M} & \texttt{\textcolor{r}{11000}\textcolor{gray}{---}\textcolor{a}{MMMMMMMM}} \\  %24
     \hline
-    \texttt{INC Rx}        & \texttt{Rx} $\leftarrow$ \texttt{Rx + 1}                           & \texttt{\textcolor{r}{11000}\textcolor{v}{XXX}\textcolor{gray}{--------}} \\  %24
-    \texttt{DEC Rx}        & \texttt{Rx} $\leftarrow$ \texttt{Rx - 1}                           & \texttt{\textcolor{r}{11001}\textcolor{v}{XXX}\textcolor{gray}{--------}} \\  %25
-    \texttt{SHR Rx, t}     & \texttt{Rx} $\leftarrow$ \texttt{Rx} \verb|<<| \texttt{t}          & \texttt{\textcolor{r}{11010}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %26
-    \texttt{SHL Rx, t}     & \texttt{Rx} $\leftarrow$ \texttt{Rx} \verb|>>| \texttt{t}          & \texttt{\textcolor{r}{11011}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %27
+    \texttt{SHRA Rx, t}    & \texttt{Rx} $\leftarrow$ \texttt{Rx} \verb|>>>| \texttt{t}         & \texttt{\textcolor{r}{11001}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %25
+    \texttt{SHR Rx, t}     & \texttt{Rx} $\leftarrow$ \texttt{Rx} \verb|>>| \texttt{t}          & \texttt{\textcolor{r}{11010}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %26
+    \texttt{SHL Rx, t}     & \texttt{Rx} $\leftarrow$ \texttt{Rx} \verb|<<| \texttt{t}          & \texttt{\textcolor{r}{11011}\textcolor{v}{XXX}\textcolor{verde}{YYY}\textcolor{gray}{-----}} \\  %27
     \hline
-    \texttt{SET Rx, M}     & \texttt{Rx} $\leftarrow$ \texttt{M}                                & \texttt{\textcolor{r}{11111}\textcolor{v}{XXX}\textcolor{a}{MMMMMMMM}} \\  %31
+    \texttt{READF Rx}      & \texttt{Rx}    $\leftarrow$ \texttt{Flags}                         & \texttt{\textcolor{r}{11100}\textcolor{v}{XXX}\textcolor{gray}{--------}} \\  %28
+    \texttt{LOADF Rx}      & \texttt{Flags} $\leftarrow$ \texttt{Rx}                            & \texttt{\textcolor{r}{11101}\textcolor{v}{XXX}\textcolor{gray}{--------}} \\  %29
+    \hline
+    \texttt{SET Rx, M}     & \texttt{Rx} $\leftarrow$ \texttt{M}                                & \texttt{\textcolor{r}{11110}\textcolor{v}{XXX}\textcolor{a}{MMMMMMMM}} \\  %30
+    \hline
+    \texttt{Libre}         &                                                                    & \texttt{\textcolor{r}{11111}\textcolor{gray}{-----------}} \\  %31
     \end{tabular}\\
     \vspace{0.2cm}
     Los bits indicados con \textcolor{gray}{\texttt{-}} deben valer cero.
@@ -192,8 +142,8 @@ next: ADD R0, R1
     \color{gray}
     Memoria
     \begin{verbatim}
-00 | f8 01 
-02 | f9 05 
+00 | f0 01 
+02 | f1 05 
 04 | 08 20 
 06 | a0 04
     \end{verbatim}
@@ -288,7 +238,7 @@ mayor:  DB 0x00
     \end{verbatim}
     \color{black}
     \end{textblock}
-    \begin{textblock}{100}(80,5)
+    \begin{textblock}{100}(78,3)
     \textbf{Seguimiento}\\
     \small \textcolor{verdeuca}{Suponer inicialmente todos los registros en cero.}
     \normalsize
@@ -314,6 +264,91 @@ mayor:  DB 0x00
     \textcolor{verdeuca}{
     \textbf{Nota:}\\
     \texttt{DB} (Define Byte) es una meta instrucción que permite escribir bytes en la memoria.}
+    } 
+    \end{textblock}
+\end{frame}
+
+
+\begin{frame}[fragile,t]{Arquitectura OrgaSmall}{Ejemplos en lenguaje ensamblador}
+    \begin{textblock}{60}(10,13)
+    \begin{center}
+    Función $3 \cdot n + 1$
+    \end{center}
+    \end{textblock}
+    \begin{textblock}{100}(10,23)
+    \scriptsize
+    \textcolor{naranjauca}{Ensamblador}
+    \vspace{-0.3cm}
+    \begin{verbatim}
+main:  SET R7, 0xFF
+       LOAD R0, [data]
+       CALL |R7|, f3n1
+       STR [data], R0
+halt:  JMP halt
+f3n1:  PUSH |R7|, R1
+       MOV R1, R0
+       ADD R0, R1
+       ADD R0, R1
+       SET R1, 1
+       ADD R0, R1
+       POP |R7|, R1
+       RET |R7|
+data:  DB 0x23
+    \end{verbatim}
+    \end{textblock}
+    \begin{textblock}{100}(50,23)
+    \scriptsize
+    \color{gray}
+    Memoria
+    \vspace{-0.3cm}
+    \begin{verbatim}
+00 | f7 ff 
+02 | 88 1a 
+04 | 67 0a 
+06 | 80 1a 
+08 | a0 08 
+0a | 4f 20 
+0c | 41 00 
+0e | 08 20 
+10 | 08 20 
+12 | f1 01 
+14 | 08 20 
+16 | 57 20 
+18 | 6f 00 
+1a | 23 
+    \end{verbatim}
+    \color{black}
+    \end{textblock}
+    \begin{textblock}{100}(70,3)
+    \textbf{Seguimiento}\\
+    \small \textcolor{verdeuca}{Suponer inicialmente todos los registros en cero.}
+    \normalsize
+    \begin{tabular}{|c|l|l|} \hline
+    \texttt{PC} & Instrucción            & Resultado \\ \hline
+    \uncover<2->{\texttt{00}  } & \uncover<2->{\texttt{SET R7, 0xFF}     } & \uncover<2->{\texttt{R7 $\leftarrow$ FF}       } \\
+    \uncover<3->{\texttt{02}  } & \uncover<3->{\texttt{LOAD R0, [data]}  } & \uncover<3->{\texttt{R0 $\leftarrow$ 23}       } \\
+    \uncover<4->{\texttt{04}  } & \uncover<4->{\texttt{CALL |R7|, f3n1}  } & \uncover<4->{ \scriptsize \texttt{MEM[FF]$\leftarrow$06; R7$\leftarrow$FE; PC$\leftarrow$0a }} \\
+%                                 &                                          & \uncover<4->{ \texttt{PC$\leftarrow$0a}        } \\
+    \uncover<5->{\texttt{0a}  } & \uncover<5->{\texttt{PUSH |R7|, R1}    } & \uncover<5->{ \scriptsize \texttt{MEM[FE]$\leftarrow$00; R7$\leftarrow$FD}} \\
+    \uncover<6->{\texttt{0c}  } & \uncover<6->{\texttt{MOV R1, R0}       } & \uncover<6->{\texttt{R1 $\leftarrow$ 23}       } \\
+    \uncover<7->{\texttt{0e}  } & \uncover<7->{\texttt{ADD R0, R1}       } & \uncover<7->{\texttt{R0 $\leftarrow$ 46}       } \\
+    \uncover<8->{\texttt{10}  } & \uncover<8->{\texttt{ADD R0, R1}       } & \uncover<8->{\texttt{R0 $\leftarrow$ 69}       } \\
+    \uncover<9->{\texttt{12}  } & \uncover<9->{\texttt{SET R1, 1}        } & \uncover<9->{\texttt{R1 $\leftarrow$ 1}        } \\
+    \uncover<10->{\texttt{14} } & \uncover<10->{\texttt{ADD R0, R1}      } & \uncover<10->{\texttt{R0 $\leftarrow$ 6A}      } \\
+    \uncover<11->{\texttt{16} } & \uncover<11->{\texttt{POP |R7|, R1}    } & \uncover<11->{ \scriptsize \texttt{R7$\leftarrow$FE; R1$\leftarrow$00}} \\
+    \uncover<12->{\texttt{18} } & \uncover<12->{\texttt{RET |R7|}        } & \uncover<12->{ \scriptsize \texttt{R7$\leftarrow$FF; PC$\leftarrow$06}} \\
+    \uncover<13->{\texttt{06} } & \uncover<13->{\texttt{STR [data], R0}  } & \uncover<13->{\texttt{MEM[1a] $\leftarrow$ 6A} } \\ 
+    \uncover<14->{\texttt{08} } & \uncover<14->{\texttt{JMP halt}        } & \uncover<14->{\texttt{PC $\leftarrow$ 08}      } \\ 
+    \uncover<15->{$\cdots$    } & \uncover<15->{$\cdots$                 } & \uncover<15->{$\cdots$} \\
+    \end{tabular}
+    \end{textblock}
+    \begin{textblock}{65}(5,75)
+    \only<4->{
+    \scriptsize
+    \textcolor{verdeuca}{
+    \textbf{Nota:}\\
+    Las instrucciones \texttt{CALL} y \texttt{RET} permiten llamar a funciones.
+    Mientras que \texttt{PUSH} y \texttt{POP} salvar información en la pila. }
     } 
     \end{textblock}
 \end{frame}
@@ -631,11 +666,11 @@ Además se puede utilizar el carácter ``;'' para indicar comentarios.
 \end{frame}
 
 \begin{frame}[fragile,t]{Organización de OrgaSmall}
-\includegraphics[scale=0.27]{img/0_dataPath.png}
+\includegraphics[scale=1.15]{img/0_dataPath.png}
 \end{frame}
 
 \begin{frame}[fragile,t]{Organización de OrgaSmall}{\textbf{RB} - \texttt{Registers} (Banco de Registros)}
-    \begin{center} \includegraphics[scale=0.22]{img/1_registers.png} \end{center}
+    \begin{center} \includegraphics[scale=0.92]{img/1_registers.png} \end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Organización de OrgaSmall}{\textbf{PC} - \texttt{PC} (Contador de Programa)}
@@ -643,11 +678,11 @@ Además se puede utilizar el carácter ``;'' para indicar comentarios.
 \end{frame}
 
 \begin{frame}[fragile,t]{Organización de OrgaSmall}{\textbf{ALU} - \texttt{ALU} (Unidad Aritmético Lógica)}
-    \begin{center} \includegraphics[scale=0.22]{img/4_ALU.png} \end{center}
+    \begin{center} \includegraphics[scale=0.9]{img/3_ALU.png} \end{center}
 \end{frame}
 
 \begin{frame}[fragile,t]{Organización de OrgaSmall}{\textbf{MM} - \texttt{Memory} (Memoria)}
-    \begin{center} \includegraphics[scale=0.3]{img/5_Memory.png} \end{center}
+    \begin{center} \includegraphics[scale=1.3]{img/4_Memory.png} \end{center}
 \end{frame}
 
 \begin{frame}[fragile,t]{Organización de OrgaSmall}{\textbf{DE} - \texttt{Decode} (Decodificador de Instrucciones)}
@@ -655,7 +690,7 @@ Además se puede utilizar el carácter ``;'' para indicar comentarios.
 \end{frame}
 
 \begin{frame}[fragile,t]{Organización de OrgaSmall}{\textbf{CU} - \texttt{ControlUnit} (Unidad de Control)}
-    \begin{center} \includegraphics[scale=0.27]{img/7_ControlUnit.png} \end{center}
+    \begin{center} \includegraphics[scale=1.06]{img/8_ControlUnit.png} \end{center}
 \end{frame}
 
 \end{document}

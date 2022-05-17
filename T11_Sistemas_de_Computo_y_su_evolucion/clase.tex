@@ -4,80 +4,9 @@
 % https://github.com/fokerman/computingSystemsCourse
 
 \documentclass[aspectratio=169]{beamer}
-% \documentclass[aspectratio=169, handout]{beamer}
-
-% % % Packages
-\usepackage[sfdefault]{AlegreyaSans}
-\usepackage{inconsolata}
-\usepackage{multicol}
-\usepackage{multirow}
-\usepackage[spanish]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{enumerate}
-\usepackage{color}
-\usepackage{xcolor}
-\usepackage[absolute,overlay]{textpos}
-  \setlength{\TPHorizModule}{1mm}
-  \setlength{\TPVertModule}{1mm}
-\usepackage{framed}
-\usepackage{mfirstuc} % para poner en mayusculas la primer letra
-\usepackage{xspace} % para crear espacios en comandos 
-\usepackage{pbox}
-\usepackage{tikz}
-\usepackage{mathabx}
-\usepackage{colortbl}
-\usepackage{ulem} % para tener tachado
-
-% % % Beamer config
-\usetheme{Pittsburgh}
-\usecolortheme[rgb={1,0.48,0.0}]{structure}
-\setbeamercolor{block title}{fg=white,bg=verdeuca}
-\xdefinecolor{verdeuca}{rgb}{0.0,0.48,0.54}
-\xdefinecolor{naranjauca}{rgb}{1,0.48,0.0}
-\setbeamercolor{palette quaternary}{fg=white,bg=verdeuca}
-\setbeamertemplate{title page}[default][colsep=-4bp, rounded=true] % remove title shadow
-\setbeamertemplate{frametitle}[default][colsep=-2bp, shadow=false] % remove frame title shadow
-\setbeamertemplate{navigation symbols}{} % remove navigation symbols
-\beamertemplatenavigationsymbolsempty
-
-% % % Colors
-\definecolor{AzulClaro}{rgb}{.31,.506,.741}
-\definecolor{Gris}{gray}{0.8}
-\definecolor{Celeste}{rgb}{.255,.41,.884}
-\definecolor{Rojo}{rgb}{1, 0, 0}
-\definecolor{a}{rgb}{0.0, 0.53, 0.74}
-\definecolor{r}{rgb}{0.89, 0.0, 0.13}
-\definecolor{v}{rgb}{0.0, 0.5, 0.0}
-\definecolor{y}{rgb}{0.0, 0.5, 0.5}
-\definecolor{rojo}{HTML}{F1521B}
-\definecolor{verde}{HTML}{80CD29}
-\definecolor{amarillo}{HTML}{FABC09}
-\definecolor{azul}{HTML}{00ADF1}
-
-% % % Rename
-\newcommand{\tab}[0]{\hspace{15pt}}
-
-% % % Blocks
-\setbeamercolor{block body}{fg=black, bg=black!10}
-\setbeamercolor{block title}{fg=black, bg=black!20}
-\setbeamercolor{coloredboxstuffNaranja}{fg=naranjauca,bg=black!10} %% PARA LOS BOX
-\setbeamercolor{coloredboxstuffVerde}{fg=verdeuca,bg=black!10} %% PARA LOS BOX
-
-% % % Special Packages
-\usepackage{fontawesome}
-\usepackage{pgf}
-
-\usepackage{array}
-\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
-\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
-\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
-\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
-
-% % % Start
+\usepackage{../packages}
 
 \title{\Huge Sistemas de Cómputo y su evolución}
-% \subtitle{}
-
 \author{David Alejandro González Márquez}
 \input{../university}
 \date{}
@@ -86,10 +15,17 @@
 
 \begin{frame}[plain]
     \titlepage
-    \begin{textblock}{140}(10,70)
-    \textcolor{rojo}{
-    \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+    \begin{textblock}{100}(30,80)
+    \begin{tcolorbox}[size=small,width=\textwidth,colback={gray!30},title={}]
+    \begin{center}
+     \scriptsize Clase disponible en: \url{https://github.com/fokerman/computingSystemsCourse}
+    \end{center}
+    \end{tcolorbox}
     \end{textblock}
+%     \begin{textblock}{140}(10,70)
+%     \textcolor{rojo}{
+%     \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+%     \end{textblock}
 \end{frame}
 
 % Historia del hardware. Evolución. Primeros sistemas de cómputo. Evolución tecnológica. Máquinas mecánicas, valvulares. El transistor. Circuito integrado. Procesador. Ejemplo 4004. IBM360.
@@ -247,10 +183,31 @@
     \end{textblock}
 \end{frame}
 
+\begin{frame}[fragile,t]{ARPANET\\ 1970}
+    \begin{textblock}{100}(20,10)
+    \includegraphics[scale=0.14]{img/arpanet1970.png}\\
+    \end{textblock}
+    \begin{textblock}{100}(110,87)
+    \tiny \textbf{Fuente:} ARPANET Completion Report - January 4, 1978
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{ARPANET\\ 1977}
+    \begin{textblock}{100}(25,1)
+    \includegraphics[scale=0.122]{img/arpanet1977.png}\\
+    \end{textblock}
+    \begin{textblock}{100}(110,87)
+    \tiny \textbf{Fuente:} ARPANET Completion Report - January 4, 1978
+    \end{textblock}
+\end{frame}
+
 \begin{frame}[fragile,t]{Evolución del rendimiento de procesadores: ``Ley'' de Moore}
+    \vspace{-0.3cm}
     \begin{center}
     \includegraphics[scale=1]{img/processor-performance_ES.pdf}
     \end{center}
+    \vspace{-0.5cm}
+    \tiny \textbf{Fuente:} Computer Organization and Design. The Hardware / Software Interface. David A. Patterson, John L. Hennessy. Fourth Edition. Morgan Kaufmann. (pag. 42)
 \end{frame}
 
 \begin{frame}[fragile,t]{Relación entre la velocidad de la memoria y el CPU}

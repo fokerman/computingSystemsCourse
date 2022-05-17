@@ -4,79 +4,9 @@
 % https://github.com/fokerman/computingSystemsCourse
 
 \documentclass[aspectratio=169]{beamer}
-% \documentclass[aspectratio=169, handout]{beamer}
+\usepackage{../packages}
 
-% % % Packages
-\usepackage[sfdefault]{AlegreyaSans}
-\usepackage{inconsolata}
-\usepackage{multicol}
-\usepackage{multirow}
-\usepackage[spanish]{babel}
-\usepackage[utf8]{inputenc}
-\usepackage{enumerate}
-\usepackage{color}
-\usepackage{xcolor}
-\usepackage[absolute,overlay]{textpos}
-  \setlength{\TPHorizModule}{1mm}
-  \setlength{\TPVertModule}{1mm}
-\usepackage{framed}
-\usepackage{mfirstuc} % para poner en mayusculas la primer letra
-\usepackage{xspace} % para crear espacios en comandos 
-\usepackage{pbox}
-\usepackage{tikz}
-\usepackage{mathabx}
-\usepackage{colortbl}
-\usepackage{ulem} % para tener tachado
-
-% % % Beamer config
-\usetheme{Pittsburgh}
-\usecolortheme[rgb={1,0.48,0.0}]{structure}
-\setbeamercolor{block title}{fg=white,bg=verdeuca}
-\xdefinecolor{verdeuca}{rgb}{0.0,0.48,0.54}
-\xdefinecolor{naranjauca}{rgb}{1,0.48,0.0}
-\setbeamercolor{palette quaternary}{fg=white,bg=verdeuca}
-\setbeamertemplate{title page}[default][colsep=-4bp, rounded=true] % remove title shadow
-\setbeamertemplate{frametitle}[default][colsep=-2bp, shadow=false] % remove frame title shadow
-\setbeamertemplate{navigation symbols}{} % remove navigation symbols
-\beamertemplatenavigationsymbolsempty
-
-% % % Colors
-\definecolor{AzulClaro}{rgb}{.31,.506,.741}
-\definecolor{Gris}{gray}{0.8}
-\definecolor{Celeste}{rgb}{.255,.41,.884}
-\definecolor{Rojo}{rgb}{1, 0, 0}
-\definecolor{a}{rgb}{0.0, 0.53, 0.74}
-\definecolor{r}{rgb}{0.89, 0.0, 0.13}
-\definecolor{v}{rgb}{0.0, 0.5, 0.0}
-\definecolor{y}{rgb}{0.0, 0.5, 0.5}
-\definecolor{rojo}{HTML}{F1521B}
-\definecolor{verde}{HTML}{80CD29}
-\definecolor{amarillo}{HTML}{FABC09}
-\definecolor{azul}{HTML}{00ADF1}
-
-% % % Rename
-\newcommand{\tab}[0]{\hspace{15pt}}
-
-% % % Blocks
-\setbeamercolor{block body}{fg=black, bg=black!10}
-\setbeamercolor{block title}{fg=black, bg=black!20}
-\setbeamercolor{coloredboxstuffNaranja}{fg=naranjauca,bg=black!10} %% PARA LOS BOX
-\setbeamercolor{coloredboxstuffVerde}{fg=verdeuca,bg=black!10} %% PARA LOS BOX
-
-% % % Special Packages
-\usepackage{fontawesome}
-\usepackage{pgf}
-
-\usepackage{array}
-\newcommand{\PreserveBackslash}[1]{\let\temp=\\#1\let\\=\temp}
-\newcolumntype{C}[1]{>{\PreserveBackslash\centering}p{#1}}
-\newcolumntype{R}[1]{>{\PreserveBackslash\raggedleft}p{#1}}
-\newcolumntype{L}[1]{>{\PreserveBackslash\raggedright}p{#1}}
-
-% % % Start
 \title{\Huge Hardware de Entrada-Salida}
-% \subtitle{}
-
 \author{David Alejandro González Márquez}
 \input{../university}
 \date{}
@@ -85,10 +15,17 @@
 
 \begin{frame}[plain]
     \titlepage
-    \begin{textblock}{140}(10,70)
-    \textcolor{rojo}{
-    \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+    \begin{textblock}{100}(30,80)
+    \begin{tcolorbox}[size=small,width=\textwidth,colback={gray!30},title={}]
+    \begin{center}
+     \scriptsize Clase disponible en: \url{https://github.com/fokerman/computingSystemsCourse}
+    \end{center}
+    \end{tcolorbox}
     \end{textblock}
+%     \begin{textblock}{140}(10,70)
+%     \textcolor{rojo}{
+%     \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+%     \end{textblock}
 \end{frame}
 
 \begin{frame}[fragile]{Subsistema de Entrada-Salida}
@@ -469,6 +406,179 @@
 
 % \begin{frame}[fragile,t]{Ejemplo: ``Escribir en disco''}
 % FIGURA
+% \end{frame}
+
+\begin{frame}[fragile,t]{Ejemplo: OrgaSmallWithIO}
+    \begin{textblock}{70}(3,18) \only<1->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer1.pdf}} \end{textblock}
+    \begin{textblock}{70}(3,18) \only<2->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer2.pdf}} \end{textblock} % output wire
+    \begin{textblock}{70}(3,18) \only<4->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer3.pdf}} \end{textblock} % input wire
+    \begin{textblock}{70}(3,18) \only<2->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer4.pdf}} \end{textblock} % out port
+    \begin{textblock}{70}(3,18) \only<3->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer5.pdf}} \end{textblock} % in port
+    \begin{textblock}{70}(3,18) \only<4->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer6.pdf}} \end{textblock} % interrupt port
+    \begin{textblock}{70}(3,18) \only<5->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer7.pdf}} \end{textblock} % Architecture
+    \begin{textblock}{70}(3,18) \only<6->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer8.pdf}} \end{textblock} % memory
+\end{frame}
+
+\begin{frame}[fragile,t]{Ejemplo: OrgaSmallWithIO}
+\begin{textblock}{70}(10,15)
+\textcolor{naranjauca}{\textbf{\texttt{Rutina Principal}}}
+\scriptsize
+\begin{verbatim}
+main:
+    while(true):
+        MEM[portOut] = 1
+        sleep()
+        MEM[portOut] = 0
+        sleep()
+        
+sleep:
+    v = MEM[data]
+    while(v != 0):
+        v = v-1
+\end{verbatim}
+\vspace{-0.6cm}
+{ \color{red}
+\begin{verbatim}
+        MEM[portOut] = MEM[portOut] + 0x8
+\end{verbatim}
+}
+\end{textblock}
+
+\begin{textblock}{70}(70,15)
+\textcolor{naranjauca}{\textbf{\texttt{Rutina de atención de interrupciones}}}
+\scriptsize
+\begin{verbatim}
+int:
+    p = MEM[portInterrupt]
+    if(p == 1):
+        MEM[data] = MEM[data]+1
+    if(p == 2):
+        MEM[data] = MEM[data]-1
+\end{verbatim}
+\end{textblock}
+
+\end{frame}
+
+\begin{frame}[fragile,t]{Ejemplo: OrgaSmallWithIO}
+    \begin{textblock}{70}(5,10) \only<5->{\includegraphics[scale=0.58]{img/rutina-layer1.pdf}} \end{textblock}  % COLOR flechas sleep
+    \begin{textblock}{70}(5,10) \only<7->{\includegraphics[scale=0.58]{img/rutina-layer2.pdf}} \end{textblock}  % COLOR data
+    \begin{textblock}{70}(5,10) \only<5->{\includegraphics[scale=0.58]{img/rutina-layer3.pdf}} \end{textblock}  % COLOR sleep
+    \begin{textblock}{70}(5,10) \only<6->{\includegraphics[scale=0.58]{img/rutina-layer4.pdf}} \end{textblock}  % COLOR sleep counter
+    \begin{textblock}{70}(5,10) \only<1->{\includegraphics[scale=0.58]{img/rutina-layer5.pdf}} \end{textblock}  % Memory
+    \begin{textblock}{70}(5,10) \only<2->{\includegraphics[scale=0.58]{img/rutina-layer6.pdf}} \end{textblock}  % Main
+    \begin{textblock}{70}(5,10) \only<3->{\includegraphics[scale=0.58]{img/rutina-layer7.pdf}} \end{textblock}  % Loop
+    \begin{textblock}{70}(5,10) \only<7->{\includegraphics[scale=0.58]{img/rutina-layer8.pdf}} \end{textblock}  % Data
+    \begin{textblock}{70}(5,10) \only<5->{\includegraphics[scale=0.58]{img/rutina-layer9.pdf}} \end{textblock}  % Sleep
+    \begin{textblock}{70}(5,10) \only<8->{\includegraphics[scale=0.58]{img/rutina-layer10.pdf}} \end{textblock} % interrupt_handler
+    \begin{textblock}{70}(5,10) \only<4->{\includegraphics[scale=0.58]{img/rutina-layer11.pdf}} \end{textblock} % whileTrue
+    \begin{textblock}{70}(5,10) \only<6->{\includegraphics[scale=0.58]{img/rutina-layer12.pdf}} \end{textblock} % ciclo
+    \begin{textblock}{70}(5,10) \only<9->{\includegraphics[scale=0.58]{img/rutina-layer13.pdf}} \end{textblock} % inc dec
+    \begin{textblock}{70}(5,10) \only<10->{\includegraphics[scale=0.58]{img/rutina-layer14.pdf}} \end{textblock} % end_interrupt
+\end{frame}
+
+\begin{frame}[fragile]{Ejemplo: OrgaSmallWithIO}
+    \begin{center}
+    \huge ¡Manos a la obra!
+    \end{center}
+\end{frame}
+
+% \begin{frame}[fragile,t]{Ejemplo: OrgaSmallWithIO}
+% \tiny
+% \begin{textblock}{70}(10,8)
+% \begin{verbatim}
+% ; Memory
+% ; 0x00 = entry point
+% ; ...
+% ; 0xFB = stack base
+% ; 0xFC = port Output
+% ; 0xFD = port Input
+% ; 0xFE = port Interrupt
+% ; 0xFF = Interrupt rutine pointer
+% 
+% ; main
+% SET R0, 0x0
+% SET R1, 0x1
+% 
+% ; set STACK
+% SET R7, 0xFB
+% 
+% ; Set Interrupt Rutine
+% SET R0, interrupt_handler
+% STR  [0xFF], R0
+% 
+% ; Set Interrupt Flag
+% SET R0, 0x10
+% LOADF R0
+% 
+% ; loop
+% whileTrue:
+%     STR [0xFC], R0
+%     CALL |R7|, sleep
+%     STR [0xFC], R1
+%     CALL |R7|, sleep
+% JMP whileTrue
+% \end{verbatim}
+% \end{textblock}
+% \begin{textblock}{70}(65,2)
+% \begin{verbatim}
+% sleep:
+%     SET R3, 0x8
+%     LOAD R2, [data]
+%     ciclo:
+%         SUB R2, R1
+%         CMP R2, R0
+%         JZ end_sleep
+%         ; start SLEEP COUNTER
+%             LOAD R4, [0xFC]
+%             ADD R4, R3
+%             STR [0xFC], R4
+%         ; end SLEEP COUNTER
+%         JMP ciclo
+%     end_sleep:
+%     RET  |R7|
+% 
+% data:
+%     DB 0x0F
+% \end{verbatim}
+% \end{textblock}
+% \begin{textblock}{70}(115,2)
+% \begin{verbatim}
+% interrupt_handler:
+%     PUSH |R7|, R0
+%     PUSH |R7|, R1
+%     PUSH |R7|, R2
+%     PUSH |R7|, R3
+%     PUSH |R7|, R4
+%     SET R0, 0x1
+%     SET R1, 0x2
+%     LOAD R3, [0xFE]
+%     CMP R3, R0
+%     JZ inc
+%     CMP R3, R1
+%     JZ dec
+%     end_interrupt:
+%     POP  |R7|, R4
+%     POP  |R7|, R3
+%     POP  |R7|, R2
+%     POP  |R7|, R1
+%     POP  |R7|, R0
+%     RETI |R7|
+% 
+%     inc:
+%         SET R0, 1
+%         LOAD R3, [data]
+%         ADD R3, R0
+%         STR [data], R3
+%     JMP end_interrupt
+%     
+%     dec:
+%         SET R0, 1
+%         LOAD R3, [data]
+%         SUB R3, R0
+%         STR [data], R3
+%     JMP end_interrupt
+% \end{verbatim}
+% \end{textblock}
 % \end{frame}
 
 \begin{frame}[fragile]
