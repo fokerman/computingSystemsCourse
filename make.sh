@@ -40,3 +40,6 @@ cd -
 cd T14_Compilador_Ensamblador_Linker
 make
 cd -
+cd T15_Introduccion_a_los_Sistemas_Operativos
+make
+cd -

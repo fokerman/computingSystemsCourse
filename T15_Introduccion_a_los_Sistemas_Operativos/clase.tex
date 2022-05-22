@@ -479,6 +479,28 @@
     \end{textblock}
 \end{frame}
 
+\begin{frame}[fragile]{Llamadas al Sistema Operativo: ejemplos (\emph{buffer})}
+    \begin{textblock}{60}(5,13) \uncover<1->{\includegraphics[scale=0.65]{img/llamado_libc-layer1.pdf}} \end{textblock}
+    \begin{textblock}{60}(5,13) \uncover<2->{\includegraphics[scale=0.65]{img/llamado_libc-layer2.pdf}} \end{textblock}
+    \begin{textblock}{60}(5,13) \uncover<3->{\includegraphics[scale=0.65]{img/llamado_libc-layer3.pdf}} \end{textblock}
+    \begin{textblock}{60}(5,13) \uncover<4->{\includegraphics[scale=0.65]{img/llamado_libc-layer4.pdf}} \end{textblock}
+    \begin{textblock}{60}(5,13) \uncover<5->{\includegraphics[scale=0.65]{img/llamado_libc-layer5.pdf}} \end{textblock}
+    \begin{textblock}{60}(5,13) \uncover<6->{\includegraphics[scale=0.65]{img/llamado_libc-layer6.pdf}} \end{textblock}
+    \begin{textblock}{60}(5,13) \uncover<7->{\includegraphics[scale=0.65]{img/llamado_libc-layer7.pdf}} \end{textblock}
+    \begin{textblock}{60}(5,13) \uncover<7->{\includegraphics[scale=0.65]{img/llamado_libc-layer8.pdf}} \end{textblock}
+    \begin{textblock}{60}(92,8)
+    \begin{enumerate}
+    \setlength\itemsep{0.4cm}
+     \item<2-> La aplicación llama a \texttt{printf}.
+     \item<3-> La función \texttt{printf} es parte de la \texttt{libc} y realizar el llamado al sistema \texttt{write}.
+     \item<4-> El SO. resuelve el llamado. 
+     \item<5-> El texto a imprimir se almacena en un \emph{buffer} dentro del SO.
+     \item<6-> El SO. retorna el control a la aplicación (o a otra aplicación).
+     \item<7-> El SO. resuelve las operaciones de entrada/salida escribiendo en la plantalla. 
+    \end{enumerate}
+    \end{textblock}
+\end{frame}
+
 \begin{frame}{Estructura del \emph{kernel}}
     El \emph{kernel} es el \textbf{núcleo} del Sistema Operativo.
     Contiene el código más básico de soporte para la admistración del Hardware y recursos del sistema.\\
