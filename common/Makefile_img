@@ -31,7 +31,7 @@ ifeq ($(inkscapeVersion),0.92.5)
 		cp $$(pwd)/$$(basename $< .svg)-layer1.pdf $$(pwd)/$$(basename $< .svg).pdf ;\
 	fi
 endif
-ifneq ($(filter $(inkscapeVersion), 1.1 1.0.1 1.0.2 1.1.1 1.1.2 1.2),)
+ifneq ($(filter $(inkscapeVersion), 1.1 1.0.1 1.0.2 1.1.1 1.1.2),)
 	@if [ $$(inkscape --query-all $< | grep layer | wc -l ) = 1 ] ;\
 	then \
 	echo "(1) $@" ;\

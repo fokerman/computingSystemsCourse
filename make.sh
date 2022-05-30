@@ -43,3 +43,9 @@ cd -
 cd T15_Introduccion_a_los_Sistemas_Operativos
 make
 cd -
+cd T16_Procesos
+make
+cd -
+cd T17_Planificacion_de_Procesos
+make
+cd -

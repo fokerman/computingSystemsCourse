@@ -41,5 +41,11 @@ cd T14_Compilador_Ensamblador_Linker
 make cleanall
 cd -
 cd T15_Introduccion_a_los_Sistemas_Operativos
-mae cleanall
+make cleanall
+cd -
+cd T16_Procesos
+make cleanall
+cd -
+cd T17_Planificacion_de_Procesos
+make cleanall
 cd -
