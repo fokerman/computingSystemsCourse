@@ -49,3 +49,6 @@ cd -
 cd T17_Planificacion_de_Procesos
 make cleanall
 cd -
+cd T18_Sincronizacion_de_Procesos
+make cleanall
+cd -
