@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="30.848701mm"
+   height="65.268616mm"
+   viewBox="0 0 30.848701 65.268616"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="monoprograma.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     inkscape:zoom="0.37014941"
+     inkscape:cx="322.8426"
+     inkscape:cy="43.225788"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer3"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <defs
+     id="defs2" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-27.248294,-81.707625)">
+    <g
+       id="g13614">
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="41.23978"
+         y="113.2963"
+         id="text1962"><tspan
+           sodipodi:role="line"
+           id="tspan1960"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="41.23978"
+           y="113.2963">Programa</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="41.23978"
+           y="118.3763"
+           id="tspan1964">de usuario</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="41.248249"
+         y="87.895195"
+         id="text1962-3"><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="41.248249"
+           y="87.895195"
+           id="tspan1964-7">Drivers de</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="41.248249"
+           y="92.975189"
+           id="tspan7845">dispositivos</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="41.248249"
+           y="98.055183"
+           id="tspan7847">en ROM</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="41.239784"
+         y="133.64281"
+         id="text1962-3-5"><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="41.239784"
+           y="133.64281"
+           id="tspan7847-6">Sistema</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="41.239784"
+           y="138.72281"
+           id="tspan8809">operativo</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="41.239784"
+           y="143.8028"
+           id="tspan8811">en RAM</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="57.127502"
+         y="146.87888"
+         id="text1962-3-5-2-9-5"><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="57.127502"
+           y="146.87888"
+           id="tspan8811-2-2-9">0</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         id="rect11985"
+         width="27.517971"
+         height="19.081406"
+         x="27.480803"
+         y="81.940125" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         id="rect11985-7"
+         width="27.517971"
+         height="19.081406"
+         x="27.480801"
+         y="127.66234" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         id="rect11985-8"
+         width="27.517971"
+         height="26.6408"
+         x="27.480799"
+         y="101.02154" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(-27.248294,-81.707625)">
+    <g
+       id="g13596"
+       transform="translate(-47.625002)">
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="88.864853"
+         y="122.83698"
+         id="text1962-7"><tspan
+           sodipodi:role="line"
+           id="tspan1960-0"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="88.864853"
+           y="122.83698">Programa</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="88.864853"
+           y="127.91698"
+           id="tspan1964-9">de usuario</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="88.864784"
+         y="87.920593"
+         id="text1962-3-5-2"><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="88.864784"
+           y="87.920593"
+           id="tspan7847-6-9">Sistema</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="88.864784"
+           y="93.000587"
+           id="tspan8809-1">operativo</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="88.864784"
+           y="98.080582"
+           id="tspan8811-2">en ROM</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="104.75256"
+         y="146.87888"
+         id="text1962-3-5-2-9-3"><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="104.75256"
+           y="146.87888"
+           id="tspan8811-2-2-7">0</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         id="rect12121"
+         width="27.517971"
+         height="19.081406"
+         x="75.105804"
+         y="81.940125" />
+      <path
+         id="rect12123"
+         style="fill:none;stroke:#000000;stroke-width:1.75748;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         d="m 283.86523,381.81445 v 100.68946 72.11718 H 387.86914 V 482.50391 381.81445 Z"
+         transform="scale(0.26458333)" />
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     transform="translate(-27.248294,-81.707625)">
+    <g
+       id="g13583"
+       transform="translate(-95.250003)">
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="136.48985"
+         y="103.75572"
+         id="text1962-7-3"><tspan
+           sodipodi:role="line"
+           id="tspan1960-0-6"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="136.48985"
+           y="103.75572">Programa</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="136.48985"
+           y="108.83572"
+           id="tspan1964-9-0">de usuario</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="136.48978"
+         y="133.64281"
+         id="text1962-3-5-6"><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="136.48978"
+           y="133.64281"
+           id="tspan7847-6-2">Sistema</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="136.48978"
+           y="138.72281"
+           id="tspan8809-6">operativo</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="136.48978"
+           y="143.8028"
+           id="tspan8811-1">en RAM</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:4.23333px;line-height:1.2;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="152.37729"
+         y="146.87888"
+         id="text1962-3-5-2-9"><tspan
+           sodipodi:role="line"
+           style="text-align:center;text-anchor:middle;stroke-width:0.264583"
+           x="152.37729"
+           y="146.87888"
+           id="tspan8811-2-2">0</tspan></text>
+      <path
+         id="rect12127"
+         style="fill:none;stroke:#000000;stroke-width:1.75748;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         d="m 463.86523,309.69531 v 12.4043 59.71484 100.68946 h 104.00391 v -100.68946 -59.71484 -12.4043 z"
+         transform="scale(0.26458333)" />
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.465;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         id="rect12129"
+         width="27.517971"
+         height="19.081406"
+         x="122.7308"
+         y="127.66234" />
+    </g>
+  </g>
+</svg>

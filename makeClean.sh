@@ -52,3 +52,6 @@ cd -
 cd T18_Sincronizacion_de_Procesos
 make cleanall
 cd -
+cd T19_Administracion_de_Memoria
+make cleanall
+cd -
