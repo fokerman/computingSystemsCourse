@@ -273,7 +273,7 @@
     \small
     Cada entrada de una tabla de paginación consiste en un campo \textbf{\emph{frame}} y bits de \textbf{atributos}.\\
     \medskip
-    Los bits de atributos pueden ser de \textbf{protección},\\ de \textbf{permisos} y de \textbf{validez}.\\
+    Los bits de atributos pueden ser de \textbf{protección},\\ de \textbf{permisos}, de \textbf{estado} y de \textbf{validez}.\\
     \bigskip
     En el ejemplo, la tabla tiene 3 bits de \emph{frame} y 1 bit de validez.
     \textcolor{verdeuca}{Si indica 1, el campo \emph{frame} es válido.\\}
@@ -358,18 +358,18 @@
     \small
     Para que es sistema operativo lleve registro de que áreas de memoria están en uso y cuales no, se utilizan estructuras de datos particulares.\\
     \vspace{0.7cm}
-    En un \textbf{mapa de bits}, cada bit indica si un determinado rango de memoria esta en uso o esta libre.\\
+    \uncover<2->{En un \textbf{mapa de bits}, cada bit indica si un determinado rango de memoria esta en uso o esta libre.\\}
     \bigskip
-    Una \textbf{lista enlazada}, deja registro en cada nodo, si se trata de un espacio libre o ocupado.\\
-    En esta estructura pueden existir nodos contiguos con áreas ocupadas, pero no libres,\\ ya que estos últimos se colapsan en uno solo.
+    \uncover<3->{Una \textbf{lista enlazada}, deja registro en cada nodo, si se trata de un espacio libre o ocupado.\\
+    En esta estructura pueden existir nodos contiguos con áreas ocupadas, pero no libres,\\ ya que estos últimos se colapsan en uno solo.}
     \end{textblock}
     \begin{textblock}{100}(80,15)
-    \small \textcolor{naranjauca}{\textbf{Estructura de Mapa de bits}}\\ \vspace{0.2cm}
-    \includegraphics[scale=0.9]{img/bitmap.pdf}
+    \uncover<2->{\small \textcolor{naranjauca}{\textbf{Estructura de Mapa de bits}}\\ \vspace{0.2cm}
+    \includegraphics[scale=0.9]{img/bitmap.pdf} }
     \end{textblock}
     \begin{textblock}{100}(80,50)
-    \small \textcolor{naranjauca}{\textbf{Estructura de Lista enlazada}}\\ \vspace{0.2cm}
-    \includegraphics[scale=0.9]{img/linked_list.pdf}
+    \uncover<3->{\small \textcolor{naranjauca}{\textbf{Estructura de Lista enlazada}}\\ \vspace{0.2cm}
+    \includegraphics[scale=0.9]{img/linked_list.pdf} }
     \end{textblock}
 \end{frame}
 
@@ -396,21 +396,21 @@
     \textcolor{verdeuca}{Sin embargo, la memoria física es limitada, y no podemos tener todos
     los procesos simultaneamente en memoria.}\\
     \medskip
-    Para esto existen los \textcolor{naranjauca}{\textbf{mecanismos de swapping}},
+    \uncover<2->{Para esto existen los \textcolor{naranjauca}{\textbf{mecanismos de swapping}},
     que permiten guardar temporariamente en almacenamiento secundario las paginas poco utilizadas,
-    mientras que las paginas de más demandadas están en memoria.
+    mientras que las paginas de más demandadas están en memoria.}
     \begin{textblock}{100}(12,43)
-    \includegraphics[scale=0.6]{img/swapping.pdf}
+    \uncover<2->{\includegraphics[scale=0.6]{img/swapping.pdf} }
     \end{textblock}
     \begin{textblock}{85}(63,40)
-    \small Conceptos clave en memoria virtual:
+    \uncover<3->{\small Conceptos clave en memoria virtual:
     \footnotesize
     \begin{itemize}
      \item \textcolor{verdeuca}{Las direcciones lógicas o virtuales son las que ve el proceso en ejecución, y viven solamente dentro del procesador.}
      \item \textcolor{verdeuca}{Las direcciones físicas son las que llegan a la memoria principal.}
      \item \textcolor{verdeuca}{En almacenamiento secundario se guardan paginas de memoria que fueron remplazadas bajo alguna política de remplazos.}
     \end{itemize}
-     Si estamos remplazando paginas todo el tiempo, nuestro sistema puede entrar en \emph{crashing}.
+     Si estamos remplazando paginas todo el tiempo, nuestro sistema puede entrar en \emph{crashing}. }
     \end{textblock}
 \end{frame}
 
@@ -444,25 +444,53 @@
 \end{frame}
 
 \begin{frame}{Política de optimización \texttt{Copy-On-Write}}
+    \begin{textblock}{75}(8,12)
     \small
-    Cuando un proceso realiza un \texttt{fork}, un proceso nuevo es creado.\\
+    Cuando se ejecuta un \texttt{fork}, un proceso nuevo es creado.\\
     \medskip
-    \textcolor{gray}{El nuevo proceso existirá en un nuevo espacio de memoria, y para esto se deben\\ \textbf{copiar todas las páginas} del proceso padre, duplicando la memoria ocupada.}\\
+    \textcolor{gray}{El nuevo proceso existirá en un espacio de memoria nuevo, y para esto se deben \textbf{copiar todas las páginas} del proceso padre, duplicando la memoria ocupada.}\\
     \medskip
-    \pause
-    Para evitar copiar las páginas, estas se mapean como \textbf{solo lectura para ambos procesos}.\\
-    \medskip
-    \begin{center}
-    \textcolor{verdeuca}{\textbf{Cuando cualquiera de los procesos quiera escribir, se generará un fallo de página}}.\\
-    \pause
-    \end{center}
-    \medskip
-    La rutina de atención de interrupciones actuará y determinará que se trata de páginas físicas compartidas.
-    Duplicando entonces la memoria en dos páginas físicas distintas.\\
+    \uncover<2->{Para evitar copiar las páginas, estas se mapean como \textbf{solo lectura para ambos procesos}.\\}
     \medskip
     \begin{center}
-    \textcolor{naranjauca}{\textbf{Ahora, ambos procesos tienen su propia versión de la página.}}\\
+    \uncover<3->{\textcolor{verdeuca}{\textbf{Cuando cualquiera de los procesos quiera escribir,\\ se generará un fallo de página}}.\\}
     \end{center}
+    \medskip
+    \uncover<3->{
+    La rutina de atención de interrupciones actuará y determinará que se trata de \textbf{páginas físicas compartidas}.
+    Duplicando entonces la memoria en dos páginas físicas distintas.\\}
+    \begin{center}
+    \uncover<3->{\textcolor{naranjauca}{\textbf{Se mapea una copia en ambos procesos.}}\\}
+    \end{center}
+    \end{textblock}
+    \begin{textblock}{100}(90,5) \only<2->{\includegraphics[scale=1]{img/copy-on-wite-layer1.pdf} } \end{textblock}
+    \begin{textblock}{100}(90,5) \only<3->{\includegraphics[scale=1]{img/copy-on-wite-layer2.pdf} } \end{textblock}
+\end{frame}
+
+\begin{frame}{Remplazo de páginas}
+    \begin{textblock}{70}(10,12)
+    \small
+    Cuando no hay páginas libres en memoria física donde cargar los nuevos marcos de página.\\
+    \textcolor{naranjauca}{Se debe seleccionar una página \textbf{víctima}.\\}
+    \medskip
+    \uncover<2->{\textcolor{verdeuca}{Esta página será desalojada de memoria y almacenada en almacenamiento secundario.\\}}
+    \medskip
+    \uncover<3->{La nueva página será cargada en su lugar y se mapeará en la tabla de páginas de la tarea.\\}
+    \medskip
+    \textcolor{gray}{
+    \footnotesize
+    \uncover<3->{Los algoritmos de elección de páginas víctima pueden ser: First In First Out (FIFO), Least Recently Used (LRU), Least Frequenly Used (LFU), FIFO Second-chance, etc.\\}}
+    \medskip
+    \uncover<4->{
+    \begin{tcolorbox}[size=small,width=\textwidth,colback={gray!30},title={\emph{dirty-bit}}]
+    \footnotesize
+    La tabla de páginas contiene además un bit que indica si la página fue modificada. Esto permite optimizar el algoritmo de remplazo, copiando a memoria secundaria solo la página que fue modificada.
+    \end{tcolorbox}
+    }
+    \end{textblock}
+    \begin{textblock}{100}(90,7)
+    \includegraphics[scale=0.7]{img/remplazo_de_paginas.pdf}
+    \end{textblock}
 \end{frame}
 
 \begin{frame}[fragile]{Bibliografía}
