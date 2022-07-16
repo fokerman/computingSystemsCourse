@@ -1,5 +1,5 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage{geometry}\geometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
+\usepackage{geometry}\geometry{top=2cm,bottom=1cm,left=2cm,right=2cm}
 
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -25,6 +25,12 @@
 \usepackage{hyperref}
 \usepackage{tabularx}
 \usepackage{multicol}
+
+
+\usepackage{tikz}
+\usetikzlibrary{circuits.logic.US}
+\usetikzlibrary{positioning}
+% \usepackage{circuitikz}
 
 % % % Apagar numeracion
 \pagenumbering{gobble}
@@ -105,7 +111,6 @@ Este documento busca detallar la notación utilizada para representar operacione
     $\wedge$    & \small AND \\
     $\vee$      & \small OR \\
     $\neg$x      & \small NOT de x\\
-%     $\oplus$    & \small XOR \\
     \end{tabular}
     \end{center}
 \columnbreak
@@ -128,7 +133,7 @@ Este documento busca detallar la notación utilizada para representar operacione
     \hline
     \verb|&&|    & \small AND \\
     \verb.||.    & \small OR \\
-    \verb|!x|     & \small NOT \verb|x| \\
+    \verb|!x|    & \small NOT \verb|x| \\
     \end{tabular}
     \end{center}
 \end{multicols}
@@ -172,5 +177,108 @@ Este documento busca detallar la notación utilizada para representar operacione
 
 Los operandos catalogados como Código pueden variar dependiendo del lenguaje de programación.\\
 Sin embargo los mencionados son los más utilizados.
+
+\section*{Simbolos de compuertas lógicas}
+
+\begin{multicols}{3}
+    \begin{tabular}{P{4.20cm}}
+    \begin{tikzpicture}[circuit logic US, scale=1.4]
+    \node [and gate,inputs=nnn] (and1) at (0,0) {};
+    \draw (and1.input 1) -- node[at end,left]{A}      ++(left:2mm);
+    \draw (and1.input 3) -- node[at end,left]{B}      ++(left:2mm);
+    \draw (and1.output)  -- node[at end,right]{A$*$B} ++(right:2mm);
+    \end{tikzpicture} \\
+    \begin{tabular}{cc|c}
+    \texttt{A} & \texttt{B} & \texttt{AND} \\ \hline
+    \texttt{0} & \texttt{0} & \texttt{0} \\
+    \texttt{0} & \texttt{1} & \texttt{0} \\
+    \texttt{1} & \texttt{0} & \texttt{0} \\
+    \texttt{1} & \texttt{1} & \texttt{1} \\
+    \end{tabular}
+    \end{tabular}
+\columnbreak
+    \begin{tabular}{P{4.20cm}}
+    \begin{tikzpicture}[circuit logic US, scale=1.4]
+    \node [or gate,inputs=nnn] (or1) at (0,0) {};
+    \draw (or1.input 1) -- node[at end,left]{A}      ++(left:2mm);
+    \draw (or1.input 3) -- node[at end,left]{B}      ++(left:2mm);
+    \draw (or1.output)  -- node[at end,right]{A$+$B} ++(right:2mm);
+    \end{tikzpicture} \\
+    \begin{tabular}{cc|c}
+    \texttt{A} & \texttt{B} & \texttt{OR} \\ \hline
+    \texttt{0} & \texttt{0} & \texttt{0} \\
+    \texttt{0} & \texttt{1} & \texttt{1} \\
+    \texttt{1} & \texttt{0} & \texttt{1} \\
+    \texttt{1} & \texttt{1} & \texttt{1} \\
+    \end{tabular}
+    \end{tabular}
+\columnbreak
+    \begin{tabular}{P{4.20cm}}
+    \begin{tikzpicture}[circuit logic US, scale=1.4]
+    \node [not gate,inputs=nnn] (not1) at (0,0) {};
+    \draw (not1.input)   -- node[at end,left]{A}                      ++(left:2mm);
+    \draw (not1.output)  -- node[at end,right]{$\overline{\text{A}}$} ++(right:2mm);
+    \end{tikzpicture} \\
+    \begin{tabular}{c|c}
+    \texttt{A} & \texttt{NOT} \\ \hline
+    \texttt{0} & \texttt{1} \\
+    \texttt{1} & \texttt{0} \\
+    \end{tabular}
+    \end{tabular}
+\end{multicols}
+
+\vspace*{0.1cm}
+
+\begin{multicols}{3}
+    \begin{tabular}{C{4.20cm}}
+    \begin{tikzpicture}[circuit logic US, scale=1.4]
+    \node [nand gate,inputs=nnn] (nand1) at (0,0) {};
+    \draw (nand1.input 1) -- node[at end,left]{A}                               ++(left:2mm);
+    \draw (nand1.input 3) -- node[at end,left]{B}                               ++(left:2mm);
+    \draw (nand1.output)  -- node[at end,right]{$\overline{\text{A}*\text{B}}$} ++(right:2mm);
+    \end{tikzpicture} \\
+    \begin{tabular}{cc|c}
+    \texttt{A} & \texttt{B} & \texttt{NAND} \\ \hline
+    \texttt{0} & \texttt{0} & \texttt{1} \\
+    \texttt{0} & \texttt{1} & \texttt{1} \\
+    \texttt{1} & \texttt{0} & \texttt{1} \\
+    \texttt{1} & \texttt{1} & \texttt{0} \\
+    \end{tabular}
+    \end{tabular}
+\columnbreak
+    \begin{tabular}{C{4.20cm}}
+    \begin{tikzpicture}[circuit logic US, scale=1.4]
+    \node [nor gate,inputs=nnn] (nor1) at (0,0) {};
+    \draw (nor1.input 1) -- node[at end,left]{A}                               ++(left:2mm);
+    \draw (nor1.input 3) -- node[at end,left]{B}                               ++(left:2mm);
+    \draw (nor1.output)  -- node[at end,right]{$\overline{\text{A}+\text{B}}$} ++(right:2mm);
+    \end{tikzpicture} \\
+    \begin{tabular}{cc|c}
+    \texttt{A} & \texttt{B} & \texttt{NOR} \\ \hline
+    \texttt{0} & \texttt{0} & \texttt{1} \\
+    \texttt{0} & \texttt{1} & \texttt{0} \\
+    \texttt{1} & \texttt{0} & \texttt{0} \\
+    \texttt{1} & \texttt{1} & \texttt{0} \\
+    \end{tabular}
+    \end{tabular}
+\columnbreak
+    \begin{tabular}{C{4.20cm}}
+    \begin{tikzpicture}[circuit logic US, scale=1.4]
+    \node [xor gate,inputs=nnnn] (xor1) at (0,0) {};
+    \draw (xor1.input 1) -- node[at end,left]{A}           ++(left:2mm);
+    \draw (xor1.input 2) -- node[at end,left]{B}           ++(left:2mm);
+    \draw (xor1.output)  -- node[at end,right]{A$\oplus$B} ++(right:2mm);
+    \end{tikzpicture} \\
+    \begin{minipage}{3cm}
+    \begin{tabular}{cc|c}
+    \texttt{A} & \texttt{B} & \texttt{XOR} \\ \hline
+    \texttt{0} & \texttt{0} & \texttt{0} \\
+    \texttt{0} & \texttt{1} & \texttt{1} \\
+    \texttt{1} & \texttt{0} & \texttt{1} \\
+    \texttt{1} & \texttt{1} & \texttt{0} \\
+    \end{tabular}
+    \end{minipage}
+    \end{tabular}
+\end{multicols}
 
 \end{document}
