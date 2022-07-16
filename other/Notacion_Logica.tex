@@ -1,0 +1,176 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage{geometry}\geometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish,english,es-tabla]{babel}
+\selectlanguage{spanish}
+
+\usepackage{amsmath}
+\usepackage{amssymb,amsfonts,textcomp}
+\usepackage{mdframed}
+\usepackage{color}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{supertabular}
+\usepackage{hhline}
+\usepackage{float}
+\usepackage{multicol}
+\usepackage{multirow}
+% \usepackage[document]{ragged2e}
+\usepackage[sfdefault]{AlegreyaSans}
+\usepackage[table]{xcolor}
+\usepackage[pdftex]{graphicx}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{multicol}
+
+% % % Apagar numeracion
+\pagenumbering{gobble}
+
+% % % PDF warnings
+\pdfsuppresswarningpagegroup=1 % para que no te tire el error de que incluis mas de un pdf por hoja
+            
+% % % TEXTO PDF
+\hypersetup{pdftex,
+hidelinks=true,
+colorlinks=false,
+linkcolor=black,
+citecolor=black,
+filecolor=black,
+urlcolor=black, 
+pdftitle=,
+pdfauthor=,
+pdfsubject=,
+pdfkeywords=}
+
+% % % TABLAS
+\newcolumntype{P}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}m{#1}}
+
+% % % ENCABEZADO
+\parindent=0pt
+\title{\vspace{-13mm}Notación Símbolos y Equivalencias}
+\date{}
+
+\begin{document}
+\maketitle
+
+Este documento busca detallar la notación utilizada para representar operaciones lógicas y sus equivalencias.
+
+\section*{Notación de constantes lógicas}
+
+\begin{multicols}{3}
+    \begin{center}
+    \textbf{Álgebra}\\
+    \begin{tabular}{c|p{2.15cm}}
+    \small Constantes & \small Descripción\\
+    \hline
+    \verb|V|  & \small Verdadero o \verb|1|\\
+    \verb|F|  & \small Falso o \verb|0|\\
+    \end{tabular}
+    \end{center}
+\columnbreak
+    \begin{center}
+    \textbf{Lógica digital}\\
+    \begin{tabular}{c|p{2.15cm}}
+    \small Constantes & \small Descripción\\
+    \hline
+    \verb|1|              & \small Verdadero o \verb|1|\\
+    \verb|0|              & \small Falso o \verb|0|\\
+    \end{tabular}
+    \end{center}
+\columnbreak
+    \begin{center}
+    \textbf{Código}\\
+    \begin{tabular}{c|p{2.15cm}}
+    \small Constantes & \small Descripción\\
+    \hline
+    \verb|True|   & \small Verdadero o \verb|1|\\
+    \verb|False|  & \small Falso o \verb|0|\\
+    \end{tabular}
+    \end{center}
+\end{multicols}
+    
+\section*{Operaciones lógicas}
+
+\begin{multicols}{3}
+    \begin{center}
+    \textbf{Álgebra}\\
+    \begin{tabular}{c|p{2.15cm}}
+    \small Operador & \small Descripción\\
+    \hline
+    $\wedge$    & \small AND \\
+    $\vee$      & \small OR \\
+    $\neg$x      & \small NOT de x\\
+%     $\oplus$    & \small XOR \\
+    \end{tabular}
+    \end{center}
+\columnbreak
+    \begin{center}
+    \textbf{Lógica digital}\\
+    \begin{tabular}{c|p{2.15cm}}
+    \small Operador & \small Descripción\\
+    \hline
+    \verb|*|    & \small AND \\
+    \verb|+|    & \small OR \\
+    $\overline{\texttt{x}}$ & \small NOT \verb|x| \\
+    $\oplus$    & \small XOR \\
+    \end{tabular}
+    \end{center}
+\columnbreak
+    \begin{center}
+    \textbf{Código}\\
+    \begin{tabular}{c|p{2.15cm}}
+    \small Operador & \small Descripción\\
+    \hline
+    \verb|&&|    & \small AND \\
+    \verb.||.    & \small OR \\
+    \verb|!x|     & \small NOT \verb|x| \\
+    \end{tabular}
+    \end{center}
+\end{multicols}
+
+\section*{Operaciones en código}
+ 
+\begin{multicols}{3}
+    \begin{tabular}{c|p{2.40cm}}
+    \small Operador & \small Descripción\\
+    \hline
+    \verb|+|  & \small Suma           \\
+    \verb|-|  & \small Resta          \\
+    \verb|*|  & \small Multiplicación \\
+    \verb|/|  & \small División entera \\
+    \verb|%|  & \small Resto de división\\ 
+    \end{tabular}
+\columnbreak
+    \begin{tabular}{c|p{2.40cm}}
+    \small Operador & \small Descripción\\
+    \hline
+    \verb|==| & \small Igual          \\
+    \verb|!=| & \small Distinto       \\
+    \verb|>|  & \small Mayor          \\
+    \verb|>=| & \small Mayor o igual    \\
+    \verb|<|  & \small Menor          \\
+    \verb|<=| & \small Menor o igual    \\
+    \end{tabular}
+\columnbreak
+    \begin{tabular}{c|p{2.40cm}}
+    \small Operador & \small Descripción\\
+    \hline
+    \verb|<<| & \small Shift a izquierda \\
+    \verb|>>| & \small Shift a derecha   \\
+    \hline
+    \textasciitilde  & \small NOT bit a bit  \\
+    \verb|&|  & \small AND bit a bit  \\
+    \verb.|.  & \small OR bit a bit   \\
+    \verb|^|  & \small XOR bit a bit  \\
+    \end{tabular}
+\end{multicols}
+
+Los operandos catalogados como Código pueden variar dependiendo del lenguaje de programación.\\
+Sin embargo los mencionados son los más utilizados.
+
+\end{document}
