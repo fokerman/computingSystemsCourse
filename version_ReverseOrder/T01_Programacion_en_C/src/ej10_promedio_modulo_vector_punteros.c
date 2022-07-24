@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+
+struct vector {
+    float x;
+    float y;
+};
+
+float modulo2(struct vector* v) {
+    return sqrt( v->x * v->x + v->y * v->y);
+}
+
+float promedio(struct vector* v, int size) {
+    float acumulador = 0;
+    for(int i = 0; i < size; i++) {
+        acumulador = acumulador + modulo2(&v[i]);
+    }
+    return acumulador / (float)(size);
+}
+
+int main() {
+
+    struct vector v[3] = { {2.3,1.2}, {5.8,3.5}, {9.4,10.10}};
+
+    float res = promedio(v, 3);
+
+    printf("%f\n",res);
+
+    return 0;
+}
