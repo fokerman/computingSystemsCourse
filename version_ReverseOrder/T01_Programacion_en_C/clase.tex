@@ -638,6 +638,24 @@ struct vector {
 };
 \end{verbatim}
 \end{textblock}
+    \begin{textblock}{50}(105,35)
+    \begin{block}{\small Equivalencias}
+    \small
+    \centering
+    \textcolor{verdeuca}{Considerar}\\
+    \verb|struct vector pepe;|\\
+    \vspace{0.1cm}
+    \textcolor{verdeuca}{Para escribir \texttt{x} podemos:}\\
+    \vspace{0.1cm}
+    \verb|(*pepe).x = 45;|\\
+    \verb|pepe->x = 45;|\\
+    \vspace{0.1cm}
+    \textcolor{verdeuca}{Para leer \texttt{x} podemos:}\\
+    \vspace{0.1cm}
+    \verb|int t = (*pepe).x;|\\
+    \verb|int t = pepe->x;|\\
+    \end{block}
+    \end{textblock}
 \end{frame}
 % observaciones:
 % notacion fechita para punteros
