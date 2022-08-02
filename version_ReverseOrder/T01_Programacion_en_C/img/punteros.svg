@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    width="136.18747mm"
    height="24.939899mm"
    viewBox="0 0 136.18747 24.9399"
    version="1.1"
    id="svg8"
-   inkscape:version="1.0.1 (1.0.1+r75)"
-   sodipodi:docname="punteros.svg">
+   inkscape:version="1.2 (1:1.2.1+202207142221+cd75a1ee6d)"
+   sodipodi:docname="punteros.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
   <defs
      id="defs2">
     <marker
@@ -53,10 +53,10 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.5535852"
-     inkscape:cx="192.56172"
-     inkscape:cy="36.78781"
+     inkscape:cx="193.42357"
+     inkscape:cy="108.45881"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer11"
+     inkscape:current-layer="layer7"
      inkscape:document-rotation="0"
      showgrid="false"
      fit-margin-top="0"
@@ -64,10 +64,13 @@
      fit-margin-right="0"
      fit-margin-bottom="0"
      inkscape:window-width="1920"
-     inkscape:window-height="1016"
+     inkscape:window-height="1136"
      inkscape:window-x="0"
      inkscape:window-y="27"
-     inkscape:window-maximized="1" />
+     inkscape:window-maximized="1"
+     inkscape:showpageshadow="2"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -999,6 +1002,13 @@
      inkscape:label="Layer 4 - dato"
      style="display:inline"
      transform="translate(-10.814616,-87.817043)">
+    <rect
+       style="display:inline;fill:#ffffff;stroke:none;stroke-width:0.165;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+       id="rect2009-7-5"
+       width="5.146811"
+       height="5.3649879"
+       x="29.963654"
+       y="97.620819" />
     <text
        xml:space="preserve"
        style="font-size:3.54391px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;display:inline;stroke-width:0.264583"
@@ -1017,6 +1027,13 @@
      inkscape:label="Layer 5 - puntero"
      style="display:inline"
      transform="translate(-10.814616,-87.817043)">
+    <rect
+       style="display:inline;fill:#ffffff;stroke:none;stroke-width:0.165;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+       id="rect2009-7"
+       width="45.849915"
+       height="4.571281"
+       x="80.714745"
+       y="98.017685" />
     <text
        xml:space="preserve"
        style="font-size:3.54391px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;display:inline;stroke-width:0.264583"
@@ -1382,6 +1399,13 @@
      inkscape:label="Layer 12 - puntero"
      style="display:inline"
      transform="translate(-10.814616,-87.817043)">
+    <rect
+       style="display:inline;fill:#ffffff;stroke:none;stroke-width:0.165;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+       id="rect2009-7-56"
+       width="45.849915"
+       height="4.571281"
+       x="80.714745"
+       y="98.017685" />
     <text
        xml:space="preserve"
        style="font-size:3.54391px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;display:inline;stroke-width:0.264583"
@@ -1472,6 +1496,14 @@
      id="layer16"
      inkscape:label="Layer 16 - byte 1 - nuevo dato"
      style="display:inline">
+    <rect
+       style="display:inline;fill:#ffffff;stroke:none;stroke-width:0.165;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+       id="rect2009-7-5-3"
+       width="5.146811"
+       height="5.3649879"
+       x="29.963654"
+       y="97.620819"
+       transform="translate(-10.814616,-87.817042)" />
     <text
        xml:space="preserve"
        style="font-size:3.54391px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;display:inline;stroke-width:0.264583"
@@ -1489,6 +1521,13 @@
      id="layer17"
      inkscape:label="Layer 17 - byte 4 - nuevo dato"
      style="display:inline">
+    <rect
+       style="display:inline;fill:#ffffff;stroke:none;stroke-width:0.165;stroke-linecap:round;stroke-linejoin:round;stop-color:#000000"
+       id="rect1903-9"
+       width="21.118567"
+       height="4.571281"
+       x="20.437416"
+       y="10.200634" />
     <text
        xml:space="preserve"
        style="font-size:3.54391px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;display:inline;stroke-width:0.264583"

@@ -59,7 +59,7 @@
     \texttt{\#include <stdio.h>}\\
     \texttt{...}\\
     \textcolor{red}{\texttt{int numero = 10;}}\\
-    \textcolor{red}{\texttt{const char letra = \textquotesingle{}10\textquotesingle{}}}\\
+    \textcolor{red}{\texttt{const char* letra = "10"}}\\ % \textquotesingle{}
     \texttt{...}\\
     }
     \only<3->{
@@ -430,7 +430,7 @@ int main() {
     \begin{multicols}{2}
     \begin{tabular}{l}
     \texttt{struct lista \{}      \\
-    \texttt{      nodo *primero;} \\
+    \texttt{      struct nodo *primero;} \\
     \texttt{\};}                  \\
     \hspace{4cm}
     \end{tabular}
@@ -438,7 +438,7 @@ int main() {
     \begin{tabular}{lll}
     \texttt{struct nodo \{}     \\
     \texttt{      int dato;}    \\
-    \texttt{      nodo *prox;}  \\
+    \texttt{      struct nodo *prox;}  \\
     \texttt{\};}                \\
     \end{tabular}
     \end{multicols}
