@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="46.236958mm"
+   height="18.068472mm"
+   viewBox="0 0 46.236958 18.068472"
+   version="1.1"
+   id="svg2380"
+   inkscape:version="1.0.1 (1.0.1+r75)"
+   sodipodi:docname="intercambio_de_tareas.svg">
+  <defs
+     id="defs2374">
+    <marker
+       style="overflow:visible"
+       id="marker19734"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#e66100;fill-opacity:1;fill-rule:evenodd;stroke:#e66100;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path19732" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker19734-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Mend"
+       inkscape:isstock="true">
+      <path
+         transform="scale(-0.6)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#26a269;fill-opacity:1;fill-rule:evenodd;stroke:#26a269;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path19732-1" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.959798"
+     inkscape:cx="63.863279"
+     inkscape:cy="54.3639"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata2377">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(-45.106085,-16.27695)">
+    <path
+       style="fill:none;stroke:#e66100;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 48.33202,23.167562 H 91.343043"
+       id="path19597" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.0864px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.112862"
+       x="46.203529"
+       y="23.904062"
+       id="text19420-2-1-2-3"><tspan
+         sodipodi:role="line"
+         x="46.203529"
+         y="23.904062"
+         style="text-align:center;text-anchor:middle;stroke-width:0.112862"
+         id="tspan19595-6">P0</tspan></text>
+    <path
+       style="fill:none;stroke:#26a269;stroke-width:0.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.6, 0.6;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 48.33202,27.400895 H 91.343043"
+       id="path19637" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.0864px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.112862"
+       x="46.203529"
+       y="28.137396"
+       id="text19641"><tspan
+         sodipodi:role="line"
+         x="46.203529"
+         y="28.137396"
+         style="text-align:center;text-anchor:middle;stroke-width:0.112862"
+         id="tspan19639">P1</tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     style="display:inline"
+     sodipodi:insensitive="true"
+     transform="translate(-45.106085,-16.27695)">
+    <path
+       style="fill:none;stroke:#e66100;stroke-width:0.6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 48.33202,23.167562 H 66.96624"
+       id="path19597-0" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.53322px;line-height:1;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#e66100;stroke-width:0.112862"
+       x="57.613731"
+       y="25.146799"
+       id="text19420-2-1-2-7-9"><tspan
+         sodipodi:role="line"
+         x="57.613731"
+         y="25.146799"
+         style="text-align:center;text-anchor:middle;fill:#e66100;stroke-width:0.112862"
+         id="tspan19716-4">Ejecutando P<tspan
+   style="font-size:1.05833px;baseline-shift:sub;fill:#e66100;stroke-width:0.112862"
+   id="tspan19720-4">0</tspan></tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer3"
+     inkscape:label="Layer 3"
+     style="display:inline"
+     transform="translate(-45.106085,-16.27695)">
+    <rect
+       style="fill:none;stroke:#e66100;stroke-width:0.15;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect19432-9-1-2"
+       width="11.98482"
+       height="4.0632734"
+       x="60.975266"
+       y="16.35195" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.53322px;line-height:1;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#e66100;stroke-width:0.112862"
+       x="66.967682"
+       y="18.010342"
+       id="text19420-2-1-2-7"><tspan
+         sodipodi:role="line"
+         x="66.967682"
+         y="18.010342"
+         style="text-align:center;text-anchor:middle;fill:#e66100;stroke-width:0.112862"
+         id="tspan19595-9">guardo estado</tspan><tspan
+         sodipodi:role="line"
+         x="66.967682"
+         y="19.543562"
+         style="text-align:center;text-anchor:middle;fill:#e66100;stroke-width:0.112862"
+         id="tspan19716">en PCB<tspan
+   style="font-size:1.05833px;baseline-shift:sub;fill:#e66100"
+   id="tspan19720">0</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#e66100;stroke-width:0.15;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker19734)"
+       d="m 66.96624,20.361309 v 2.277086"
+       id="path19724"
+       sodipodi:nodetypes="cc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer4"
+     inkscape:label="Layer 4"
+     style="display:inline"
+     transform="translate(-45.106085,-16.27695)">
+    <rect
+       style="fill:none;stroke:#26a269;stroke-width:0.15;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stop-color:#000000"
+       id="rect19432-9-1-2-9"
+       width="11.98482"
+       height="4.0632734"
+       x="66.714966"
+       y="30.207148" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.53322px;line-height:1;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#26a269;stroke-width:0.112862"
+       x="72.68438"
+       y="31.87771"
+       id="text19420-2-1-2-7-7"><tspan
+         sodipodi:role="line"
+         x="72.68438"
+         y="31.87771"
+         style="text-align:center;text-anchor:middle;fill:#26a269;stroke-width:0.112862"
+         id="tspan19595-9-1">recupero estado</tspan><tspan
+         sodipodi:role="line"
+         x="72.68438"
+         y="33.410931"
+         style="text-align:center;text-anchor:middle;fill:#26a269;stroke-width:0.112862"
+         id="tspan19716-3">en PCB<tspan
+   style="font-size:1.05833px;baseline-shift:sub;fill:#26a269;stroke-width:0.112862"
+   id="tspan19720-1">1</tspan></tspan></text>
+    <path
+       style="fill:none;stroke:#26a269;stroke-width:0.15;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#marker19734-5)"
+       d="M 72.70882,30.207147 V 27.930062"
+       id="path19724-2"
+       sodipodi:nodetypes="cc" />
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer5"
+     inkscape:label="Layer 5"
+     style="display:inline"
+     transform="translate(-45.106085,-16.27695)">
+    <path
+       style="display:inline;fill:none;stroke:#26a269;stroke-width:0.600001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 72.70882,27.400895 H 91.343043"
+       id="path19597-0-3" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.53322px;line-height:1;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;fill:#26a269;stroke-width:0.112862"
+       x="82.075195"
+       y="26.346876"
+       id="text19420-2-1-2-7-7-5"><tspan
+         sodipodi:role="line"
+         x="82.075195"
+         y="26.346876"
+         style="text-align:center;text-anchor:middle;fill:#26a269;stroke-width:0.112862"
+         id="tspan19716-3-1">Ejecutando P<tspan
+   style="font-size:1.05833px;baseline-shift:sub;fill:#26a269;stroke-width:0.112862"
+   id="tspan19720-1-2">1</tspan></tspan></text>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer6"
+     inkscape:label="Layer 6"
+     style="display:inline"
+     transform="translate(-45.106085,-16.27695)">
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.15;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 66.96624,26.255207 V 24.90385"
+       id="path20646"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 66.96624,25.579528 h 5.74258"
+       id="path20646-0-6"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:1.4006px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;display:inline;stroke-width:0.264583"
+       x="67.477745"
+       y="25.135223"
+       id="text20680"><tspan
+         sodipodi:role="line"
+         id="tspan20678"
+         x="67.477745"
+         y="25.135223"
+         style="stroke-width:0.264583">latencia</tspan></text>
+    <path
+       style="display:inline;fill:none;stroke:#000000;stroke-width:0.15;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 72.70882,26.255207 V 24.90385"
+       id="path20646-0"
+       sodipodi:nodetypes="cc" />
+  </g>
+</svg>
