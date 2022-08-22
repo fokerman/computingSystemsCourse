@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="235.63943mm"
+   height="30.843819mm"
+   viewBox="0 0 235.63943 30.843819"
+   version="1.1"
+   id="svg14934"
+   inkscape:version="1.1.1 (3bf5ae0d25, 2021-09-20)"
+   sodipodi:docname="burst_CPU_IO.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview14936"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:document-units="mm"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.763461"
+     inkscape:cx="299.29492"
+     inkscape:cy="191.23439"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs14931">
+    <marker
+       style="overflow:visible"
+       id="marker20718"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path20716" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lend"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lend"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path5309" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow2Lstart"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Lstart"
+       inkscape:isstock="true">
+      <path
+         transform="matrix(1.1,0,0,1.1,1.1,0)"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:0.625;stroke-linejoin:round"
+         id="path5306" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     style="display:inline"
+     transform="translate(29.031773,97.048884)">
+    <g
+       id="g41858">
+      <text
+         xml:space="preserve"
+         style="font-size:3.74257px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;stroke-width:0.264583"
+         x="-18.135309"
+         y="-66.291145"
+         id="text16001"><tspan
+           sodipodi:role="line"
+           id="tspan15999"
+           style="stroke-width:0.264583"
+           x="-18.135309"
+           y="-66.291145">Burst de CPU</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.74257px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;stroke-width:0.264583"
+         x="116.70615"
+         y="-66.291145"
+         id="text16001-5"><tspan
+           sodipodi:role="line"
+           id="tspan15999-8"
+           style="stroke-width:0.264583"
+           x="116.70615"
+           y="-66.291145">Burst de CPU</tspan></text>
+      <g
+         id="g20490"
+         style="fill:#2ec27e">
+        <rect
+           style="fill:#2ec27e;stroke-width:0.264999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.264999, 0.53;stop-color:#000000"
+           id="rect15059"
+           width="20.947531"
+           height="5.4882059"
+           x="-28.609074"
+           y="-76.103157" />
+        <rect
+           style="display:inline;fill:#2ec27e;stroke-width:0.264999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.264999, 0.529999;stop-color:#000000"
+           id="rect15059-2"
+           width="29.027981"
+           height="5.4882059"
+           x="42.772728"
+           y="-76.103157" />
+        <rect
+           style="display:inline;fill:#2ec27e;stroke-width:0.264999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.264999, 0.53;stop-color:#000000"
+           id="rect15059-24"
+           width="11.202891"
+           height="5.4882059"
+           x="111.1047"
+           y="-76.103157" />
+        <rect
+           style="display:inline;fill:#2ec27e;stroke-width:0.264998;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.264998, 0.529999;stop-color:#000000"
+           id="rect15059-24-0"
+           width="24.446674"
+           height="5.4882059"
+           x="182.16098"
+           y="-76.103157" />
+      </g>
+      <g
+         id="g20484">
+        <rect
+           style="display:inline;fill:#62a0ea;stroke-width:0.264998;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.264998, 0.529999;stop-color:#000000"
+           id="rect15059-24-0-2"
+           width="59.853382"
+           height="5.4882059"
+           x="122.30759"
+           y="-76.103157" />
+        <rect
+           style="display:inline;fill:#62a0ea;stroke-width:0.264998;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.264998, 0.529999;stop-color:#000000"
+           id="rect15059-24-0-2-7"
+           width="39.303982"
+           height="5.4882059"
+           x="71.800713"
+           y="-76.103157" />
+        <rect
+           style="display:inline;fill:#62a0ea;stroke-width:0.264999;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:0.264999, 0.529999;stop-color:#000000"
+           id="rect15059-24-0-2-7-5"
+           width="50.434273"
+           height="5.4882059"
+           x="-7.6615429"
+           y="-76.103157" />
+      </g>
+      <text
+         xml:space="preserve"
+         style="font-size:3.74257px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;stroke-width:0.264583"
+         x="194.38432"
+         y="-66.291145"
+         id="text16001-5-8"><tspan
+           sodipodi:role="line"
+           id="tspan15999-8-4"
+           style="stroke-width:0.264583"
+           x="194.38432"
+           y="-66.291145">Burst de CPU</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.74257px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;stroke-width:0.264583"
+         x="57.286716"
+         y="-66.291145"
+         id="text16001-2"><tspan
+           sodipodi:role="line"
+           id="tspan15999-0"
+           style="stroke-width:0.264583"
+           x="57.286716"
+           y="-66.291145">Burst de CPU</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.74257px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;stroke-width:0.264583"
+         x="17.49197"
+         y="-66.291145"
+         id="text16001-2-1"><tspan
+           sodipodi:role="line"
+           id="tspan15999-0-1"
+           style="stroke-width:0.264583"
+           x="17.49197"
+           y="-66.291145">Burst de E/S</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.74257px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;stroke-width:0.264583"
+         x="91.389076"
+         y="-66.291145"
+         id="text16001-2-1-9"><tspan
+           sodipodi:role="line"
+           id="tspan15999-0-1-0"
+           style="stroke-width:0.264583"
+           x="91.389076"
+           y="-66.291145">Burst de E/S</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.74257px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;display:inline;stroke-width:0.264583"
+         x="152.17065"
+         y="-66.291145"
+         id="text16001-2-1-0"><tspan
+           sodipodi:role="line"
+           id="tspan15999-0-1-02"
+           style="stroke-width:0.264583"
+           x="152.17065"
+           y="-66.291145">Burst de E/S</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:3.74257px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;stroke-width:0.264583"
+         x="133.4635"
+         y="-93.552094"
+         id="text16001-2-1-0-2"><tspan
+           sodipodi:role="line"
+           id="tspan15999-0-1-02-8"
+           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:3.74257px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;stroke-width:0.264583"
+           x="133.4635"
+           y="-93.552094">Código ejecutado del proceso</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;stroke-width:0.264583"
+           x="133.4635"
+           y="-88.873878"
+           id="tspan28082">Instrucciones ASM</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;stroke-width:0.264583"
+           x="133.4635"
+           y="-84.195671"
+           id="tspan28084">Escrituras a memoria</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;stroke-width:0.264583"
+           x="133.4635"
+           y="-79.517456"
+           id="tspan28086">Procesamiento de datos</tspan></text>
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M -28.609073,-76.103156 H 206.60765"
+         id="path20562" />
+      <path
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="M -28.609071,-70.614952 H 206.60765"
+         id="path20562-9" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker20718)"
+         d="m 18.824422,-74.3737 c 0.241067,-8.714745 5.875917,-13.503248 14.634398,-13.503248"
+         id="path20704"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.365;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker20718)"
+         d="m 117.46375,-74.3737 c 0.24106,-8.714745 5.87592,-13.503248 14.63441,-13.503248"
+         id="path21131"
+         sodipodi:nodetypes="cc" />
+      <path
+         style="fill:none;stroke:#000000;stroke-width:0.565;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 132.38066,-97.048884 v 18.341049"
+         id="path34019" />
+      <text
+         xml:space="preserve"
+         style="font-size:3.74257px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;display:inline;stroke-width:0.264583"
+         x="34.824162"
+         y="-93.552094"
+         id="text16001-2-1-0-2-8"><tspan
+           sodipodi:role="line"
+           style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;font-size:3.74257px;font-family:FreeSans;-inkscape-font-specification:'FreeSans, Semi-Bold';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;text-align:start;text-anchor:start;stroke-width:0.264583"
+           x="34.824162"
+           y="-93.552094"
+           id="tspan28086-3">Operaciones de Entrada/Salida</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;stroke-width:0.264583"
+           x="34.824162"
+           y="-88.873878"
+           id="tspan34983">Escritura a disco</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;stroke-width:0.264583"
+           x="34.824162"
+           y="-84.195671"
+           id="tspan34985">Espera por un recurso</tspan><tspan
+           sodipodi:role="line"
+           style="text-align:start;text-anchor:start;stroke-width:0.264583"
+           x="34.824162"
+           y="-79.517456"
+           id="tspan34987">Lectura de un dipositivo</tspan></text>
+      <path
+         style="display:inline;fill:none;stroke:#000000;stroke-width:0.565;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 33.74132,-97.048884 v 18.341047"
+         id="path34019-6" />
+    </g>
+  </g>
+</svg>
