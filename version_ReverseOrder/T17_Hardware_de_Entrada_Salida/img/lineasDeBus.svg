@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="57.024334mm"
+   height="21.00724mm"
+   viewBox="0 0 57.024334 21.00724"
+   version="1.1"
+   id="svg5955"
+   inkscape:version="1.0.1 (1.0.1+r75)"
+   sodipodi:docname="lineasDeBus.svg">
+  <defs
+     id="defs5949" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.8836127"
+     inkscape:cx="93.942886"
+     inkscape:cy="96.414711"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0" />
+  <metadata
+     id="metadata5952">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(32.387332,-47.46172)">
+    <g
+       id="g8161"
+       transform="translate(66.477132,71.13632)">
+      <text
+         xml:space="preserve"
+         style="font-size:2.66054px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="-66.894363"
+         y="-16.442398"
+         id="text7962"><tspan
+           sodipodi:role="line"
+           id="tspan7960"
+           x="-66.894363"
+           y="-16.442398"
+           style="stroke-width:0.264583">Bus de memoria</tspan></text>
+      <path
+         id="rect1439-4"
+         style="fill:#ffa348;stroke:#000000;stroke-width:0.200001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         d="m -67.694058,-17.381669 -2.88777,-5.004228 v 1.083715 h -9.524306 v 7.841233 h 9.524306 v 1.083716 z"
+         sodipodi:nodetypes="cccccccc" />
+      <path
+         id="rect1439-4-1"
+         style="fill:#f6d32d;stroke:#000000;stroke-width:0.200001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         d="m -68.223225,-7.373004 -2.358603,-3.416729 v 1.083715 h -9.524306 v 4.666233 h 9.524306 v 1.083716 z"
+         sodipodi:nodetypes="cccccccc" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.66054px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="-66.894363"
+         y="-6.4337354"
+         id="text7962-2"><tspan
+           sodipodi:role="line"
+           id="tspan7960-8"
+           x="-66.894363"
+           y="-6.4337354"
+           style="stroke-width:0.264583">Bus de entrada salida</tspan></text>
+      <rect
+         style="fill:#deddda;stroke:#000000;stroke-width:0.264999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         id="rect2211-1"
+         width="20.742241"
+         height="20.742241"
+         x="-98.731964"
+         y="-23.542101" />
+      <text
+         xml:space="preserve"
+         style="font-size:3.11962px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="-91.550652"
+         y="-12.051038"
+         id="text2215-5"><tspan
+           sodipodi:role="line"
+           id="tspan2213-9"
+           x="-91.550652"
+           y="-12.051038"
+           style="stroke-width:0.264583">CPU</tspan></text>
+    </g>
+  </g>
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2"
+     transform="translate(32.387332,-47.46172)">
+    <g
+       id="g8140"
+       transform="translate(66.477132,39.810746)">
+      <path
+         id="path8048-8"
+         style="fill:#ffa348;stroke:none;stroke-width:0.200001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         d="M -70.582255,8.9395053 V 10.02316 h -0.120807 c -2.397465,0 -5.112564,1.564763 -6.75836,1.564763 h -2.115631 v 9.212357 h 3.416329 c 0,-1.860251 4.431819,-2.935738 5.050337,-2.935738 h 0.528132 v 1.083655 l 2.888197,-5.004346 z"
+         sodipodi:nodetypes="ccsccccscccc" />
+      <path
+         id="path8048-3"
+         style="fill:#f6d32d;fill-opacity:1;stroke:none;stroke-width:0.200001;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         d="m -79.577053,20.80028 v 3.920691 h 2.336213 c 1.764201,0 4.140594,1.564762 6.537778,1.564762 h 0.120807 v 1.083655 l 2.35903,-3.416845 -2.35903,-3.416846 v 1.083655 h -0.120807 c -2.135679,0 -5.457662,-0.324815 -5.457662,-0.819072 z"
+         sodipodi:nodetypes="ccsscccccscc" />
+      <text
+         xml:space="preserve"
+         style="font-size:2.66054px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="-66.894363"
+         y="14.883176"
+         id="text7962-9"><tspan
+           sodipodi:role="line"
+           id="tspan7960-2"
+           x="-66.894363"
+           y="14.883176"
+           style="stroke-width:0.264583">Bus de memoria</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:2.66054px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="-66.894363"
+         y="24.891836"
+         id="text7962-2-8"><tspan
+           sodipodi:role="line"
+           id="tspan7960-8-8"
+           x="-66.894363"
+           y="24.891836"
+           style="stroke-width:0.264583">Bus de entrada salida</tspan></text>
+      <path
+         id="path8125"
+         style="fill:none;stroke:#000000;stroke-width:0.755909;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         d="m -266.76758,33.787109 v 4.095703 h -0.45703 c -9.06128,0 -19.32264,5.914063 -25.54297,5.914063 h -7.99609 v 34.818359 14.81836 h 8.83008 c 6.66784,0 15.64876,5.914062 24.70898,5.914062 h 0.45703 v 4.095704 l 8.91602,-12.914063 -8.91602,-12.914063 v 4.095704 h -0.45703 c -8.07186,0 -20.62695,-1.227646 -20.62695,-3.095704 0,-7.03087 16.75018,-11.095703 19.08789,-11.095703 h 1.99609 v 4.095703 l 10.91602,-18.914062 z"
+         transform="scale(0.26458333)"
+         sodipodi:nodetypes="ccsscccsscccccssscccc" />
+      <rect
+         style="fill:#deddda;stroke:#000000;stroke-width:0.264999;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stop-color:#000000"
+         id="rect2211-1-6"
+         width="20.742241"
+         height="20.742241"
+         x="-98.731964"
+         y="7.7834735" />
+      <text
+         xml:space="preserve"
+         style="font-size:3.11962px;line-height:1.25;font-family:FreeSans;-inkscape-font-specification:FreeSans;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;stroke-width:0.264583"
+         x="-91.550652"
+         y="19.274536"
+         id="text2215-5-8"><tspan
+           sodipodi:role="line"
+           id="tspan2213-9-3"
+           x="-91.550652"
+           y="19.274536"
+           style="stroke-width:0.264583">CPU</tspan></text>
+    </g>
+  </g>
+</svg>

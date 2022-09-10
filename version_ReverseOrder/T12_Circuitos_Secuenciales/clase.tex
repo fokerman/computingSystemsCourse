@@ -1,0 +1,532 @@
+% === T05 - Circuitos Secuenciales ===
+% David Alejandro Gonzalez Marquez
+% fokerman@gmail.com
+% https://github.com/fokerman/computingSystemsCourse
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage{../packages}
+
+\title{\Huge Circuitos Secuenciales}
+\author{David Alejandro González Márquez}
+\input{../university}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+    \begin{textblock}{100}(30,80)
+    \begin{tcolorbox}[size=small,width=\textwidth,colback={gray!30},title={}]
+    \begin{center}
+     \scriptsize Clase disponible en: \url{https://github.com/fokerman/computingSystemsCourse}
+    \end{center}
+    \end{tcolorbox}
+    \end{textblock}
+%     \begin{textblock}{140}(10,70)
+%     \textcolor{rojo}{
+%     \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+%     \end{textblock}
+\end{frame}
+
+\begin{frame}[t]{Introducción}
+    \begin{textblock}{65}(10,15)
+    \begin{center}
+    \textbf{Circuitos Combinacionales}\\
+    \vspace{0.5cm}
+    \includegraphics[width=3.5cm,keepaspectratio]{img/circuitosCyS-layer1.pdf}
+    \end{center}
+    La salida está determinada \'unicamente\\ por la entrada del circuito
+    \end{textblock}
+    \begin{textblock}{65}(80,15)
+    \begin{center}
+    \textbf{Circuitos Secuenciales}\\
+    \vspace{0.5cm}
+    \includegraphics[width=3.5cm,keepaspectratio]{img/circuitosCyS-layer2.pdf}
+    \end{center}
+    La salida está determinada por la entrada\\ y el \textbf{estado interno} del circuito
+    \end{textblock}
+    \begin{textblock}{140}(10,70)
+    \begin{center}
+     \color{verdeuca} El estado estará determinado por una memoria, pero \color{naranjauca} \textbf{¿cómo almacenamos bits?}
+    \end{center}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[t]{?`Cómo almacenar un bit?}
+    Proponemos el siguiente circuito:
+    \vspace{0.2cm}
+    \begin{columns}[c]
+    \column{.3\textwidth}
+    \begin{center} \includegraphics[width=3cm,keepaspectratio]{img/orRealimentado-layer1.pdf} \end{center}
+    \column{.7\textwidth}        
+    Supongamos inicialmente \texttt{S}=\texttt{0} y \texttt{Q}=\texttt{0}.\\
+    El circuito se encuentra en reposo.
+    \end{columns}
+    \vspace{0.3cm}\pause
+    \begin{columns}[c]
+    \column{.3\textwidth}
+    \begin{center} \includegraphics[width=3cm,keepaspectratio]{img/orRealimentado-layer2.pdf} \end{center}
+    \column{.7\textwidth}
+    Si cambiamos el valor de \texttt{S} a \texttt{1}, \\ luego que el circuito se \textbf{estabiliza}, \\ la salida valdrá \texttt{Q}=\texttt{1}.
+    \end{columns}
+    \vspace{0.3cm}\pause
+    \begin{columns}[c]
+    \column{.3\textwidth}
+    \begin{center} \includegraphics[width=3cm,keepaspectratio]{img/orRealimentado-layer3.pdf} \end{center}
+    \column{.7\textwidth}
+    Si ahora cambiamos \texttt{S} a \texttt{0},\\ el valor de la salida \texttt{Q} continuará en \texttt{1}.
+    \end{columns}
+    \vspace{0.8cm}
+    \textcolor{verdeuca}{Construimos un circuito que \textbf{recuerda} un estado, pero} \textcolor{naranjauca}{\textbf{¿cómo hacemos para reiniciarlo?}}
+\end{frame}
+
+\begin{frame}[t]{?`Cómo construir un \emph{biestable}?}
+    \vspace{0.1cm}
+    \begin{columns}[c]
+    \column{.3\textwidth}
+    \begin{center} \includegraphics[width=3cm,keepaspectratio]{img/biestableConstruccion-layer2.pdf} \end{center}
+    \column{.7\textwidth}
+    Supongamos inicialmente \texttt{S}=\texttt{0}, $\overline{\texttt{R}}$=\texttt{1} y \texttt{Q}=\texttt{0}.\\
+    El circuito se encuentra en reposo.
+    \end{columns}
+    \vspace{0.2cm}\pause
+    \begin{columns}[c]
+    \column{.3\textwidth}
+    \begin{center} \includegraphics[width=3cm,keepaspectratio]{img/biestableConstruccion-layer3.pdf} \end{center}
+    \column{.7\textwidth}
+    Si \texttt{S}=\texttt{1} y $\overline{\texttt{R}}$=\texttt{1} entonces la salida \texttt{Q} cambia a \texttt{1}
+    \end{columns}
+    \vspace{0.2cm}\pause
+    \begin{columns}[c]
+    \column{.3\textwidth}
+    \begin{center} \includegraphics[width=3cm,keepaspectratio]{img/biestableConstruccion-layer4.pdf} \end{center}
+    \column{.7\textwidth}
+    Si luego cambiamos \texttt{S} a \texttt{0}, manteniendo $\overline{\texttt{R}}$=\texttt{1},\\ la salida \texttt{Q} continúa en \texttt{1}
+    \end{columns}
+    \vspace{0.2cm}\pause
+    \begin{columns}[c]
+    \column{.3\textwidth}
+    \begin{center} \includegraphics[width=3cm,keepaspectratio]{img/biestableConstruccion-layer1.pdf} \end{center}
+    \column{.7\textwidth}
+    Ahora si cambiamos $\overline{\texttt{R}}$ por \texttt{0}, manteniendo \texttt{S}=\texttt{0},\\ entonces la salida \texttt{Q} cambia a \texttt{0}
+    \end{columns}
+    \vspace{0.3cm}
+    \textcolor{verdeuca}{Construimos un circuito que puede \textbf{guardar} un estado y modificarlo.} \textcolor{naranjauca}{\textbf{Un biestable.}}
+\end{frame}
+
+\begin{frame}[t]{\texttt{Flip-Flops} (\emph{biestable})}
+    Los \texttt{flip-flop} son circuitos \emph{biestables} que permiten \textbf{almacenar 1 bit} de memoria.\\
+    Existen de diferentes tipos con distintas características.\\
+    \begin{textblock}{65}(10,25) \textcolor{naranjauca}{Tipo R-S} \end{textblock} % Circuito RS
+    \begin{textblock}{65}(7,32) \includegraphics[scale=0.8]{img/circuitFlipFlop-layer1.pdf} \end{textblock} % Circuito RS
+    \begin{textblock}{65}(50,27)
+    \begin{tabular}{c|c|c|c||c}
+    en & S & R & Q$_\text{n}$ & Q$_\text{n+1}$ \\ \hline
+    1  & 0 & 0 & Q$_\text{n}$ & Q$_\text{n}$ \\
+    1  & 0 & 1 & Q$_\text{n}$ & 0 \\
+    1  & 1 & 0 & Q$_\text{n}$ & 1 \\
+    1  & \textcolor{red}{1} & \textcolor{red}{1} & Q$_\text{n}$ & \textcolor{red}{\scriptsize{NO}} \\
+    0  & $\times$ & $\times$ & Q$_\text{n}$ & Q$_\text{n}$ \\
+    \end{tabular}
+    \end{textblock}
+    \begin{textblock}{65}(92,35) \includegraphics[scale=0.8]{img/blockFlipFlop-layer1.pdf} \end{textblock} % Bloque RS
+    \begin{textblock}{38}(113,35) 
+    \footnotesize Señal \textcolor{verdeuca}{\texttt{S}} para setear a uno \texttt{Q},\\
+    señal \textcolor{verdeuca}{\texttt{R}} para setear a cero \texttt{Q} y\\
+    señal \textcolor{verdeuca}{\texttt{en}} para impedir cambios.
+    \end{textblock}
+    \begin{textblock}{65}(10,57) \only<2->{ \textcolor{naranjauca}{Tipo D} } \end{textblock} % Circuito D
+    \begin{textblock}{65}(10,64) \only<2->{ \includegraphics[scale=0.8]{img/circuitFlipFlop-layer2.pdf} } \end{textblock} % Circuito D
+    \begin{textblock}{65}(56,62) \only<2->{ 
+    \begin{tabular}{c|c|c||c}
+    en & D & Q$_\text{n}$ & Q$_\text{n+1}$ \\ \hline
+    1  & 0 & Q$_\text{n}$ & 0 \\
+    1  & 1 & Q$_\text{n}$ & 1 \\
+    0  & $\times$ & Q$_\text{n}$ & Q$_\text{n}$ \\
+    \end{tabular}
+    } \end{textblock} % Circuito D
+    \begin{textblock}{65}(91,67) \only<2->{ \includegraphics[scale=0.8]{img/blockFlipFlop-layer2.pdf} } \end{textblock} % Bloque D
+    \begin{textblock}{38}(113,67) \only<2->{ 
+    \footnotesize Si la señal \textcolor{verdeuca}{\texttt{en}} está en 1,\\ el estado \texttt{Q} toma el valor\\ de la señal \textcolor{verdeuca}{\texttt{D}}.\\
+    } \end{textblock}
+\end{frame}
+
+\begin{frame}[t]{Tabla Característica}
+    Así como existen tablas de verdad para describir circuitos combinacionales.\\
+    Para los circuitos secuenciales tenemos \textbf{tablas características}.\\
+    \bigskip
+    \pause
+    Estas incluyen además de las entradas y salidas,\\ el \textbf{estado interno} del circuito y su \textbf{próximo estado interno}.\\
+    \bigskip
+    \begin{center}
+    \begin{tabular}{c|c||c|c}
+    $\dots$ Entradas $\dots$ & Q$_\text{n}$ $\dots$ & Q$_\text{n+1}$ $\dots$ & $\dots$ Salidas $\dots$ \\ \hline
+    $\dots$ & $\dots$ & $\dots$ & $\dots$ \\
+    \end{tabular}
+    \end{center}
+    \begin{itemize}
+     \item Q$_\text{n}$: Representa un conjunto de bits de estados internos.
+     \item Q$_\text{n+1}$: Representa el próximo estado de un conjunto de bits de estados internos.
+    \end{itemize}
+    \pause
+    \bigskip
+    \textcolor{gray}{Ejemplo:}\\
+    \small Con 2 bits como estado interno y 1 bit de entrada, el circuito tendrá $2^2 \cdot 2^1 = 8$ combinaciones posibles de salidas. Es decir, 8 filas en su tabla característica.
+\end{frame}
+
+\begin{frame}[t]{Ejemplo: Tabla Característica}
+    \begin{textblock}{38}(50,10)
+    \begin{center}
+    \begin{tabular}{C{0.7cm}|C{0.7cm}|C{0.7cm}||C{0.7cm}|C{0.7cm}|C{0.4cm}|C{0.4cm}|C{0.4cm}|C{0.4cm}C{0.8cm}}
+    \only<2->{E0} & Q1$_\text{n}$    & Q0$_\text{n}$    & Q1$_\text{n+1}$  & Q0$_\text{n+1}$  &
+                  \only<3->{S3} & \only<3->{S2} & \only<3->{S1} & \only<3->{S0} & \\ \cline{1-9}
+    \only<2->{0}  & \textcolor{a}{0} & \textcolor{a}{0} & \textcolor{r}{0} & \textcolor{r}{1} &
+                  \only<3->{0}  & \only<3->{0}  & \only<3->{0}  & \only<3->{1}  & \only<4->{\textcolor{verdeuca}{1}} \\
+    \only<2->{0}  & \textcolor{r}{0} & \textcolor{r}{1} & \textcolor{v}{1} & \textcolor{v}{0} &
+                  \only<3->{0}  & \only<3->{0}  & \only<3->{1}  & \only<3->{0}  & \only<4->{\textcolor{verdeuca}{2}} \\
+    \only<2->{0}  & \textcolor{v}{1} & \textcolor{v}{0} & \textcolor{t}{1} & \textcolor{t}{1} &
+                  \only<3->{0}  & \only<3->{0}  & \only<3->{1}  & \only<3->{1}  & \only<4->{\textcolor{verdeuca}{3}} \\
+    \only<2->{0}  & \textcolor{t}{1} & \textcolor{t}{1} & \textcolor{a}{0} & \textcolor{a}{0} &
+                  \only<3->{0}  & \only<3->{0}  & \only<3->{0}  & \only<3->{0}  & \only<4->{\textcolor{verdeuca}{0}} \\  \cline{1-9}
+    \only<2->{1}  & \only<2->{\textcolor{a}{0}} & \only<2->{\textcolor{a}{0}} & \only<2->{\textcolor{r}{0}} & \only<2->{\textcolor{r}{1}} &
+                  \only<3->{1}  & \only<3->{1}  & \only<3->{1}  & \only<3->{1}  & \only<4->{\textcolor{verdeuca}{-1}} \\
+    \only<2->{1}  & \only<2->{\textcolor{r}{0}} & \only<2->{\textcolor{r}{1}} & \only<2->{\textcolor{v}{1}} & \only<2->{\textcolor{v}{0}} &
+                  \only<3->{1}  & \only<3->{1}  & \only<3->{1}  & \only<3->{0}  & \only<4->{\textcolor{verdeuca}{-2}} \\
+    \only<2->{1}  & \only<2->{\textcolor{v}{1}} & \only<2->{\textcolor{v}{0}} & \only<2->{\textcolor{t}{1}} & \only<2->{\textcolor{t}{1}} &
+                  \only<3->{1}  & \only<3->{1}  & \only<3->{0}  & \only<3->{1}  & \only<4->{\textcolor{verdeuca}{-3}} \\
+    \only<2->{1}  & \only<2->{\textcolor{t}{1}} & \only<2->{\textcolor{t}{1}} & \only<2->{\textcolor{a}{0}} & \only<2->{\textcolor{a}{0}} &
+                  \only<3->{0}  & \only<3->{0}  & \only<3->{0}  & \only<3->{0}  & \only<4->{\textcolor{verdeuca}{0}} \\ \cline{1-9}
+    \end{tabular}
+    \end{center}
+    \end{textblock}
+    \begin{textblock}{65}(60,60) \only<5-8>{\includegraphics[scale=0.5]{img/ejemploContadorInversor-layer1.pdf}} \end{textblock}
+    \begin{textblock}{65}(60,60) \only<6-8>{\includegraphics[scale=0.5]{img/ejemploContadorInversor-layer2.pdf}} \end{textblock}
+    \begin{textblock}{65}(60,60) \only<7-8>{\includegraphics[scale=0.5]{img/ejemploContadorInversor-layer3.pdf}} \end{textblock}
+    \begin{textblock}{65}(60,60) \only<8-8>{\includegraphics[scale=0.5]{img/ejemploContadorInversor-layer4.pdf}} \end{textblock}
+    \begin{textblock}{65}(60,60) \only<9-|handout:0>{ \includegraphics[scale=0.5]{img/ejemploContadorInversor-layer5.pdf}} \end{textblock}
+    \begin{textblock}{65}(60,60) \only<9-|handout:0>{ \includegraphics[scale=0.5]{img/ejemploContadorInversor-layer6.pdf}} \end{textblock}
+    \begin{textblock}{43}(5,15)
+    \small \uncover<1->{Supongamos un circuito con 2 bits de salida que almacena 4 estados posibles y los genera secuencialmente (Contador).\\}
+    \bigskip
+    \small \uncover<2->{Agregamos una entrada, que no afecta el estado interno del circuito.\\}
+    \bigskip
+    \small \uncover<3->{Y generamos 4 salidas, que representan el valor del contador extendido a 4 bits. Si E0 es 1, entonces las salidas son el inverso aditivo del número.}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[t]{Circuitos Secuenciales}
+    \begin{textblock}{65}(10,15) \only<2->{\includegraphics[scale=0.8]{img/bloquesConMemoria-layer1.pdf} } \end{textblock} % bloque combinacional
+    \begin{textblock}{65}(10,15) \only<3->{\includegraphics[scale=0.8]{img/bloquesConMemoria-layer2.pdf} } \end{textblock} % memoria Q
+    \begin{textblock}{65}(10,15) \only<2->{\includegraphics[scale=0.8]{img/bloquesConMemoria-layer3.pdf} } \end{textblock} % Entradas
+    \begin{textblock}{65}(10,15) \only<2->{\includegraphics[scale=0.8]{img/bloquesConMemoria-layer4.pdf} } \end{textblock} % Salidas
+    \begin{textblock}{65}(10,15) \only<3->{\includegraphics[scale=0.8]{img/bloquesConMemoria-layer5.pdf} } \end{textblock} % Qn
+    \begin{textblock}{65}(10,15) \only<3->{\includegraphics[scale=0.8]{img/bloquesConMemoria-layer6.pdf} } \end{textblock} % Qn+1
+    \begin{textblock}{80}(65,8)
+    Un circuito secuencial, se puede separar\\ en dos partes:\\
+    \vspace{0.2cm}
+    \begin{enumerate}
+    \item<2-> un \emph{bloque combinacional}
+    \vspace{0.2cm}
+    \item<3-> un \emph{bloque con memoria}
+    \end{enumerate}
+    \vspace{0.5cm}
+    \only<3->{La memoria almacena bits que determinan\\ el estado del circuito.}
+    \end{textblock}
+    \begin{textblock}{150}(7,67)
+    \only<4->{Las entradas del bloque combinacional son las entradas ($E$) y las salidas de la memoria ($Q_n$).\\ \bigskip}
+    \only<4->{El bloque combinacional genera la salida del circuito ($S$) y el nuevo estado de la memoria ($Q_{n+1}$).}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[t]{Circuitos Secuenciales}
+    \begin{textblock}{150}(10,13)
+    El esquema anterior lo podemos implementar usando \texttt{flip-flops} de la siguiente forma:
+    \end{textblock}
+    \begin{textblock}{65}(5,21) \only<3->{ \includegraphics[scale=0.8]{img/bloquesConFlipFlops-layer1.pdf} } \end{textblock} % bloque nuevos estados
+    \begin{textblock}{65}(5,21) \only<5->{ \includegraphics[scale=0.8]{img/bloquesConFlipFlops-layer2.pdf} } \end{textblock} % flip flops
+    \begin{textblock}{65}(5,21) \only<4->{ \includegraphics[scale=0.8]{img/bloquesConFlipFlops-layer3.pdf} } \end{textblock} % bloque salidas
+    \begin{textblock}{65}(5,21) \only<2->{ \includegraphics[scale=0.8]{img/bloquesConFlipFlops-layer4.pdf} } \end{textblock} % entradas
+    \begin{textblock}{65}(5,21) \only<5->{ \includegraphics[scale=0.8]{img/bloquesConFlipFlops-layer5.pdf} } \end{textblock} % qn nuevos estados
+    \begin{textblock}{65}(5,21) \only<5->{ \includegraphics[scale=0.8]{img/bloquesConFlipFlops-layer6.pdf} } \end{textblock} % qn salidas
+    \begin{textblock}{65}(5,21) \only<6->{ \includegraphics[scale=0.8]{img/bloquesConFlipFlops-layer7.pdf} } \end{textblock} % qn+1
+    \begin{textblock}{65}(5,21) \only<4->{ \includegraphics[scale=0.8]{img/bloquesConFlipFlops-layer8.pdf} } \end{textblock} % salidas
+    \begin{textblock}{65}(5,21) \only<7->{ \includegraphics[scale=0.8]{img/bloquesConFlipFlops-layer9.pdf} } \end{textblock} % clock
+    \begin{textblock}{80}(80,30)
+    \uncover<3->{ Contamos con dos bloques combinacionales\\ para generar: }
+    \vspace{0.2cm}
+    \begin{enumerate}
+    \item<3-> los nuevos estados estados de los flip-flops
+    \vspace{0.2cm}
+    \item<4-> y otro para generar las salidas del circuito
+    \end{enumerate}
+    \end{textblock}
+    \begin{textblock}{150}(7,70)
+    \uncover<5->{$Q_n$ representa el estado actual de los flip-flops,} \uncover<6->{mientras que $Q_{n+1}$ representa el estado siguiente.\\}
+    \bigskip
+    \uncover<7->{Pero, \textcolor{naranjauca}{\textbf{¿cuándo se modifica el estado interno de un circuito?}}}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[t]{Reloj (Clock)}
+    El reloj o señal de reloj, se utiliza para \textbf{temporizar} los cambios que se suceden en un circuito.\\
+    Permite coordinar el momento exacto en que se \textbf{modifica} el estado de los biestables.\\
+    \vspace{2.5cm}
+    \begin{textblock}{65}(15,26) \only<2->{\includegraphics[scale=0.8]{img/clock-layer1.pdf} } \end{textblock} % señal
+    \begin{textblock}{65}(15,26) \only<3->{\includegraphics[scale=0.8]{img/clock-layer2.pdf} } \end{textblock} % ciclo
+    \begin{textblock}{65}(15,26) \only<3->{\includegraphics[scale=0.8]{img/clock-layer3.pdf} } \end{textblock} % pulso
+    \begin{textblock}{65}(15,26) \only<4->{\includegraphics[scale=0.8]{img/clock-layer4.pdf} } \end{textblock} % flancos
+    \uncover<2->{La señal varía entre 0 y 1 en intervalos regulares de tiempo.\\}
+    \uncover<3->{Su ciclo es simétrico, ya sea comenzando desde 0 o desde 1.\\}
+    \bigskip
+    \uncover<4->{Se denomina \textbf{flanco}, al momento en que la señal cambia entre estados.\\}
+    \uncover<4->{\hspace{1cm} {\small \textcolor{verdeuca}{Flanco descendente:} Cambia entre 1 a 0.\\}}
+    \uncover<4->{\hspace{1cm} {\small \textcolor{verdeuca}{Flanco ascendente:} Cambia entre 0 a 1.\\}}
+    \bigskip
+    \uncover<5->{Ahora, \textcolor{naranjauca}{\textbf{¿cómo hacemos que un flip-flop cambie su estado por flanco?}}}
+\end{frame}
+
+\begin{frame}[t]{\texttt{Flip-Flops} (\emph{biestable} Master-Slave)}
+    Utilizamos dos \texttt{flip-flops}, uno como \texttt{master} y otro \texttt{slave}.\\
+    El \texttt{master} toma un valor, y el \texttt{slave} lo copia en el momento del \textbf{cambio de flanco}.\\
+    \begin{textblock}{65}(10,30) \only<2->{ \textcolor{naranjauca}{Tipo D Master-Slave} } \end{textblock}
+    \begin{textblock}{65}(8,38)  \only<2->{ \includegraphics[scale=0.8]{img/circuitFlipFlop-layer3.pdf} } \end{textblock}
+    \begin{textblock}{65}(55,32) \only<2->{
+    \begin{tabular}{c|c|c||c}
+    en & D & Q$_\text{n}$ & Q$_\text{n+1}$ \\
+       &   &              & $\textifsym{h|l}$ \\ \hline
+    1  & 0 & Q$_\text{n}$ & 0 \\
+    1  & 1 & Q$_\text{n}$ & 1 \\
+    0  & $\times$ & Q$_\text{n}$ & Q$_\text{n}$ \\  
+    \end{tabular} }
+    \end{textblock}
+    \begin{textblock}{65}(97,37) \only<2->{ \includegraphics[scale=0.8]{img/blockFlipFlop-layer3.pdf} } \end{textblock}
+    \begin{textblock}{32}(120,35) \only<2->{ 
+    \footnotesize Si la señal \textcolor{verdeuca}{\texttt{clk}} cambia de 1 a 0 (flanco descendente),\\ \texttt{Q} toma el valor del último valor guardado durante el puso 1 de la señal \textcolor{verdeuca}{\texttt{clk}}\\ }
+    \end{textblock}
+    \begin{textblock}{140}(10,70)
+    \uncover<3->{En el contexto de la materia solo vamos a utilizar \texttt{flip-flops} de tipo \textcolor{naranjauca}{\textbf{D Master-Slave}},\\ 
+    ya sea por flaco positivo como negativo.} 
+    \end{textblock} 
+\end{frame}
+
+\begin{frame}[t]{Funcionamiento Flip-Flop D Master-Slave}
+    \begin{textblock}{65}(5,12) \only<1->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer1.pdf} } \end{textblock}
+    \begin{textblock}{65}(5,12) \only<2->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer2.pdf} } \end{textblock}
+    \begin{textblock}{65}(5,12) \only<3->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer3.pdf} } \end{textblock}
+    \begin{textblock}{65}(5,12) \only<4->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer4.pdf} } \end{textblock}
+    \begin{textblock}{65}(5,12) \only<5->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer5.pdf} } \end{textblock}
+    \begin{textblock}{65}(5,12) \only<6->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer6.pdf} } \end{textblock}
+    \begin{textblock}{65}(5,12) \only<7->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer7.pdf} } \end{textblock}
+    \begin{textblock}{65}(5,12) \only<8->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer8.pdf} } \end{textblock}
+    \begin{textblock}{65}(5,12) \only<9->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer9.pdf} } \end{textblock}
+    % \begin{textblock}{65}(5,12) \only<10->{\includegraphics[scale=0.8]{img/timeMasterSlave-layer10.pdf} } \end{textblock}
+    \begin{textblock}{65}(18,10) \only<1-2|handout:0>{\includegraphics[scale=0.8]{img/timeMasterSlaveCover.pdf} } \end{textblock}
+    \begin{textblock}{65}(22,10) \only<3-3|handout:0>{\includegraphics[scale=0.8]{img/timeMasterSlaveCover.pdf} } \end{textblock}
+    \begin{textblock}{65}(27,10) \only<4-4|handout:0>{\includegraphics[scale=0.8]{img/timeMasterSlaveCover.pdf} } \end{textblock}
+    \begin{textblock}{65}(28,10) \only<5-5|handout:0>{\includegraphics[scale=0.8]{img/timeMasterSlaveCover.pdf} } \end{textblock}
+    \begin{textblock}{65}(32,10) \only<6-6|handout:0>{\includegraphics[scale=0.8]{img/timeMasterSlaveCover.pdf} } \end{textblock}
+    \begin{textblock}{65}(46,10) \only<7-7|handout:0>{\includegraphics[scale=0.8]{img/timeMasterSlaveCover.pdf} } \end{textblock}
+    \begin{textblock}{65}(48,10) \only<8-8|handout:0>{\includegraphics[scale=0.8]{img/timeMasterSlaveCover.pdf} } \end{textblock}
+    % \begin{textblock}{65}(65,20) \only<9-9>{\includegraphics[scale=0.8]{img/timeMasterSlaveCover.pdf} } \end{textblock}
+    % \begin{textblock}{65}(85,10) \only<1->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer1.pdf} } \end{textblock}
+    \begin{textblock}{65}(85,  3) \only<2->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer2.pdf} } \end{textblock} % 1
+    \begin{textblock}{65}(120, 3) \only<3->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer3.pdf} } \end{textblock} % 2
+    \begin{textblock}{65}(85, 20) \only<4->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer4.pdf} } \end{textblock} % 3
+    \begin{textblock}{65}(120,20) \only<5->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer4.pdf} } \end{textblock} % 4
+    \begin{textblock}{65}(120,20) \only<5->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer9.pdf} } \end{textblock} % 4
+    \begin{textblock}{65}(85, 37) \only<6->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer5.pdf} } \end{textblock} % 5
+    \begin{textblock}{65}(120,37) \only<7->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer6.pdf} } \end{textblock} % 6
+    \begin{textblock}{65}(85, 54) \only<8->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer6.pdf} } \end{textblock} % 7
+    \begin{textblock}{65}(85, 54) \only<8->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer10.pdf}} \end{textblock} % 7
+    \begin{textblock}{65}(120,54) \only<9->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer7.pdf} } \end{textblock} % 8
+    % \begin{textblock}{65}(85, 71) \only<10->{\includegraphics[scale=1.0]{img/timeMasterSlaveCircuitSmall-layer8.pdf}} \end{textblock} % 9
+    \begin{textblock}{120}(5,57) 
+    \scriptsize
+    \only<2->{1. El circuito inicia en cero. El clock cambia a \texttt{1}.\\}
+    \only<3->{2. Luego del flanco descendente el estado de \texttt{Q} permanece en \texttt{0}.\\}
+    \only<4->{3. La entrada \texttt{D} cambia a \texttt{1}.\\}
+    \only<5->{4. Como el clock está en \texttt{1}, el flip-flop master toma el \texttt{1}.\\}
+    \only<6->{5. Cuando se produce el flanco descendente, cambia el clock y se copia el estado entre master y slave.\\}
+    \only<7->{6. Los cambios de \texttt{D} durante la parte alta del ciclo no se reflejan en la salida \texttt{Q}.\\}
+    \only<8->{7. Pero sí son tomados por el flip-flop master.\\}
+    \only<9->{8. Los cambios de \texttt{D} durante la parte baja del ciclo no son tomados por el flip-flop master.\\}
+    % \only<10->{9.\\}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[t]{Contadores}
+    Los circuitos contadores generan una \textbf{secuencia} de valores en su salida por cada ciclo de clock.\\
+    \vspace{0.3cm}
+    \only<2->{ \textcolor{gray}{Ejemplo:} }
+    \only<2->{ \small Contador módulo potencia de 2 de 3 bits. Cuenta de \texttt{000b} a \texttt{111b}. }
+    \begin{textblock}{65}(10,26) \only<2->{ \includegraphics[scale=0.68]{img/contadores-layer1.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<2->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer1.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<3->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer2.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<4->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer3.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<5->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer4.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<6->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer5.pdf} } \end{textblock} % 0
+    \begin{textblock}{65}(70,30) \only<7->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer6.pdf} } \end{textblock} % 1
+    \begin{textblock}{65}(70,30) \only<8->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer7.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<8->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer8.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<8->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer9.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<8->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer10.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<8->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer11.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<8->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer12.pdf} } \end{textblock}
+    \begin{textblock}{65}(70,30) \only<8->{ \includegraphics[scale=0.4]{img/contadorEjemplo-layer13.pdf} } \end{textblock}
+    \begin{textblock}{50}(10,50) \only<8->{ 
+    Cada uno de los flip-flops cambia de estado por el contrario al que tiene almacenado.\\
+    \bigskip
+    El cambio se produce cuando el flip-flop anterior, que alimenta su clock, cambia de estado.
+    } \end{textblock}
+\end{frame}
+
+\begin{frame}[t]{Contadores}
+    \begin{textblock}{65}(10,15) \only<1->{ Contador \textcolor{naranjauca}{módulo potencia de 2} } \end{textblock}
+    \begin{textblock}{65}(10,35) \only<2->{ Contador \textcolor{naranjauca}{módulo arbitario} } \end{textblock}
+    \begin{textblock}{65}(10,60) \only<3->{ Contador \textcolor{naranjauca}{módulo y cuenta arbitraria} } \end{textblock}
+    \begin{textblock}{65}(80,5)  \only<1->{ \small \textcolor{gray}{Ejemplos:} } \end{textblock}
+    \begin{textblock}{65}(80,10) \only<1->{ \includegraphics[scale=0.6]{img/contadores-layer1.pdf} } \end{textblock}
+    \begin{textblock}{65}(80,30) \only<2->{ \includegraphics[scale=0.6]{img/contadores-layer2.pdf} } \end{textblock}
+    \begin{textblock}{65}(80,60) \only<3->{ \includegraphics[scale=0.6]{img/contadores-layer3.pdf} } \end{textblock}
+    \begin{textblock}{60}(12,20)
+    \only<1->{ \textcolor{verdeuca}{ \footnotesize Secuencia ascendente tal que su módulo siempre es una potencia de 2 por cada bit que se agrega al contador. } }
+    \end{textblock}
+    \begin{textblock}{60}(12,40)
+    \only<2->{ \textcolor{verdeuca}{ \footnotesize Cuando la secuencia supera valor máximo es reiniciada a cero gracias a un circuito combinatorio provisto para tal fin. } }
+    \end{textblock}
+    \begin{textblock}{60}(12,65)
+    \only<3->{ \textcolor{verdeuca}{ \footnotesize Se provee un circuito combinatorio que transforma cada valor de la secuencia en uno arbitrario. } }
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[c]{Registros}
+    Un registro es un circuito secuencial que contiene un conjunto de $n$ flip-flops asociados, que permiten \textbf{almacenar temporariamente} una palabra o grupo de $n$ bits.\\
+    \vspace{0.2cm}
+    \pause
+    Los tipos de registro dependen de la forma en que los datos son \textbf{le\'idos} o \textbf{almacenados}:
+    \vspace{0.2cm}
+    \begin{enumerate}
+    \item Registro \textcolor{naranjauca}{paralelo-paralelo} {\scriptsize (entrada paralelo, salida paralelo)}
+    \item Registro \textcolor{naranjauca}{serie-paralelo} {\scriptsize (entrada serie, salida paralelo)}
+    \item Registro \textcolor{naranjauca}{paralelo-serie} {\scriptsize (entrada paralelo, salida serie)}
+    \item Registro \textcolor{naranjauca}{serie-serie} {\scriptsize (entrada serie, salida serie)}
+%     \item Registro de desplazamiento
+%     \item Registro de desplazamiento circular
+    \end{enumerate}
+    \bigskip
+    \small
+    \begin{itemize}
+     \item[] \textbf{Serie:} \textcolor{verdeuca}{Los bits entran o salen del registro secuencialmente, uno a continuación del otro.}
+     \item[] \textbf{Paralelo:} \textcolor{verdeuca}{Los bits entran o salen del registro simultáneamente, todos al mismo tiempo.}
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}[t]{...}
+%     \begin{textblock}{65}(10,10) \only<1>{\includegraphics[scale=1.0]{img/registros-layer1.pdf} } \end{textblock} % ss
+%     \begin{textblock}{65}(10,10) \only<2>{\includegraphics[scale=1.0]{img/registros-layer2.pdf} } \end{textblock} % sp
+%     \begin{textblock}{65}(10,10) \only<3>{\includegraphics[scale=1.0]{img/registros-layer3.pdf} } \end{textblock} % circular
+%     \begin{textblock}{65}(10,10) \only<4>{\includegraphics[scale=1.0]{img/registros-layer4.pdf} } \end{textblock} % ps
+%     \begin{textblock}{65}(10,10) \only<5>{\includegraphics[scale=1.0]{img/registros-layer5.pdf} } \end{textblock} % pp
+%     \begin{textblock}{65}(10,10) \only<6>{\includegraphics[scale=1.0]{img/registros-layer6.pdf} } \end{textblock} % desplazamiento 
+% \end{frame}
+
+\begin{frame}[t]{Registros}
+    \textcolor{gray}{Ejemplos para registros de 3 bits.}
+    \begin{textblock}{65}(10,20) \only<1->{
+    Registro \textcolor{naranjauca}{paralelo-paralelo}\\
+    \begin{center}
+    \includegraphics[scale=0.5]{img/registros-layer5.pdf} 
+    \end{center}
+    } \end{textblock} % pp
+    \begin{textblock}{65}(85,20) \only<2->{
+    Registro \textcolor{naranjauca}{serie-paralelo}\\
+    \begin{center}
+    \includegraphics[scale=0.5]{img/registros-layer2.pdf}
+    \end{center}
+    } \end{textblock} % sp
+    \begin{textblock}{65}(10,55) \only<3->{
+    Registro \textcolor{naranjauca}{paralelo-serie}
+    \begin{center}
+    \includegraphics[scale=0.5]{img/registros-layer4.pdf}
+    \end{center}
+    } \end{textblock} % ps
+    \begin{textblock}{65}(85,55) \only<4->{
+    Registro \textcolor{naranjauca}{serie-serie}
+    \begin{center}
+    \includegraphics[scale=0.5]{img/registros-layer1.pdf}
+    \end{center}
+    } \end{textblock} % ss
+\end{frame}
+
+% \begin{frame}[c]{Registros de desplazamiento}
+%     \begin{enumerate}
+%     \item[] Registro de desplazamiento
+%     \vspace{0.2cm}
+%     \begin{center}
+%     \includegraphics[width=7.5cm,keepaspectratio]{img/registros-layer6.pdf} % desplazamiento 
+%     \end{center}
+%     \item[] Registro de desplazamiento circular
+%     \vspace{0.2cm}
+%     \begin{center}
+%     \includegraphics[width=7.5cm,keepaspectratio]{img/registros-layer3.pdf} % circular
+%     \end{center}
+%     \end{enumerate}
+% \end{frame}
+
+\begin{frame}[t]{Registros bidireccionales}
+    \small En términos prácticos, vamos a querer \textbf{conectar registros entre sí}, tanto para leer como para escribir.\\
+    \vspace{0.2cm}
+    Para esto vamos a necesitar registros que operen \textbf{bidireccionalmente}.\\ Es decir que, utilizando las mismas entradas, podamos escribir y leer el registro.\\
+    \vspace{0.2cm}
+    Usando \textbf{componentes de 3 estados}, vamos a construir registros bidireccionales.\\
+    Esta idea se puede extender a cualquier circuito, no necesariamente registros.\\
+    \vspace{0.4cm}
+    \only<2->{ \textcolor{gray}{Ejemplo: registro de 1 bit.} }
+    \begin{textblock}{65}(10,50) \only<2->{\includegraphics[scale=0.8]{img/registroBidireccional-layer1.pdf} } \end{textblock}
+    \begin{textblock}{65}(60,40) \only<3->{\includegraphics[scale=0.8]{img/registroBidireccional-layer2.pdf} } \end{textblock}
+    \begin{textblock}{65}(60,65) \only<4->{\includegraphics[scale=0.8]{img/registroBidireccional-layer3.pdf} } \end{textblock}
+    \begin{textblock}{35}(110,40)
+    \only<3->{\scriptsize Si la señal $\text{R}/\overline{\text{W}}$ es \texttt{0}, el valor en la \textbf{entrada} \texttt{data} puede llegar a la entrada \texttt{D} del biestable. } \end{textblock}
+    \begin{textblock}{35}(110,65)
+    \only<4->{\scriptsize Si la señal $\text{R}/\overline{\text{W}}$ es \texttt{1}, el estado \texttt{Q} del biestable se expone en la \textbf{salida} \texttt{data}. } \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bibliografía}
+    \begin{itemize}
+     \setlength\itemsep{0.5cm}
+    \item[-] \small Tanenbaum, “Organización de Computadoras. Un Enfoque Estructurado”, 4ta Edición, 2000.\\
+    \begin{itemize}
+     \item \textbf{Capítulo 3 - El nivel de lógica digital} - Páginas 141-146
+    \end{itemize}
+    \item[-] \small Null, “Essentials of Computer Organization and Architecture”, 5th Edition, 2018.\\
+    \begin{itemize}
+     \item \textbf{Chapter 3 - Boolean Algebra and Digital Logic:}
+     \begin{itemize}
+     \item 3.7 - Sequential Circuits
+        \item[] 3.7.1 - Basic Concepts
+        \item[] 3.7.2 - Clocks
+        \item[] 3.7.3 - Flip-Flops
+     \end{itemize}
+    \end{itemize}
+%     \item[-] \small Silberschatz, “Fundamentos de Sistemas Operativos”, 7ma Edición, 2006.\\
+%     \item[-] \small Tanenbaum, “Modern Operating Systems”, 4th Edition, 2015.\\
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Ejercicios}
+    Con lo visto, ya pueden resolver todos los ejercicios de la Guía de Lógica Digital.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+    \vspace{2cm}
+    \huge ¡Gracias!\\
+    \vspace{2cm}
+%     \normalsize Recuerden leer los comentarios adjuntos\\ en cada clase por aclaraciones.
+    \end{center}
+\end{frame}
+
+\end{document}
+

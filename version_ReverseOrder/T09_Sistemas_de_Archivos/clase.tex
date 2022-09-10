@@ -1,0 +1,413 @@
+% === T22 - Sistemas de Archivos ===
+% David Alejandro Gonzalez Marquez
+% fokerman@gmail.com
+% https://github.com/fokerman/computingSystemsCourse
+
+\documentclass[aspectratio=169]{beamer}
+\usepackage{../packages}
+
+\usepackage{keystroke}
+\usepackage{menukeys}
+
+\title{\Huge Sistemas de Archivos}
+\author{David Alejandro González Márquez}
+\input{../university}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]
+    \titlepage
+    \begin{textblock}{100}(30,80)
+    \begin{tcolorbox}[size=small,width=\textwidth,colback={gray!30},title={}]
+    \begin{center}
+     \scriptsize Clase disponible en: \url{https://github.com/fokerman/computingSystemsCourse}
+    \end{center}
+    \end{tcolorbox}
+    \end{textblock}
+%     \begin{textblock}{140}(10,70)
+%     \textcolor{rojo}{
+%     \textbf{Atención}: La clase será grabada por el anfitrión para su posterior y eventual uso académico dentro de nuestra institución. Su participación en la clase implica brindar su consentimiento para participar en la grabación, aunque pueden mantener su video apagado.}
+%     \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile]{Sistemas de Archivos}
+    Los sistemas de archivos son una parte fundamental de un Sistema Operativo.\\
+    \bigskip
+    Proveen una \textbf{interfaz} lógica al \textbf{almacenamiento secundario}.\\
+    \bigskip
+    Vamos a distinguir conceptos como\\
+    \begin{center}
+    \emph{archivo}, \emph{directorio}, \emph{permisos},\\
+    \bigskip
+    \emph{sistema de archivos}, \emph{organización lógica},\\
+    \bigskip
+    \emph{organización física} e \emph{implementación}.
+    \end{center}
+\end{frame}
+
+\begin{frame}[fragile]{Concepto de Archivo}
+    Un archivo es una \textbf{unidad lógica} de almacenamiento. Agrupa información bajo un nombre.\\
+    Desde el punto de vista del usuario es la \textbf{mínima unidad almacenable} en un sistema de archivos.\\
+    \bigskip
+    \pause
+    Los archivos son una secuencia ordenada de bytes.\\
+    Pueden ser interpretados como \textcolor{verdeuca}{texto} o \textcolor{verdeuca}{binarios}.\\
+    Su estructura puede ser de caracteres, líneas o registros, ya sea variables o fijos.\\
+    \bigskip
+    Existen múltiples formatos de archivos, cada con su propio formato interno.
+\end{frame}
+
+\begin{frame}[fragile,t]{Atributos y características de los archivos}
+    Los archivos tienen asociada información que se almacena como metadata dentro del sistema de archivos.
+    { \small
+    \begin{itemize}
+    \setlength\itemsep{0px}
+    \item Nombre: \textcolor{gray}{Nombre simbólico del archivo para lectura humana.}
+    \item Identificador: \textcolor{gray}{Valor único de identificación dentro del sistema.}
+    \item Tipo: \textcolor{gray}{Información de las características del archivos (ej. es un directorio).}
+    \pause
+    \item Ubicación: \textcolor{gray}{Puntero al lugar donde se encuentra el archivo.}
+    \item Tamaño: \textcolor{gray}{Cantidad de bytes, o bloques del archivo.}
+    \item Protección: \textcolor{gray}{Información de control de accesos.}
+    \item Fecha/hora: \textcolor{gray}{Información sobre fecha y hora, creación, último acceso y modificación.}
+    \end{itemize}
+    }
+    \pause
+    Pueden tener una extensión que permite identificar de que tipo de archivo se trata.\\
+    Esta extensión es parte del nombre simbólico del archivo.\\
+    \pause
+    \bigskip
+    \textbf{Número Mágico}: Son secuencias numéricas particulares que se ubican al comienzo del archivo y permiten identificar el tipo de archivo sin usar su extensión {\scriptsize (\url{https://www.filesignatures.net/})}.
+\end{frame}
+
+\begin{frame}[fragile,t]{Operaciones sobre un Archivo}
+    Los sistemas de archivos cuentan con un conjunto de \textbf{primitivas básicas} para operar con archivos.
+    \textcolor{gray}{En todos los casos es necesario llegar al archivo en cuestión para operar con este.}
+    \begin{itemize}
+    \pause
+    \setlength\itemsep{0.3cm}
+    \item \textcolor{naranjauca}{Creación de un archivo:}
+    Implica encontrar un lugar libre donde ubicar el archivo y completar una entrada en el directorio que permita llegar al mismo.
+    \pause
+    \item \textcolor{naranjauca}{Escritura de un archivo:}
+    Al escribir en un archivo el sistema guarda el puntero al último byte escrito para poder continuar escribiendo desde ahí.
+    \pause
+    \item \textcolor{naranjauca}{Lectura de un archivo:} Se guarda un puntero al bloque actual que se esta leyendo, este debe ser independiente entre múltiples procesos que accedan al archivo.
+    \pause
+    \item \textcolor{naranjauca}{Reposicionamiento dentro de un archivo:}
+    Operación que permite mover relativa o absolutamente el puntero dentro del archivo.
+    \pause
+    \item \textcolor{naranjauca}{Borrado de un archivo:} Consiste en encontrar la entrada de archivo y liberar todo su contenido. Borrando también su entrada en el directorio.
+    \end{itemize}
+    %  \item \textcolor{naranjauca}{Truncado de un archivo:}
+    % - Adiccion (append)
+    % - Renombrado
+\end{frame}
+
+\begin{frame}[fragile,t]{Tabla de archivos abiertos}
+    La mayoría de los sistemas requieren para operar con archivos, \textbf{abrirlos} y al terminar \textbf{cerrarlos}.\\
+    \begin{itemize}
+    \item \texttt{open()}: Abre un archivo para ser utilizando, tanto como lectura o escritura.
+    \item \texttt{close()}: Cierra un archivo abierto.
+    \end{itemize}
+    \pause
+    Los archivos que son abiertos por un proceso, son registrados en una \textbf{Tabla de archivos abiertos}.
+    La tabla contiene la información necesaria para poder acceder al archivo sin necesidad de buscar nuevamente en el directorio.\\
+    \bigskip
+    \pause
+    Por cada archivo abierto tenemos: { \small
+    \begin{itemize}
+    \setlength\itemsep{0px}
+    \item Puntero al archivo: \textcolor{gray}{Registra la ubicación donde realizar la próxima lectura o escritura.}
+    \item Contador de aperturas: \textcolor{gray}{Registra cuantos procesos tiene abierto el archivo.}
+    \item Ubicación dentro del disco: \textcolor{gray}{Información para ubicar el archivo en el disco.}
+    \item Derechos de acceso: \textcolor{gray}{Modo de apertura del archivo, lectura o escritura.}
+    \end{itemize} }
+    \small Algunos sistemas proveen mecanismos de \textbf{bloqueo compartido} y \textbf{bloqueo exclusivo} sobre los archivos.
+\end{frame}
+
+\begin{frame}[fragile,t]{Métodos de acceso a archivos}
+    \begin{itemize}
+    \item \textcolor{naranjauca}{Acceso secuencial}\\
+    {\small La información \textbf{se procesa en orden}, un registro o dato dentro del archivo después del otro. Este modo es el mas común para la mayoría de los programas. Para implementarlo se requiere guardar cuanto se leyó o escribió del archivo en cada operación y mover el puntero en consecuencia.}\\
+    \bigskip
+    \begin{center}
+    \includegraphics[scale=1.3]{img/acceso_secuencial-layer1.pdf}\hspace{1cm}
+    \includegraphics[scale=1.3]{img/acceso_secuencial-layer2.pdf}
+    \end{center}
+    \bigskip
+    \pause
+    \item \textcolor{naranjauca}{Acceso directo o relativo}\\
+    {\small Este método supone a un archivo como una secuencia de registros lógicos de longitud fija. Utilizando la posibilidad de \textbf{acceder aleatoriamente} a cualquier bloque del disco. Es posible identificar cualquier registro dentro de los bloques del sistema de archivos y acceder a estos sin ninguna restricción en cuanto al orden de lectura o escritura.}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,t]{Estructura de almacenamiento}
+    Un disco o cualquier dispositivos de almacenamiento secundario, puede ser utilizado para albergar un único sistema de archivos, o múltiples sistemas de archivos de distintos tipos.\\
+    \bigskip
+    Las partes en las que se divide el disco se conocen como \textbf{particiones}.\\
+    Estas pueden combinarse para generar espacios de mayor tamaño denominados \textbf{volumenes}.\\
+    \bigskip
+    \pause
+    Cada volumen que contenga un sistema de archivos cuenta con un \textbf{directorio de contenidos} o simplemente directorio,
+    que contiene la información sobre los archivos almacenados.\\
+    \bigskip
+    La estructura lógica de un directorio nos debe permitir:
+    \begin{itemize}
+    \setlength\itemsep{0px}
+    \item \textcolor{verdeuca}{Listar un directorio y buscar un archivo}
+    \item \textcolor{verdeuca}{Agregar, eliminar y renombrar un archivo}
+    \item \textcolor{verdeuca}{Recorrer el sistema de archivos}
+    \end{itemize}
+%         \begin{textblock}{76}(10,15) 
+%          \includegraphics[scale=0.2]{img/partition.png}
+%         \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Estructura de directorios}
+    Directorio de un nivel único\\
+    \begin{textblock}{140}(10,14)
+    \only<1->{
+    \begin{center}
+    \includegraphics[scale=1.8]{img/directorios-layer1.pdf}
+    \end{center}
+    }
+    \end{textblock}
+    \begin{textblock}{140}(10,45)
+    \only<2->{
+    Directorio de dos niveles\\
+    \begin{center}
+    \includegraphics[scale=1.8]{img/directorios-layer2.pdf}
+    \end{center}
+    }
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Estructura de directorios}
+    Directorio con estructura de árbol\\
+    \begin{textblock}{140}(10,14)
+    \begin{center}
+    \includegraphics[scale=1.8]{img/directorios-layer3.pdf}
+    \end{center}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Estructura de directorios}
+    Directorios en un grafo acíclico\\
+    \begin{textblock}{140}(10,14)
+    \begin{center}
+    \includegraphics[scale=1.8]{img/directorios-layer4.pdf}
+    \end{center}
+    \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Montaje de sistemas de archivos}
+    Montar un sistema de archivos dentro de otro consiste en colocar en algún punto del árbol de directorios, todo el contenido lógico de otro sistema de archivos.
+    \begin{textblock}{140}(40,25) \only<1->{\includegraphics[scale=2]{img/montado-layer1.pdf}} \end{textblock}
+    \begin{textblock}{140}(40,25) \only<2->{\includegraphics[scale=2]{img/montado-layer2.pdf}} \end{textblock}
+    \begin{textblock}{140}(40,25) \only<3->{\includegraphics[scale=2]{img/montado-layer3.pdf}} \end{textblock}
+    \begin{textblock}{140}(40,25) \only<4->{\includegraphics[scale=2]{img/montado-layer4.pdf}} \end{textblock}
+    \begin{textblock}{140}(10,65)
+    Ejemplo:\\ \small
+    \textcolor{gray}{En el sistema de arhivos presentado se tiene montado en \texttt{/users} un sistema de archivos, 
+    mientras que en \texttt{/data/pictures} y \texttt{/data/today} se tiene otros dos sistemas de archivos diferentes montados.\\
+    Considerar que no necesariamente todos tiene el mismo tipo de sistema de archivos.}\\
+    \end{textblock}
+\end{frame}
+
+% \begin{frame}[fragile,t]{Compartición de archivos}
+% \end{frame}
+
+% \begin{frame}[fragile,t]{Semantica de coherencia}
+% - Semantica UNIX
+% - Semantica de sesion
+% - Semantica de archivos compartidos inmutables
+% \end{frame}
+
+\begin{frame}[fragile,t]{Protección}
+    Vamos a hablar de protección desde el punto de vista de la seguridad de la información.\\
+    \bigskip
+    \pause
+    Se plantean dos mecanismos:\\
+    \begin{itemize}
+    \item \textcolor{naranjauca}{Tipos de acceso}\\
+    Proporciona un acceso controlado dependiendo del tipo de acción a realizar. Limitando lecturas, escrituras, ejecución, borrado o listado.
+    \pause
+    \item \textcolor{naranjauca}{Control de acceso}\\
+    Consiste en hacer que el acceso dependa de la identidad del usuario. Se asocia a cada archivo y directorio una lista de control de acceso que especifica que usuarios y con que permisos pueden acceder.
+    \end{itemize}
+    \bigskip
+    \textcolor{verdeuca}{Esta última técnica tiene el problema que la lista de control de accesos puede ser muy grande.}\\
+    Para reducir el tamaño muchos sistemas clasifican a los usuarios en grupos de usuarios.
+\end{frame}
+
+\begin{frame}[fragile,t]{Protección}
+    En los sistemas UNIX se utilizan 3 bits para identificar que permisos se tiene sobre el archivo.\\
+    \begin{itemize}
+    \item \textcolor{verdeuca}{\texttt{r}}: Permite lectura
+    \item \textcolor{verdeuca}{\texttt{w}}: Permite escritura
+    \item \textcolor{verdeuca}{\texttt{x}}: Permite ejecución
+    \end{itemize}
+    \pause
+    Estos permisos dependen del usuario:
+    \begin{itemize}
+    \item \textcolor{verdeuca}{Propietario} (dueño o creador del archivo)
+    \item \textcolor{verdeuca}{Grupo} (conjunto de usuarios que comparten el archivo)
+    \item \textcolor{verdeuca}{Universo} (todos)
+    \end{itemize}
+    \pause
+    Luego un archivo tiene la siguiente secuencia de permisos: \textcolor{verdeuca}{\texttt{rwx}\texttt{rwx}\texttt{rwx}}\\
+    \bigskip
+    Donde las primeras tres letras son del Propietario, las siguientes del Grupo y las últimas para el resto de los usuarios.
+\end{frame}
+
+\begin{frame}[fragile,t]{Implementación de sistemas de archivos}
+    Implementar un sistema de archivos propone dos problemas:
+    \bigskip
+    \pause
+    \begin{itemize}
+    \setlength\itemsep{0.4cm}
+    \item Definir que aspecto debe tener para el usuario, su \textbf{interfaz}. Definir un archivo y sus atributos, las operaciones permitidas y la estructura de directorios utilizada para organizarlos.
+    \item Crear \textbf{algoritmos y estructuras de datos} que permitan mapear el sistema lógico de archivos sobre los dispositivos físicos de almacenamiento secundario.
+    \end{itemize}
+    \bigskip
+    \pause
+    Los sistemas de almacenamiento secundario como discos, almacenan la información en \textbf{sectores} que agrupan un conjunto de bytes (usualmente 512 bytes).\\
+    \bigskip
+    Las transferencias entre memoria y disco se realizan de a \textbf{bloques} que es la mínima unidad de lectura/escritura para un sistema de archivos.
+\end{frame}
+
+\begin{frame}[fragile,t]{Estructura de un sistema de archivos}
+    Los sistemas de archivos están compuestos por varios niveles de abstracción:
+    \bigskip
+    \pause
+    \begin{itemize}
+    \setlength\itemsep{0.2cm}
+    \item \textbf{Control de E/S}:
+    Controladores de dispositivos y rutinas de atención de interrupciones, encargadas de transferir bloques entre la memoria y el almacenamiento secundario.
+    \pause
+    \item \textbf{Sistema básico de archivos}:
+    Se ocupa de enviar comandos genéricos al controlador apropiado a fin de leer o escribir bloques físicos dentro del disco.
+    \pause
+    \item \textbf{Módulo de organización de archivos}:
+    Tiene información sobre los bloques lógicos y físicos del archivo. Los bloques lógicos se numeran de 0 a N, mientras que los bloques físicos corresponden a la ubicación en disco. Se ocupa de realizar esta traducción y además de gestionar los bloques libres y ocupados.
+    \pause
+    \item \textbf{Sistema lógico de archivos}:
+    Gestiona la información sobre los archivos (metadata). Cada archivo tiene asociado un FCB (file control block) que contiene la ubicación de los datos, permisos y propietario.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,t]{Implementación de sistemas de archivos}
+    Un sistema de archivos en un disco físico puede contener información particular en bloques distinguidos.\\
+    \bigskip
+    \begin{itemize}
+    \setlength\itemsep{0.4cm}
+        \item \textbf{Bloque de control de arranque} (por cada volumen): Usualmente es el primer bloque del sistema, puede contener información que permita inicializar el sistema operativo. Se lo conoce como sector de arranque.
+    \item \textbf{Bloque de control de volumen} (por cada volumen): Contiene detalles sobre el volumen o partición, como el número total de bloques, donde comienza y donde termina. Cantidad de bloques libres y ocupados. Se lo puede encontrar como superblock en sistemas Unix.
+    \item \textbf{Estructura de directorios}: Para cada sistema de archivos tiene su propia estructura de directorios.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Implementación de directorios}
+    \begin{itemize}
+    \setlength\itemsep{0.5cm}
+    \item \textcolor{naranjauca}{Lista lineal}\\
+    Es el método más simple. Consiste en una lista de nombres de archivos con punteros a los bloques de datos.
+    Su desventaja es que requiere mucho tiempo de ejecución para todas las operaciones.
+    Es posible mejorar el rendimiento de esta solución utilizando un árbol ordenado a diferencia de una lista.
+    \pause
+    \item \textcolor{naranjauca}{Tabla de hash}\\
+    Con este método se utiliza una lista lineal, pero adicionalmente se tiene una tabla de hash.
+    Esta tabla permite a partir de un valor calculado sobre el nombre del archivo, encontrar el puntero al bloque de datos del mismo.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile,t]{Métodos de asignación}
+    \begin{textblock}{76}(10,15) 
+    \textbf{Asignación contigua}\\
+    Requiere que cada archivo ocupe un conjunto contiguo de bloques en disco.\\
+    Proporciona un acceso muy eficiente, ya que solo se requiere conocer el bloque actual para identificar al siguiente.\\
+    El problema de este método es la asignación de un nuevo espacio, ya que se puede sufrir de \emph{fragmentación externa}.
+    \end{textblock}
+    \begin{textblock}{100}(90,15) \includegraphics[scale=0.5]{img/asignacion_contigua_enlazada_indexada-layer1.pdf} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Métodos de asignación}
+    \begin{textblock}{76}(10,15) 
+    \textbf{Asignación entrelazada}\\
+    El directorio contiene un puntero al primer bloque, y luego cada bloque contiene punteros al siguiente bloque del archivo.\\
+    Este método es eficiente para acceso secuencia, pero resulta lento para el acceso directo.\\
+    Los punteros ocupan espacio, que puede llegar a no ser despreciable.\\
+    Además, es poco resistente a errores, ya que perder un puntero implica perder la continuación del archivo.
+    \end{textblock}
+    \begin{textblock}{100}(90,15) \includegraphics[scale=0.5]{img/asignacion_contigua_enlazada_indexada-layer2.pdf} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Métodos de asignación}
+    \begin{textblock}{76}(10,15) 
+    \textbf{Asignación indexada}\\
+    Resuelve los problema de la asignación entrelazada, agrupando todos los punteros en un solo bloque, denominado bloque de índice.\\
+    Los sistemas de archivos utilizan este método, agregando esquemas entrelazados e indices multinivel.
+    \end{textblock}
+    \begin{textblock}{100}(90,15) \includegraphics[scale=0.5]{img/asignacion_contigua_enlazada_indexada-layer3.pdf} \end{textblock}
+\end{frame}
+
+\begin{frame}[fragile,t]{Recuperación}
+    Los sistemas de archivos mantienen información tanto en almacenamiento secundario como en memoria.\\
+    Ante un evento de fallo del sistema, se pueden producir perdidas de datos o incluso dejar datos incoherentes.\\
+    \bigskip
+    \pause
+    \textbf{Comprobación de coherencia}\\
+    \bigskip
+    Para detectar y corregir estos problemas, existen programas que realizan un chequeo de integridad sobre los datos en el disco.
+    Este busca incoherencias entre los metadatos y las trata de reparar. 
+\end{frame}
+
+
+\begin{frame}[fragile,t]{Sistemas de archivos con estructura de registro (\emph{journaling})}
+    Este tipo de sistemas utilizan algoritmos de recuperación basados en \textbf{registros de transacciones}.
+    Ante eventos de fallos donde se pierde información puede no ser posible recuperar datos y los chequeos de coherencia ser insuficientes.\\
+    \bigskip
+    \pause
+    Su funcionamiento se basa en \textcolor{naranjauca}{\textbf{escribir secuencialmente en un registro}}
+    todos los cambios sobre la metadata de los archivos.
+    \textcolor{verdeuca}{Se denomina transacción a un conjunto cambios para realizar una tarea específica.}\\
+    \bigskip
+    \pause
+    Una vez escritos los cambios en el registro, la operación se puede dar por terminada y confirmada.
+    \textcolor{verdeuca}{Mientras tanto, las operaciones del registro son leidas y \textbf{aplicadas sobre las estructuras reales del sistema}.}
+    Se lleva seguimiento de cual operación fue realizada y cual no.\\
+    \bigskip
+    \pause
+    Una vez que se terminan de realizar todas las operaciones de una transacción, la entrada en el registro es borrada, dejando lugar en el buffer para nuevos cambios.
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Bibliografía}
+    \begin{itemize}
+        \setlength\itemsep{0.5cm}
+        \item[-] \small Silberschatz, ``Fundamentos de Sistemas Operativos'', 7ma Edición, 2006.\\
+        \begin{itemize}
+            \item \textbf{Capítulo 10 - Interfaz del sistema de archivos}, páginas 333-361
+            \item \textbf{Capítulo 11 - Implementación de sistemas de archivos}, páginas 369-386 y 392-393
+        \end{itemize}
+        \item[-] \small Silberschatz, ``Operating System Concepts'', 10th Edition, 2018.\\
+        \begin{itemize}
+            \item \textbf{Chapter 13 - File-System Interface}, páginas 529-555
+            \item \textbf{Chapter 14 - File-System Implementation}, páginas 564-578 y 586-589
+            \item \textbf{Chapter 15 - File-System Internals}, páginas 598-601
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+    \vspace{2cm}
+    \huge ¡Gracias!\\
+    \vspace{2cm}
+%     \normalsize Recuerden leer los comentarios adjuntos\\ en cada clase por aclaraciones.
+    \end{center}
+\end{frame}
+
+\end{document}
