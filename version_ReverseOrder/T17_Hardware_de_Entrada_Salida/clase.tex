@@ -3,6 +3,8 @@
 % fokerman@gmail.com
 % https://github.com/fokerman/computingSystemsCourse
 
+\RequirePackage[2020-02-02]{latexrelease}
+
 \documentclass[aspectratio=169]{beamer}
 \usepackage{../packages}
 
@@ -408,6 +410,57 @@
 % FIGURA
 % \end{frame}
 
+\begin{frame}[fragile]
+    \frametitle{Bibliografía}
+    \begin{itemize}
+     \setlength\itemsep{0.5cm}
+    \item[-] \small Tanenbaum, “Organización de Computadoras. Un Enfoque Estructurado”, 4ta Edición, 2000.\\
+    \begin{itemize}
+     \item \textbf{Selecccionados}\\
+     \begin{itemize}
+      \item 2.4 Entrada/Salida - Páginas 89 - 92
+      \item 3.4 Chips de CPU y buses - Páginas 154 - 170
+      \item 3.7 Interfaces - Páginas 193 - 197
+      \item 5.5.7 Entrada/Salida - Páginas 356 - 359
+      \item 5.6.4 Trampas - Página 379
+      \item 5.6.5 Interrupciones - Páginas 379 - 383
+     \end{itemize}
+    \end{itemize}
+    \item[-] \small Null, “Essentials of Computer Organization and Architecture”, 5th Edition, 2018.\\
+    \begin{itemize}
+    \item \textbf{Chapter 7 - Input/Output Systems}    
+     \begin{itemize}
+        \item 7.4 I/O Architectures
+        \item 7.4.1 I/O Control Methods
+        \item 7.4.3 I/O Bus Operation
+     \end{itemize}
+    \end{itemize}
+%     \item[-] \small Silberschatz, “Fundamentos de Sistemas Operativos”, 7ma Edición, 2006.\\
+%     \item[-] \small Tanenbaum, “Modern Operating Systems”, 4th Edition, 2015.\\
+    \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Ejercicios}
+    Con lo visto, ya pueden resolver todos los ejercicios de la guía de ejercicio número 5.
+\end{frame}
+
+\begin{frame}[plain]
+    \begin{center}
+    \vspace{2cm}
+    \huge ¡Gracias!\\
+    \vspace{2cm}
+%     \normalsize Recuerden leer los comentarios adjuntos\\ en cada clase por aclaraciones.
+    \end{center}
+\end{frame}
+
+\end{document}
+
+
+% % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % COMIENZO EJEMPLO ORGA SMALL EN FPGA % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % 
+
 \begin{frame}[fragile,t]{Ejemplo: OrgaSmallWithIO}
     \begin{textblock}{70}(3,18) \only<1->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer1.pdf}} \end{textblock}
     \begin{textblock}{70}(3,18) \only<2->{\includegraphics[scale=1.6]{img/zyboAndOrgaSmallWithIO-layer2.pdf}} \end{textblock} % output wire
@@ -581,49 +634,6 @@ int:
 % \end{textblock}
 % \end{frame}
 
-\begin{frame}[fragile]
-    \frametitle{Bibliografía}
-    \begin{itemize}
-     \setlength\itemsep{0.5cm}
-    \item[-] \small Tanenbaum, “Organización de Computadoras. Un Enfoque Estructurado”, 4ta Edición, 2000.\\
-    \begin{itemize}
-     \item \textbf{Selecccionados}\\
-     \begin{itemize}
-      \item 2.4 Entrada/Salida - Páginas 89 - 92
-      \item 3.4 Chips de CPU y buses - Páginas 154 - 170
-      \item 3.7 Interfaces - Páginas 193 - 197
-      \item 5.5.7 Entrada/Salida - Páginas 356 - 359
-      \item 5.6.4 Trampas - Página 379
-      \item 5.6.5 Interrupciones - Páginas 379 - 383
-     \end{itemize}
-    \end{itemize}
-    \item[-] \small Null, “Essentials of Computer Organization and Architecture”, 5th Edition, 2018.\\
-    \begin{itemize}
-    \item \textbf{Chapter 7 - Input/Output Systems}    
-     \begin{itemize}
-        \item 7.4 I/O Architectures
-        \item 7.4.1 I/O Control Methods
-        \item 7.4.3 I/O Bus Operation
-     \end{itemize}
-    \end{itemize}
-%     \item[-] \small Silberschatz, “Fundamentos de Sistemas Operativos”, 7ma Edición, 2006.\\
-%     \item[-] \small Tanenbaum, “Modern Operating Systems”, 4th Edition, 2015.\\
-    \end{itemize}
-\end{frame}
-
-\begin{frame}[fragile]
-    \frametitle{Ejercicios}
-    Con lo visto, ya pueden resolver todos los ejercicios de la guía de ejercicio número 5.
-\end{frame}
-
-\begin{frame}[plain]
-    \begin{center}
-    \vspace{2cm}
-    \huge ¡Gracias!\\
-    \vspace{2cm}
-%     \normalsize Recuerden leer los comentarios adjuntos\\ en cada clase por aclaraciones.
-    \end{center}
-\end{frame}
-
-\end{document}
-
+% % % % % % % % % % % % % % % % % % % % % % % % % % 
+% % % FIN DE EJEMPLO ORGA SMALL EN FPGA % % % % % %
+% % % % % % % % % % % % % % % % % % % % % % % % % % 

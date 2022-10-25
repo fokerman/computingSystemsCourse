@@ -3,6 +3,8 @@
 % fokerman@gmail.com
 % https://github.com/fokerman/computingSystemsCourse
 
+\RequirePackage[2020-02-02]{latexrelease}
+
 \documentclass[aspectratio=169]{beamer}
 \usepackage{../packages}
 
@@ -224,7 +226,7 @@
     \begin{tabular}{l|c|l}
                 & ¿vale?   & \\ \hline
     \texttt{R1 := R0   }   & \uncover<2->{\textcolor{green}{$\checkmark$}} & \uncover<2->{Copia \texttt{R0} en \texttt{R1}}\\
-    \texttt{R0 := ALU-OUT} & \uncover<3->{\textcolor{green}{$\checkmark$}} & \uncover<3->{Copia \texttt{R0} en \texttt{ALU-OUT}}\\
+    \texttt{R0 := ALU-OUT} & \uncover<3->{\textcolor{green}{$\checkmark$}} & \uncover<3->{Copia \texttt{ALU-OUT} en \texttt{R0}}\\
     \texttt{R2 := 0xFFFF}  & \uncover<4->{\textcolor{green}{$\checkmark$}} & \uncover<4->{Copia la constante \texttt{0xFFFF} a \texttt{R2}}\\
     \texttt{ALU-OUT := R0} & \uncover<5->{\textcolor{red}{$\times$}}     & \uncover<5->{\texttt{ALU-OUT} es de solo lectura}\\
     \texttt{R0 := ALU-IN1} & \uncover<6->{\textcolor{red}{$\times$}}     & \uncover<6->{\texttt{ALU-IN1} es de solo escritura}\\
@@ -234,7 +236,7 @@
 \end{frame}
 
 \begin{frame}[fragile,t]{Microarquitectura: Lenguaje y Notación}
-    Supongamos el siguiente \emph{datapath}.
+    Supongamos el siguiente \emph{datapath}:
     \begin{textblock}{70}(8,20) \only<1->{ \includegraphics[scale=0.6]{img/datapathEjemploAluExtendida-layer1.pdf} } \end{textblock}
     \begin{textblock}{70}(8,20) \only<1->{ \includegraphics[scale=0.6]{img/datapathEjemploAluExtendida-layer2.pdf} } \end{textblock}
     \begin{textblock}{70}(8,20) \only<1->{ \includegraphics[scale=0.6]{img/datapathEjemploAluExtendida-layer3.pdf} } \end{textblock}
@@ -352,7 +354,7 @@
 \end{frame}
 
 \begin{frame}[fragile,t]{Componente de memoria}
-    Supongamos el siguiente \emph{datapath}.\\
+    Supongamos el siguiente \emph{datapath}:\\
     \vspace{6.6cm}
     \uncover<5->{Y ahora, \textcolor{naranjauca}{\textbf{¿cómo escribimos instrucciones?}}}
     \begin{textblock}{70}(5,18) \only<1->{ \includegraphics[scale=0.6]{img/datapathEjemploAluCompleta.pdf} } \end{textblock}
