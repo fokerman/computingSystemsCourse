@@ -3,6 +3,8 @@
 % fokerman@gmail.com
 % https://github.com/fokerman/computingSystemsCourse
 
+\RequirePackage[2020-02-02]{latexrelease}
+
 \documentclass[aspectratio=169]{beamer}
 \usepackage{../packages}
 
@@ -125,28 +127,28 @@
     \textcolor{naranjauca}{El tiempo del procesador es compartido por múltiples procesos en ejecución.}\\
     \vspace{0.2cm}
     \small
-    El sistema operativo cuenta con una componente denominada \emph{scheduler}\\ o \textbf{planificador}, que decide cual será el próximo proceso en ser ejecutado.
+    El sistema operativo cuenta con un componente denominado \emph{scheduler}\\ o \textbf{planificador}, que decide cual será el próximo proceso en ser ejecutado.
     \end{center}
 \end{frame}
 
 \begin{frame}[fragile]{Estados de un proceso}
     \begin{textblock}{55}(7,15)
     \small
-    Los procesos antes de comenzar a ser ejecutados o mientras son ejecutados pueden tomar multiples \textbf{estados}.\\
+    Los procesos antes de comenzar a ser ejecutados o mientras son ejecutados pueden tomar múltiples \textbf{estados}.\\
     \end{textblock}
     \begin{textblock}{140}(5,30)
     \small
     \begin{itemize}
     \setlength\itemsep{0cm}
-    \item<2->[-] \textbf{Nuevo}: Estado inicial, se está cargando\\ poco a poco en memoria y solicitando recursos.
-    \item<3->[-] \textbf{Preparado}: El proceso puede ser ejecutado, pero el procesador aun no esta disponible.
+    \item<2->[-] \textbf{Nuevo}: Estado inicial, el proceso se está cargando\\ poco a poco en memoria y solicitando recursos.
+    \item<3->[-] \textbf{Preparado}: El proceso puede ser ejecutado, pero el procesador aun no está disponible.
     \item<4->[-] \textbf{En Ejecución}: El proceso está siendo ejecutado actualmente. Existe un solo proceso en este estado.
-    \item<5->[-] \textbf{Terminado}: Proceso terminado, no puede volver a correr. Aun existe en la medida que desaloje todos los recursos.
+    \item<5->[-] \textbf{Terminado}: Proceso terminado, no puede volver a correr. Aun existe en la medida que desalojen todos sus recursos.
     \end{itemize}
-    \uncover<6->{Pasar de \textbf{En Ejecución} a \textbf{Preparado} es posible cuando se \emph{pausa} o \emph{desalojo} un proceso.}
+    \uncover<6->{Pasar de \textbf{En Ejecución} a \textbf{Preparado} es posible cuando se \emph{pausa} o \emph{desaloja} un proceso.}
     \begin{itemize}
     \setlength\itemsep{0cm}
-    \item<7-> \textbf{En Espera}: El proceso queda en espera por un evento, será pasado a \emph{Preparado} cuando suceda el evento por el cual espera suceda.
+    \item<7-> \textbf{En Espera}: El proceso queda en espera por un evento, será pasado a \emph{Preparado} cuando suceda el evento por el cual espera.
     \end{itemize}
     \begin{center}
      \uncover<8->{\textcolor{naranjauca}{\large \textbf{¿Cómo espera un proceso?}}}
@@ -190,9 +192,9 @@
     \small
     \uncover<2->{Una vez dentro de la CPU, los procesos pueden ser \emph{pausados}, \emph{desalojados} o \emph{terminados}.}\\
     \bigskip
-    \uncover<3->{Si el proceso decide ser \emph{pausado}, el sistema denomina \textbf{cooperativo}.}\\
+    \uncover<3->{Si el proceso decide ser \emph{pausado}, el sistema se denomina \textbf{cooperativo}.}\\
     \medskip
-    \uncover<4->{Si el proceso es \emph{desalojado} en cualquier momento por el sistema, se dice que el sistema tiene \textbf{desalojo}.}\\
+    \uncover<4->{Si el proceso es \emph{desalojado} en cualquier momento por el sistema, se dice que el sistema tiene \textbf{desalojo} o es \textbf{apropiativo}.}\\
     \end{textblock}
 \end{frame}
 
@@ -350,7 +352,7 @@
 \begin{frame}{Creación de un nuevo proceso: En \texttt{UNIX}}
     \begin{textblock}{120}(10,12)
     \small
-    Para crear un nuevo proceso se utiliza dos llamados al sistema:
+    Para crear un nuevo proceso se utilizan dos llamados al sistema:
     \begin{itemize}
      \item[-] \textcolor{naranjauca}{\texttt{fork()}}: Crea un nuevo proceso hijo con la misma memoria del proceso padre.
      \item[-] \textcolor{naranjauca}{\texttt{exec()}}: Remplaza la memoria del proceso por la de un nuevo programa.
@@ -405,10 +407,10 @@
 
 \begin{frame}[t]{\emph{Threads} (Hilos)}
     \small
-    \uncover<1->{Crear nuevos procesos, implica la costosa tarea de administrar la memoria, para estos nuevos procesos.\\
+    \uncover<1->{Crear nuevos procesos, implica la costosa tarea de administrar la memoria para estos nuevos procesos.\\
     Para reducir el \textbf{costo de crear nuevos contextos de ejecución}, existen los \emph{threads} o hilos de ejecución.}\\
     \bigskip
-    \uncover<2->{Los \emph{threads} son \textbf{nuevos contexto de ejecución}, similares a un nuevo proceso, pero que comparten recursos con el proceso padre.
+    \uncover<2->{Los \emph{threads} son \textbf{nuevos contextos de ejecución}, similares a un nuevo proceso, pero que comparten recursos con el proceso padre.
     \textcolor{verdeuca}{Tienen el \textbf{mismo mapa de memoria} para código y datos que el padre.}}\\    
     \begin{textblock}{70}(10,40) \only<3->{Single-Thread} \end{textblock}
     \begin{textblock}{70}(10,45) \only<3->{\includegraphics[scale=1]{img/singlethread_multithread-layer1.pdf}} \end{textblock}
