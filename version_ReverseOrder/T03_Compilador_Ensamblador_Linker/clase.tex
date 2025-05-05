@@ -246,11 +246,21 @@ La optimización de código se encarga transformar el código intermedio en una 
     }
 \end{frame}
 
-% \begin{frame}[fragile,t]{Formatos de programas ejecutables}
-% - elf
-% - exe
-% - com
-% \end{frame}
+\begin{frame}[fragile,t]{Formatos de programas ejecutables}
+    Cada sistema operativo soporta diferentes formatos de programas ejecutables:\\
+    \vspace{0.2cm}
+    \begin{itemize}
+    \setlength\itemsep{0.3cm}
+    \item[-] \small \textcolor{naranjauca}{\textbf{ELF} (Executable and Linkable Format)}\\
+    Estándar en sistemas Unix-like como Linux y BSD. Es altamente flexible, para ejecutables, código objeto, bibliotecas compartidas y volcados de memoria, soporta además vinculación dinámica.
+    \item[-] \small \textcolor{naranjauca}{\textbf{EXE} (Executable File)}\\
+    Formato principal de ejecutables en sistemas Windows. Conocido por su estructura compleja basada en COFF (Common Object File Format). Incluye recursos como iconos, cursores o menús, y soporta la carga de bibliotecas dinámicas (DLLs).
+    \item[-] \small \textcolor{naranjauca}{\textbf{COM} (Command File)}\\
+    Formato histórico y muy simple de MS-DOS y CP/M. Carece de cabecera estructurada, se carga en una dirección fija y está limitado a un tamaño pequeño. Obsoleto en sistemas modernos.
+    \item[-] \small \textcolor{naranjauca}{\textbf{Mach-O} (Mach object)}\\
+    Formato nativo en sistemas Apple (macOS, iOS). Permite ejecutables que contienen código para múltiples arquitecturas (\textit{fat binaries}), facilitando la compatibilidad en diversas plataformas Apple.
+    \end{itemize}
+\end{frame}
 
 \begin{frame}[fragile,t]{Compilar, Ensamblar y Enlazar en C}
     \begin{textblock}{60}(10,15)
